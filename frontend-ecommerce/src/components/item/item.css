@@ -3,7 +3,19 @@
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
+
+    /* cursor: pointer; */
+
+    transform: scale(1,1);
+    transition: all 0.5s ease-in-out;
 }
+
+.item-container:hover
+{
+    transform: scale(1.05,1.05);
+    box-shadow: 0px 0px 10px rgb(220, 220, 220);
+}
+
 
 .item-image
 {
@@ -14,6 +26,7 @@
 .item-heading
 {
     padding: 0 10px;
+    margin-bottom: 10px;
 }
 
 .buttons-container
@@ -38,11 +51,13 @@
 {
     height: 30px;
     max-width: 100%;
-    width: 100%;
+    flex: 1;
     margin: 10px;
     border: black solid 1px;
     background-color: #ffffff;
     border-radius: 10px;
+
+    cursor: pointer;
 }
 
 .favorite-button
