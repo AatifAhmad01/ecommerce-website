@@ -8,11 +8,12 @@ export default function Item()
     return(
         <div className="item-container">
             <img src={itemImage} className="item-image"/>
-            <h4 className="item-heading">Red Lady Lipstick</h4>
-            <h4 className="item-heading">Rs. 450</h4>
+            <h6 className="item-title">Red Lady Lipstick</h6>
+            <h6 className="item-price">Rs. 450</h6>
             <div className="buttons-container">
                 <button className="add-cart-button">Add To Cart</button>
-                <button className="favorite-button">O</button>
+                {/* <button className="favorite-button"> </button> */}
+                {/* <span class="material-symbols-rounded add-icon">favorite</span> */}
             </div>
         </div>
     )

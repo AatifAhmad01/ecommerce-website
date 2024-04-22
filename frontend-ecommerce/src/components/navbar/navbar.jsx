@@ -6,10 +6,11 @@ function Navbar ()
 {
     return(
         <div className="navbar-container-outer">
-            <div className="naavbar-continer">
-                <h1>Seen Beauty</h1>
+            <div className="navbar-continer">
+                <h1 className="title">Seen Beauty</h1>
                 <SearchBar/>
                 <ul>
+                    {/* <li><a href="">Sign In</a></li> */}
                     <li><a href="">Cart</a></li>
                 </ul>
             </div>

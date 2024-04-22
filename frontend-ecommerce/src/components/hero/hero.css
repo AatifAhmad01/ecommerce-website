@@ -1,14 +1,28 @@
 .hero-container
 {
-    height: 500px;
+    height: 450px;
     width: 100%;
     /* max-width: 1300px; */
-    background-color: gray;
+    /* background-color: gray; */
 }
 
-.hero-container
+.hero-item-first
 {
     background-image: url('../../assets/hero.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-item-second
+{
+    background-image: url('../../assets/hero2.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-item-third
+{
+    background-image: url('../../assets/hero3.jpg');
     background-size: cover;
     background-position: center;
 }

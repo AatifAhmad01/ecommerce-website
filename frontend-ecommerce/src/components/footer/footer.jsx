@@ -4,8 +4,8 @@ import './footer.css'
 export default function Footer()
 {
     return (
-        <div className="container">
-
-        </div>
+        <footer className="footer-container">
+            <p className="footer-details">&copy; Seen Beauty</p>
+        </footer>
     )
 }

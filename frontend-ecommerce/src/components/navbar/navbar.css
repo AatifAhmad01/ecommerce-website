@@ -1,3 +1,11 @@
+
+.title
+{
+    font-family: "Dancing Script";
+    font-family: "Great Vibes";
+    /* font-family: "Sacramento"; */
+}
+
 .navbar-container-outer
 {
     background-color: #ffa200;
@@ -8,7 +16,7 @@
     justify-content: center;
 }
 
-.naavbar-continer
+.navbar-continer
 {
     width: 100%;
     /* max-width: 1300px; */
@@ -21,19 +29,21 @@
     align-items: center;
 }
 
-.naavbar-continer h1{
+.navbar-continer h1{
     color: white;
     margin-left: 20px;
     width: 250px;
 }
 
-.naavbar-continer ul{
+.navbar-continer ul{
     width: 250px;
+    margin: 0;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
-.naavbar-continer li
+.navbar-continer li
 {
     list-style: none;
     /* align-self: flex-end; */
@@ -45,7 +55,7 @@
     /* justify-self: flex-end; */
 }
 
-.naavbar-continer a
+.navbar-continer a
 {
     text-decoration: none;
     color: white

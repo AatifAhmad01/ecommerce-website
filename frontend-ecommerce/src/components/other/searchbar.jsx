@@ -7,7 +7,7 @@ export default function SearchBar()
 
         <div className="searchbar-container">
             <input type="text" className="searchbar-input" placeholder="Search Item"/>
-            <button className="searchbar-buttom">m</button>
+            <button className="searchbar-buttom"><span class="material-symbols-rounded search-icon">search</span></button>
         </div>
     )
 }

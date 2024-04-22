@@ -3,7 +3,7 @@
     background-color: rgb(255, 255, 255);
     height: 40px;
     width: 500px;
-    border-radius: 20px;
+    border-radius: 5px;
     overflow: hidden;
     /* padding-left: 20px; */
     /* margin-left: 20px; */
@@ -20,11 +20,16 @@
     outline: none;
 }
 
+.search-icon
+{
+    margin-top: 5px;
+    color: gray
+}
+
 .searchbar-buttom
 {
     height: 40px;
     width: 40px;
-    border-radius: 20px;
     background-color: rgb(232, 232, 232);
     border: none;
 }

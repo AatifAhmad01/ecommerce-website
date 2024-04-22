@@ -7,12 +7,13 @@ import Footer from "../../components/footer/footer";
 export default function Home()
 {
     return(
-        <div className="wrapper">
-
+        <>
             <Hero/>
+            <div className="wrapper">
             <ProductSection/>
+            </div>
             <Footer/>
-        </div>
+        </>
 
     )
 }
