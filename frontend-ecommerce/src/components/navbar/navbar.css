@@ -1,9 +1,10 @@
 
-.title
+.logo
 {
-    font-family: "Dancing Script";
-    font-family: "Great Vibes";
-    /* font-family: "Sacramento"; */
+    /* font-family: "Dancing Script"; */
+    /* font-family: "Great Vibes"; */
+    font-family: "Sacramento";
+    margin-top: 20px;
 }
 
 .navbar-container-outer
@@ -23,11 +24,18 @@
     height: 70px;
     background-color: #ffa200;
     background-color: #272727;
+    /* background-color: #d400ff; */
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+/* Bootstrape navbar */
+/* .navbar
+{
+    /* background-color: #272727; */
+} */
 
 .navbar-continer h1{
     color: white;
@@ -35,7 +43,7 @@
     width: 250px;
 }
 
-.navbar-continer ul{
+.right-navlink{
     width: 250px;
     margin: 0;
     display: flex;
@@ -43,22 +51,55 @@
     align-items: center;
 }
 
-.navbar-continer li
+.right-navlink li
 {
     list-style: none;
     /* align-self: flex-end; */
     margin-right: 20px;
 }
 
-.search-container
+.left-navlink
 {
     /* justify-self: flex-end; */
+    width: 250px;
+    margin: 0;
+    display: flex;
 }
 
-.navbar-continer a
+.left-navlink li
+{
+    /* justify-self: flex-end; */
+    margin-right: 20px;
+}
+
+a
 {
     text-decoration: none;
-    color: white
+    color: rgb(113, 113, 113)
 }
 
+.cart-icon
+{
+    font-size: 34px;
+}
+
+.cart-desktop
+{
+    display: none;
+}
+.cart-mobile
+{
+    display: block;
+}
+
+@media (width <= 600px) {
+    .cart-desktop
+    {
+        display: block;
+    }
+    .cart-mobile
+    {
+        display: none;
+    }
+  }
 

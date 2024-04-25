@@ -32,3 +32,25 @@
     background-color: #272727;
     border-radius: 10px;
 }
+
+@media (width <= 900px) {
+    .product-list
+    {
+        /* margin: 20px; */
+        /* display: grid; */
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        /* width: 95%; */
+    }
+  }
+
+  @media (width <= 600px) {
+    .product-list
+    {
+        /* margin: 20px; */
+        /* display: grid; */
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        /* width: 95%; */
+    }
+  }
