@@ -72,29 +72,29 @@ function Navbar ()
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                {/* <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li> */}
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Shop</a>
+                </li>
 
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Categories
                 </a>
                 <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Best Collection</a></li>
-                        <li><a class="dropdown-item" href="#">Foundation</a></li>
-                        <li><a class="dropdown-item" href="#">Face Powder</a></li>
-                        <li><a class="dropdown-item" href="#">Eye Mascara</a></li>
-                        <li><a class="dropdown-item" href="#">Eye Liner</a></li>
-                        <li><a class="dropdown-item" href="#">Blushan</a></li>
-                        <li><a class="dropdown-item" href="#">Highlighters</a></li>
-                        <li><a class="dropdown-item" href="#">Lipsticks</a></li>
-                        <li><a class="dropdown-item" href="#">Lipgloss</a></li>
-                        <li><a class="dropdown-item" href="#">Hair Products</a></li>
+                        <li><a class="dropdown-item" href="/bestcollections">Best Collection</a></li>
+                        <li><a class="dropdown-item" href="/foundation">Foundation</a></li>
+                        <li><a class="dropdown-item" href="/facepowder">Face Powder</a></li>
+                        <li><a class="dropdown-item" href="/eyemascara">Eye Mascara</a></li>
+                        <li><a class="dropdown-item" href="/eyeliner">Eye Liner</a></li>
+                        <li><a class="dropdown-item" href="/blushan">Blushan</a></li>
+                        <li><a class="dropdown-item" href="/highlighters">Highlighters</a></li>
+                        <li><a class="dropdown-item" href="/lipsticks">Lipsticks</a></li>
+                        <li><a class="dropdown-item" href="/lipgloss">Lipgloss</a></li>
+                        <li><a class="dropdown-item" href="/hairproducts">Hair Products</a></li>
                     </ul>
                 </li>
             </ul>
-            <a href=""><span className="material-symbols-rounded cart-icon cart-mobile">local_mall</span></a>
+            <a href="/cart"><span className="material-symbols-rounded cart-icon cart-mobile">local_mall</span></a>
             </div>
         </div>
 

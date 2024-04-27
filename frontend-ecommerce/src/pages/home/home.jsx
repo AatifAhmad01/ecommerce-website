@@ -8,9 +8,8 @@ export default function Home()
 {
     return(
         <>
-            <Hero/>
             <div className="wrapper">
-            <ProductSection/>
+            <ProductSection category="New Arival"/>
             </div>
             <Footer/>
         </>
