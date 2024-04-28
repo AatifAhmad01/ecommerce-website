@@ -1,14 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Navbar from './components/navbar/navbar'
 import Home from './pages/home/home';
-import Hero from './components/hero/hero'
-import Cart from './pages/Cart'
-import ShopCategory from './pages/ShopCategory'
+import Cart from './pages/cart/Cart'
+import ShopCategory from './pages/shopCategory/ShopCategory'
 
 import {BrowserRouter , Routes , Route} from 'react-router-dom'
+import ProductDetail from './pages/productDetails/ProductDetail'
+import { HeadingContent } from './components/headingContent/headingContent';
 
 
 function App() {
@@ -16,11 +13,11 @@ function App() {
   return (
     <>
     <BrowserRouter>
-    <Navbar/>
-    <Hero/>
+    <HeadingContent/>
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/cart' element={<Cart/>}/>
+      <Route path='/productdetail' element={<ProductDetail category="Best Collections"/>}/>
       <Route path='/bestcollections' element={<ShopCategory category="Best Collections"/>}/>
       <Route path='/foundation' element={<ShopCategory category="Foundation"/>}/>
       <Route path='/facepowder' element={<ShopCategory category="Face Poweder"/>}/>

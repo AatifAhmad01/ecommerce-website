@@ -1,0 +1,23 @@
+.detailsContainer
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: rgb(205, 205, 205);
+}
+
+.productImageSection
+{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.productDetailsSection
+{
+    width: 400px;
+    height: 600px;
+    background-color: gray;
+}
