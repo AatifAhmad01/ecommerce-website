@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import ProductWraper from "../../components/pageWraper/pagewraper";
 import './productDetail.css'
 import lipstickImage from '../../../public/images/products/lipstick.jpg'
+import AddToCartBtn from "../../components/addToCartBtn/addToCartBtn";
 
 export default function ProductDetail() {
 
@@ -22,11 +23,12 @@ export default function ProductDetail() {
     return <ProductWraper>
         <div className="detailsContainer">
             <div className="productImageSection">
-                <img src={lipstickImage}></img>
+                <img src={lipstickImage} className="productImage"></img>
             </div>
             <div className="productDetailsSection">
                 <h1>{productDetails.name}</h1>
                 <p>{productDetails.description}</p>
+                <AddToCartBtn/>
             </div>
         </div>
     </ProductWraper>

@@ -1,6 +1,7 @@
 import React from "react";
 import './productItem.css'
 import { useNavigate } from "react-router-dom";
+import AddToCartBtn from "../addToCartBtn/addToCartBtn";
 
 // import itemImage from '../../../public/images/products/lipstick.jpg'
 
@@ -18,11 +19,8 @@ export default function ProductItem({product})
             <img src={`../../../public/images/products/${product.imageUrl}.jpg`} className="item-image"/>
             <h6 className="item-title">{product.name}</h6>
             <h6 className="item-price">Rs. {product.price}</h6>
-            <div className="buttons-container">
-                <button className="add-cart-button">Add To Cart</button>
-                {/* <button className="favorite-button"> </button> */}
-                {/* <span class="material-symbols-rounded add-icon">favorite</span> */}
-            </div>
+            <AddToCartBtn/>
+
         </div>
     )
 }

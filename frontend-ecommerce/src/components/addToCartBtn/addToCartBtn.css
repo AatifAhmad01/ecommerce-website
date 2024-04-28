@@ -1,0 +1,29 @@
+.add-cart-button
+{
+    height: 40px;
+    max-width: 100%;
+    flex: 1;
+    margin: 10px;
+    border: black solid 1px;
+    background-color: #ffffff;
+    
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    color: white;
+    /* border: none; */
+    /* background-color: rgb(161, 0, 0); */
+    background-color: #272727;
+}
+
+.add-cart-button:active
+{
+    background-color: #000000;
+    color: white;
+}
+.buttons-container
+{
+    display: flex;
+    align-items: center;
+}

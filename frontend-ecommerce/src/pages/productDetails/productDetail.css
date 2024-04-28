@@ -5,19 +5,26 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    background-color: rgb(205, 205, 205);
+    border: solid 2px black;
+
 }
 
 .productImageSection
 {
     flex: 1;
+    height: 90%;
     display: flex;
     justify-content: center;
+}
+
+.productImage {
+    height: 400px;
 }
 
 .productDetailsSection
 {
     width: 400px;
     height: 600px;
-    background-color: gray;
+    /* background-color: gray; */
+    border: solid 2px black;
 }
