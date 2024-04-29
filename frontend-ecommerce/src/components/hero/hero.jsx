@@ -30,20 +30,34 @@ export default function Hero()
             ></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="10000">
+            <div class="carousel-item active" data-bs-interval="3000">
                 <div className="hero-container hero-item-first">
 
                 </div>
             </div>
 
-            <div class="carousel-item" data-bs-interval="2000">
+            <div class="carousel-item" data-bs-interval="3000">
+                <div className="hero-container hero-item-second">
+
+                </div>
+
+            </div>
+
+            <div class="carousel-item" data-bs-interval="3000">
+                <div className="hero-container hero-item-second">
+
+                </div>
+
+            </div>
+
+            <div class="carousel-item" data-bs-interval="3000">
                 <div className="hero-container hero-item-second">
 
                 </div>
 
             </div>
             
-            <div class="carousel-item">
+            <div class="carousel-item" data-bs-interval="3000">
                 <div className="hero-container hero-item-third">
 
                 </div>
