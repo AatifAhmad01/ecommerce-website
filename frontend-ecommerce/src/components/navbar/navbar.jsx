@@ -68,7 +68,7 @@ function Navbar ()
             </button>
             {/* <a class="navbar-brand" href="#">Navbar</a> */}
             <h1 className="logo">Seen Beauty</h1>
-            <a href=""><span className="material-symbols-rounded cart-icon cart-desktop">local_mall</span></a>
+            <a href="/cart"><span className="material-symbols-rounded cart-icon cart-desktop">local_mall</span></a>
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
