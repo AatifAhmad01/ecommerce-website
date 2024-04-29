@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import ProductWraper from "../../components/pageWraper/pagewraper";
 import './productDetail.css'
@@ -8,7 +8,6 @@ import ProductSection from "../../components/productSection/productSection";
 
 export default function ProductDetail() {
 
-    window.scrollTo(0,0)
 
     const [quantity, setQuantity] = useState(1)
 
@@ -37,6 +36,10 @@ export default function ProductDetail() {
         setQuantity(parseInt(e.target.value))
     }
 
+    useEffect(() => {
+        window.scrollTo(0,0)
+
+    }, [])
     return <ProductWraper>
         <div className="detailsContainer">
             <div className="productImageSection">
