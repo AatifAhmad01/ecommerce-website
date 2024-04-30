@@ -4,11 +4,8 @@
     border-radius: 10px;
     overflow: hidden;
 
-    cursor: pointer;
-
     transform: scale(1,1);
     transition: all 0.5s ease-in-out;
-
 }
 
 /* .item-container:hover
@@ -22,6 +19,8 @@
 {
     width: 100%;
     border-radius: 10px;
+    cursor: pointer;
+
 }
 
 .item-title

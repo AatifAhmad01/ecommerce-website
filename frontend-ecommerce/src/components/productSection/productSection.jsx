@@ -13,7 +13,7 @@ export default function ProductSection({category})
             <h1 className="products-heading">{category}</h1>
             <div className="product-list">
                 {
-                    products.map(item => <ProductItem product={item}/> )
+                    products.map(item => <ProductItem product={item} key={item.id}/> )
                 }
 
             </div>

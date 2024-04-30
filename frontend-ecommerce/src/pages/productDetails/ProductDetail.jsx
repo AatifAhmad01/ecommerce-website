@@ -3,19 +3,26 @@ import { useLocation } from "react-router-dom";
 import ProductWraper from "../../components/pageWraper/pagewraper";
 import './productDetail.css'
 import lipstickImage from '../../../public/images/products/bottle1.png'
-import AddToCartBtn from "../../components/addToCartBtn/addToCartBtn";
 import ProductSection from "../../components/productSection/productSection";
+import { useLocalStorage } from "../../customHooks/useLocalStorage.js";
+import ButtonFill from "../../components/addToCartBtn/addToCartBtn";
 
 export default function ProductDetail() {
 
-
     const [quantity, setQuantity] = useState(1)
+    const [cart, setCart] = useLocalStorage("cartItems", { items: []});
 
     const location = useLocation();
 
     const productDetails = location.state.product;
 
     const addQuantityHandler = ()=> {
+
+        if(!quantity) {
+            setQuantity(1);
+            return;
+        }
+
         setQuantity(quantity + 1)
     }
 
@@ -26,8 +33,8 @@ export default function ProductDetail() {
     }
 
     const enterQuantityAmount = (e) => {
-        if(e.target.value == "0" || !e.target.value) return;
-        
+        if(isNaN(e.target.value) || e.target.value == "0") return;
+
         if(e.target.value.length < 1) {
             setQuantity("");
             return;
@@ -35,10 +42,30 @@ export default function ProductDetail() {
 
         setQuantity(parseInt(e.target.value))
     }
+    const addCartHandler = () => {
+        for(var item of cart.items)
+        {
+            if(item.id == productDetails.id){
+                item.quantity = quantity;
+                item.totalPrice = productDetails.price * quantity;
+
+                setCart({items: [...cartObject.items]})
+                return;
+            }
+        }
+
+        setCart({items: [...cart.items, { 
+            id: productDetails.id,
+            name: productDetails.name,
+            quantity: quantity,
+            price: productDetails.price,
+            totalPrice: productDetails.price * quantity
+        }]})
+    }
 
     useEffect(() => {
         window.scrollTo(0,0)
-
+        // localStorage.clear();
     }, [])
     return <ProductWraper>
         <div className="detailsContainer">
@@ -61,7 +88,7 @@ export default function ProductDetail() {
                     </div>
                 </div>
 
-                <AddToCartBtn/>
+                <ButtonFill text="Add To Cart" onClick={addCartHandler}/>
             </div>
         </div>
         <ProductSection category="New Arival"/>

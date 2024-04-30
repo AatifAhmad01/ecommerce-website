@@ -8,9 +8,12 @@ export function HeadingContent (){
     const location = useLocation();
 
     //Disable hero in some routes
+    const hideHero = 
+        location.pathname == "/productdetail" || 
+        location.pathname == "/cart" 
 
     return <div>
         <Navbar/>
-        {location.pathname == "/productdetail" ?  null : <Hero/>}
+        { hideHero ?  null : <Hero/>}
     </div>
 }

@@ -25,9 +25,10 @@
 .productImageSection
 {
     flex: 1;
-    height: 90%;
+    height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .productImage {
@@ -38,6 +39,7 @@
 {
     width: 400px;
     height: 600px;
+
     /* background-color: gray; */
     /* border: solid 2px black; */
     display: flex;
