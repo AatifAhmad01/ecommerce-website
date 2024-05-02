@@ -5,12 +5,27 @@
     min-height: 600px;
     /* background-color: rgb(225, 221, 221); */
     align-items: stretch;
+    margin-bottom: 20px;
 }
 
 .productDetailsSection
 {
-    /* background-color: rgb(253, 170, 170); */
+    background-color: rgb(236, 236, 236);
 
+}
+
+.detailContainerParent{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.textGroupContainer
+{
+    margin: 20px;
+
+    display: flex;
+    justify-content: space-between;
 }
 
 

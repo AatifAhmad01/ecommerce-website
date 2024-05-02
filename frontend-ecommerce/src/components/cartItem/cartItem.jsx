@@ -35,7 +35,7 @@ export default function CartItem({onRemove, onUpdateQuantity, cartItem})
     }
 
     useEffect(() => {
-        onUpdateQuantity(quantity);
+        onUpdateQuantity(cartItem.id, quantity);
     }, [quantity])
 
     return <div className="cartItemContainer">
@@ -47,7 +47,7 @@ export default function CartItem({onRemove, onUpdateQuantity, cartItem})
                 <div className="cartItemDetailsContainer">
                     <p className="cartItemTitle">{cartItem.name}</p>
                     <p>Item Price: {cartItem.price}</p>
-                    <strong>Total: {cartItem.totalPrice}</strong>
+                    <strong>Total: {cartItem.price * cartItem.quantity}</strong>
                 </div>
             </div>
             {/* <div className="cartItemTotalPriceContainer">

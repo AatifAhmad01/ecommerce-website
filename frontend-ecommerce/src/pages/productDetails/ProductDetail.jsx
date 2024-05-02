@@ -62,7 +62,6 @@ export default function ProductDetail() {
             imageName: productDetails.imageUrl,
             quantity: quantity,
             price: productDetails.price,
-            totalPrice: productDetails.price * quantity
         }]})
     }
 

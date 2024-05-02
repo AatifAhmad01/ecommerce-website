@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './cart.css'
 import ProductWraper from "../../components/pageWraper/pagewraper";
 import ButtonFill from "../../components/addToCartBtn/addToCartBtn";
@@ -8,6 +8,8 @@ import { useLocalStorage } from "../../customHooks/useLocalStorage";
 export default function Cart() {
 
     const [cart, setCart] = useLocalStorage("cartItems", { items: []});
+
+    const [subtotal, setSubtotal] = useState(0);
 
     const checkOutHandler = () => {
 
@@ -26,9 +28,23 @@ export default function Cart() {
 
         console.log("changing Item Quantity");
 
-        // const filteredItems = cart.items.filter(item => item.id != itemId)
+        const updatedItems = cart.items.map(item => {
 
-        // setCart({items: [...filteredItems]})
+            if(item.id == itemId)
+            {
+                item.quantity = updatedQuantity;
+            }
+            return item;
+        })
+
+        console.log(updatedItems)
+
+        setCart({items: [...updatedItems]})
+
+        setSubtotal(cart.items.reduce((acc, curr) => 
+        {
+            return acc + curr.price * curr.quantity;
+        }, 0));
     }
 
     return<>
@@ -42,16 +58,21 @@ export default function Cart() {
                 <div className="productDetailsSection">
                     <div className="detailContainer">
                         <div className="detailContainerParent">
-
-                        </div>
-                        {/* <div className="priceContainer">
-                            <strong className="price">Price: </strong>
-                            <div className="quantityContainer">
-                                <button className="quantityBtn" >-</button>
-                                <input  name="" id="" className="quantityInput" />
-                                <button className="quantityBtn" >+</button>
+                            <div className="cont-1">
+                                <div className="textGroupContainer">
+                                    <h5>SUBTOTAL</h5>
+                                    <h5>Rs. {subtotal}</h5>
+                                </div>
+                                <div className="textGroupContainer">
+                                    <p>Delivery Charges</p>
+                                    <p>Free</p>
+                                </div>
                             </div>
-                        </div> */}
+                            <div className="textGroupContainer">
+                                <h5>TOTAL TO PAY</h5>
+                                <h5>Rs. {subtotal}</h5>
+                            </div>
+                        </div>
                     </div>
 
                     {/* <AddToCartBtn onClick={addCartHandler}/> */}
