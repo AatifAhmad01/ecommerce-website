@@ -1,11 +1,34 @@
+
 .cartItemsContainer
 {
     flex: 1;
     min-height: 600px;
     /* background-color: rgb(225, 221, 221); */
+    align-items: stretch;
 }
+
 .productDetailsSection
 {
     /* background-color: rgb(253, 170, 170); */
 
 }
+
+
+@media (width <= 600px) {
+
+    .detailsContainer
+    {
+        align-items: stretch !important;
+    }
+
+    .productDetailsSection
+    {
+        width: auto !important;
+    }
+
+    .cartItemsContainer
+    {
+        min-height: auto;
+    }
+}
+

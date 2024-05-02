@@ -15,11 +15,20 @@ export default function Cart() {
 
     const onRemoveItem = (itemId) => {
 
-        console.log(itemId);
+        // console.log(itemId);
 
         const filteredItems = cart.items.filter(item => item.id != itemId)
 
         setCart({items: [...filteredItems]})
+    }
+
+    const onItemQuantityChanged = (itemId, updatedQuantity) => {
+
+        console.log("changing Item Quantity");
+
+        // const filteredItems = cart.items.filter(item => item.id != itemId)
+
+        // setCart({items: [...filteredItems]})
     }
 
     return<>
@@ -27,7 +36,7 @@ export default function Cart() {
             <div className="detailsContainer">
                 <div className="cartItemsContainer">
                 {
-                    cart.items.map((item) => <CartItem cartItem={item} onRemove={onRemoveItem}/>)
+                    cart.items.map((item) => <CartItem cartItem={item} onUpdateQuantity={onItemQuantityChanged} onRemove={onRemoveItem} key={item.id}/>)
                 }
                 </div>
                 <div className="productDetailsSection">
@@ -35,14 +44,14 @@ export default function Cart() {
                         <div className="detailContainerParent">
 
                         </div>
-                        <div className="priceContainer">
+                        {/* <div className="priceContainer">
                             <strong className="price">Price: </strong>
                             <div className="quantityContainer">
                                 <button className="quantityBtn" >-</button>
                                 <input  name="" id="" className="quantityInput" />
                                 <button className="quantityBtn" >+</button>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* <AddToCartBtn onClick={addCartHandler}/> */}

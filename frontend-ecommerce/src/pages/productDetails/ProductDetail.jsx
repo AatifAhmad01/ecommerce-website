@@ -16,6 +16,8 @@ export default function ProductDetail() {
 
     const productDetails = location.state.product;
 
+    console.log(productDetails)
+
     const addQuantityHandler = ()=> {
 
         if(!quantity) {
@@ -49,7 +51,7 @@ export default function ProductDetail() {
                 item.quantity = quantity;
                 item.totalPrice = productDetails.price * quantity;
 
-                setCart({items: [...cartObject.items]})
+                setCart({items: [...cart.items]})
                 return;
             }
         }
@@ -57,6 +59,7 @@ export default function ProductDetail() {
         setCart({items: [...cart.items, { 
             id: productDetails.id,
             name: productDetails.name,
+            imageName: productDetails.imageUrl,
             quantity: quantity,
             price: productDetails.price,
             totalPrice: productDetails.price * quantity
