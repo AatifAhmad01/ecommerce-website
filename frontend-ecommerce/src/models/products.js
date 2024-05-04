@@ -31,5 +31,29 @@ export const products = [
         category: "eyeliner",
         price: 450,
         imageUrl: "lipstick"
+    },
+    {
+        id: "5",
+        name: "Lipstick",
+        description: "Women Lipstick Red",
+        category: "foundation",
+        price: 450,
+        imageUrl: "lipstick"
+    },
+    {
+        id: "6",
+        name: "Lipstick",
+        description: "Women Lipstick Red",
+        category: "blushan",
+        price: 450,
+        imageUrl: "lipstick"
+    },
+    {
+        id: "7 ",
+        name: "Lipstick",
+        description: "Women Lipstick Red",
+        category: "eyeliner",
+        price: 450,
+        imageUrl: "lipstick"
     }
 ]

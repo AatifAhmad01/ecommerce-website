@@ -1,6 +1,7 @@
 import React from "react";
 import './navbar.css'
 import SearchBar from "../other/searchbar";
+import cartIcon from '../../assets/icons/cart-Icon.svg'
 
 function Navbar ()
 {
@@ -68,7 +69,8 @@ function Navbar ()
             </button>
             {/* <a class="navbar-brand" href="#">Navbar</a> */}
             <h1 className="logo">Seen Beauty</h1>
-            <a href="/cart"><span className="material-symbols-rounded cart-icon cart-desktop">local_mall</span></a>
+            {/* <a href="/cart"><span className="material-symbols-rounded cart-icon cart-desktop">local_mall</span></a> */}
+            <a href="/cart" className="cart-desktop"><img src={cartIcon} alt="Cart" className="cartIcon"/></a>
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -94,7 +96,7 @@ function Navbar ()
                     </ul>
                 </li>
             </ul>
-            <a href="/cart"><span className="material-symbols-rounded cart-icon cart-mobile">local_mall</span></a>
+            <a href="/cart" className="cart-mobile"><img src={cartIcon} alt="Cart"  className="cartIcon"/></a>
             </div>
         </div>
 

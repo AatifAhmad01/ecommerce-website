@@ -48,37 +48,35 @@ export default function Cart() {
     }
 
     return<>
-        <ProductWraper>
-            <div className="detailsContainer">
-                <div className="cartItemsContainer">
-                {
-                    cart.items.map((item) => <CartItem cartItem={item} onUpdateQuantity={onItemQuantityChanged} onRemove={onRemoveItem} key={item.id}/>)
-                }
-                </div>
-                <div className="productDetailsSection">
-                    <div className="detailContainer">
-                        <div className="detailContainerParent">
-                            <div className="cont-1">
-                                <div className="textGroupContainer">
-                                    <h5>SUBTOTAL</h5>
-                                    <h5>Rs. {subtotal}</h5>
-                                </div>
-                                <div className="textGroupContainer">
-                                    <p>Delivery Charges</p>
-                                    <p>Free</p>
-                                </div>
-                            </div>
+        <div className="cartDetailsContainer">
+            <div className="cartItemsContainer">
+            {
+                cart.items.map((item) => <CartItem cartItem={item} onUpdateQuantity={onItemQuantityChanged} onRemove={onRemoveItem} key={item.id}/>)
+            }
+            </div>
+            <div className="productDetailsSection p-4">
+                <div className="detailContainer">
+                    <div className="space-between">
+                        <div className="cont-1">
                             <div className="textGroupContainer">
-                                <h5>TOTAL TO PAY</h5>
+                                <h5>SUBTOTAL</h5>
                                 <h5>Rs. {subtotal}</h5>
                             </div>
+                            <div className="textGroupContainer">
+                                <p>Delivery Charges</p>
+                                <p>Free</p>
+                            </div>
+                        </div>
+                        <div className="textGroupContainer">
+                            <h5>TOTAL TO PAY</h5>
+                            <h5>Rs. {subtotal}</h5>
                         </div>
                     </div>
-
-                    {/* <AddToCartBtn onClick={addCartHandler}/> */}
-                    <ButtonFill text="Check Out" onClick={checkOutHandler}/>
                 </div>
+
+                {/* <AddToCartBtn onClick={addCartHandler}/> */}
+                <ButtonFill text="Check Out" onClick={checkOutHandler}/>
             </div>
-        </ProductWraper>
+        </div>
     </>
 }

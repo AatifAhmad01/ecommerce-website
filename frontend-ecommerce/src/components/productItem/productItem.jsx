@@ -34,6 +34,7 @@ export default function ProductItem({product})
         const itemToSet = {items: [...cartItems.items, { 
             id: product.id,
             name: product.name,
+            imageName: product.imageUrl,
             quantity: 1,
             price: product.price,
             totalPrice: product.price

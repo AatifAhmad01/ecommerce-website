@@ -6,6 +6,7 @@ import lipstickImage from '../../../public/images/products/bottle1.png'
 import ProductSection from "../../components/productSection/productSection";
 import { useLocalStorage } from "../../customHooks/useLocalStorage.js";
 import ButtonFill from "../../components/addToCartBtn/addToCartBtn";
+import Footer from "../../components/footer/footer.jsx";
 
 export default function ProductDetail() {
 
@@ -77,11 +78,12 @@ export default function ProductDetail() {
             <div className="productDetailsSection">
                 <div className="detailContainer">
                     <div className="detailContainerParent">
-                        <p className="productTitle">{productDetails.name}</p>
-                        <p className="productDescription" >{productDetails.description}</p>
+                        <p className="productTitle m-3">{productDetails.name}</p>
+                        <p className="productDescription m-3" >{productDetails.description}</p>
+                        <p className="price m-3">Price: {productDetails.price}</p>
                     </div>
                     <div className="priceContainer">
-                        <strong className="price">Price: {productDetails.price}</strong>
+                        <p className="price">Price: {productDetails.price}</p>
                         <div className="quantityContainer">
                             <button className="quantityBtn" onClick={substractQuantityHandler}>-</button>
                             <input  name="" id="" value={quantity} className="quantityInput" onChange={enterQuantityAmount}/>

@@ -78,18 +78,21 @@ a
     color: rgb(113, 113, 113)
 }
 
-.cart-icon
-{
-    font-size: 34px;
-}
-
 .cart-desktop
 {
     display: none;
+
 }
 .cart-mobile
 {
     display: block;
+
+}
+
+.cartIcon
+{
+    width: 40px;
+    color: #ffa200;
 }
 
 @media (width <= 600px) {

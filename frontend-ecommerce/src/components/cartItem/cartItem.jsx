@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './cartItem.css'
+import closeIcon from '../../assets/icons/close.svg'
 
 export default function CartItem({onRemove, onUpdateQuantity, cartItem})
 {
@@ -41,7 +42,7 @@ export default function CartItem({onRemove, onUpdateQuantity, cartItem})
     return <div className="cartItemContainer">
                 <div className="cartItemDetailsOuterContainer">
                 <div className="removeButtonContainer">
-                    <button className="quantityBtn" onClick={() => onRemove(cartItem.id)}>X</button>
+                    <button className="removeBtn" onClick={() => onRemove(cartItem.id)}><img src={closeIcon}></img></button>
                 </div>
                 <img src={`'../../../public/images/products/${cartItem.imageName}.jpg`} alt="" className="cartItemImage"/>
                 <div className="cartItemDetailsContainer">
