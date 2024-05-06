@@ -22,11 +22,11 @@ export default function Cart() {
         const filteredItems = cart.items.filter(item => item.id != itemId)
 
         setCart({items: [...filteredItems]})
+
+        calculateTotal();
     }
 
     const onItemQuantityChanged = (itemId, updatedQuantity) => {
-
-        console.log("changing Item Quantity");
 
         const updatedItems = cart.items.map(item => {
 
@@ -37,10 +37,12 @@ export default function Cart() {
             return item;
         })
 
-        console.log(updatedItems)
-
         setCart({items: [...updatedItems]})
 
+        calculateTotal();
+    }
+
+    const calculateTotal = () => {
         setSubtotal(cart.items.reduce((acc, curr) => 
         {
             return acc + curr.price * curr.quantity;
