@@ -2,22 +2,20 @@ import React, {useState, useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import ProductWraper from "../../components/pageWraper/pagewraper";
 import './productDetail.css'
-import lipstickImage from '../../../public/images/products/bottle1.png'
 import ProductSection from "../../components/productSection/productSection";
 import { useLocalStorage } from "../../customHooks/useLocalStorage.js";
-import ButtonFill from "../../components/addToCartBtn/addToCartBtn";
-import Footer from "../../components/footer/footer.jsx";
+import ButtonFill from "../../components/buttonFill/addToCartBtn.jsx";
+import MoreImageItem from "../../components/productMoreImageItem/moreImageItem.jsx";
 
 export default function ProductDetail() {
 
     const [quantity, setQuantity] = useState(1)
+    const [imageIndex, setImageIndex] = useState(0);
     const [cart, setCart] = useLocalStorage("cartItems", { items: []});
 
     const location = useLocation();
 
     const productDetails = location.state.product;
-
-    console.log(productDetails)
 
     const addQuantityHandler = ()=> {
 
@@ -66,6 +64,11 @@ export default function ProductDetail() {
         }]})
     }
 
+    const onImageChangeHandler = (imageIndex)=> {
+        setImageIndex(imageIndex);
+        console.log("Image Change")
+    }
+
     useEffect(() => {
         window.scrollTo(0,0)
         // localStorage.clear();
@@ -73,9 +76,15 @@ export default function ProductDetail() {
     return <ProductWraper>
         <div className="detailsContainer">
             <div className="productImageSection">
-                <img src={lipstickImage} className="productImage"></img>
+                <img src={`../../../public/images/products/${productDetails.images[imageIndex]}.png`} className="productImage"></img>
+            </div>
+            <div className="moreImagesContainer">
+                <MoreImageItem imageName={"image1"} imageIndex={0} onClick={onImageChangeHandler}/>
+                <MoreImageItem imageName={"image2"} imageIndex={1} onClick={onImageChangeHandler}/>
+                <MoreImageItem imageName={"image3"} imageIndex={2} onClick={onImageChangeHandler}/>
             </div>
             <div className="productDetailsSection">
+                
                 <div className="detailContainer">
                     <div className="detailContainerParent">
                         <p className="productTitle m-3">{productDetails.name}</p>
@@ -92,7 +101,7 @@ export default function ProductDetail() {
                     </div>
                 </div>
 
-                <ButtonFill text="Add To Cart" onClick={addCartHandler}/>
+                <ButtonFill onClick={addCartHandler}>{"Add To Cart"}</ButtonFill>
             </div>
         </div>
         <ProductSection category="New Arival"/>

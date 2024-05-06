@@ -1,0 +1,15 @@
+.moreImageItemContainer
+{
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    background-color: rgb(216, 216, 216);
+
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.moreImageItemContainer img
+{
+    width: 100%;
+}

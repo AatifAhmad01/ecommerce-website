@@ -4,8 +4,7 @@
     max-width: 100%;
     flex: 1;
     margin: 10px;
-    border: black solid 1px;
-    background-color: #ffffff;
+    border: none;
     
     border-radius: 10px;
 
@@ -14,12 +13,13 @@
     color: white;
     /* border: none; */
     /* background-color: rgb(161, 0, 0); */
-    background-color: #272727;
+    background-color: #9A1663;
+;
 }
 
 .add-cart-button:active
 {
-    background-color: #000000;
+    background-color: #640e40;
     color: white;
 }
 .buttons-container

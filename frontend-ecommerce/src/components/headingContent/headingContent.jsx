@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../navbar/navbar";
 import Hero from "../hero/hero";
+import AnnouncementBar from "../announcementBar/announcementBar";
 
 export function HeadingContent (){
 
@@ -13,6 +14,7 @@ export function HeadingContent (){
         location.pathname == "/cart" 
 
     return <div>
+        <AnnouncementBar>{"Free delivery all over Pakistan."}</AnnouncementBar>
         <Navbar/>
         { hideHero ?  null : <Hero/>}
     </div>

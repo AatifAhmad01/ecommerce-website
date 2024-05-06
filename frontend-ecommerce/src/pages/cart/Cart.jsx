@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './cart.css'
-import ProductWraper from "../../components/pageWraper/pagewraper";
-import ButtonFill from "../../components/addToCartBtn/addToCartBtn";
+import ButtonFill from "../../components/buttonFill/addToCartBtn";
 import CartItem from "../../components/cartItem/cartItem";
 import { useLocalStorage } from "../../customHooks/useLocalStorage";
 
@@ -77,7 +76,7 @@ export default function Cart() {
                 </div>
 
                 {/* <AddToCartBtn onClick={addCartHandler}/> */}
-                <ButtonFill text="Check Out" onClick={checkOutHandler}/>
+                <ButtonFill onClick={checkOutHandler}>{"Check Out"}</ButtonFill>
             </div>
         </div>
     </>

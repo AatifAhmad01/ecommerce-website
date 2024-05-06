@@ -1,6 +1,6 @@
 .item-container
 {
-    background-color: white;
+    /* background-color: rgb(255, 204, 252); */
     border-radius: 10px;
     overflow: hidden;
 
@@ -26,11 +26,17 @@
 .item-title
 {
     margin: 10px;
+    color: #9A1663;
+    font-weight:  bold;
 }
 
 .item-price
 {
     margin: 10px;
+    color: #9A1663;
+
+    font-family: "Merriweather", serif;
+    font-weight: 700;
 }
 
 

@@ -12,7 +12,8 @@ export default function Hero()
             data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide-to="0"
             aria-label="Slide 1"
-            class="active"
+            class="active prBgClr"
+            id="heroBtn"
             ></button>
             <button
             type="button"

@@ -39,9 +39,14 @@
     height: 50px;
     width: 150px;
     color: white;
-    border: black solid 1px;
-    background-color: #272727;
+    border: none;
+    background-color: #9A1663;
     border-radius: 10px;
+}
+
+.more-button:active
+{
+    background-color: #640e40;
 }
 
 @media (width <= 900px) {
