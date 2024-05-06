@@ -1,0 +1,20 @@
+.categoryItemContainer
+{
+    width: 20vw;
+    max-width: 200px;
+    min-width: 100px;;
+    /* height: 150px; */
+    background-color: rgb(204, 204, 252);
+    margin: 10px;
+}
+
+.categoryItemContainer img
+{
+    width: 50%;
+}
+
+.categoryItemContainer p
+{
+
+}
+

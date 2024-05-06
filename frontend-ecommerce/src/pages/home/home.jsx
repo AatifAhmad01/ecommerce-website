@@ -9,7 +9,7 @@ export default function Home()
     return(
         <>
             <div className="wrapper">
-            {/* <CategoriesCollection/> */}
+            <CategoriesCollection/>
             <ProductSection category="New Arival"/>
             </div>
             <Footer/>

@@ -79,9 +79,9 @@ export default function ProductDetail() {
                 <img src={`../../../public/images/products/${productDetails.images[imageIndex]}.png`} className="productImage"></img>
             </div>
             <div className="moreImagesContainer">
-                <MoreImageItem imageName={"image1"} imageIndex={0} onClick={onImageChangeHandler}/>
-                <MoreImageItem imageName={"image2"} imageIndex={1} onClick={onImageChangeHandler}/>
-                <MoreImageItem imageName={"image3"} imageIndex={2} onClick={onImageChangeHandler}/>
+                <MoreImageItem imageName={"image1"} imageIndex={0} selectedIndex={imageIndex} onClick={onImageChangeHandler}/>
+                <MoreImageItem imageName={"image2"} imageIndex={1} selectedIndex={imageIndex} onClick={onImageChangeHandler}/>
+                <MoreImageItem imageName={"image3"} imageIndex={2} selectedIndex={imageIndex} onClick={onImageChangeHandler}/>
             </div>
             <div className="productDetailsSection">
                 
