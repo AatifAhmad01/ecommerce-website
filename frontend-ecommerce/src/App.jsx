@@ -19,8 +19,8 @@ function App() {
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/productdetail' element={<ProductDetail category="Best Collections"/>}/>
       <Route path='/bestcollections' element={<ShopCategory category="Best Collections"/>}/>
-      <Route path='/foundation' element={<ShopCategory category="Foundation"/>}/>
-      <Route path='/facepowder' element={<ShopCategory category="Face Poweder"/>}/>
+      <Route path='/foundations' element={<ShopCategory category="Foundation"/>}/>
+      <Route path='/facepowder' element={<ShopCategory category="Face Powder"/>}/>
       <Route path='/eyemascara' element={<ShopCategory category="Eye Mascara"/>}/>
       <Route path='/eyeliner' element={<ShopCategory category="Eye Liner"/>}/>
       <Route path='/blushan' element={<ShopCategory category="Blushan"/>}/>

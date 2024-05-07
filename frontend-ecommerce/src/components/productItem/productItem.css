@@ -3,10 +3,8 @@
     /* background-color: rgb(255, 204, 252); */
     border-radius: 10px;
     overflow: hidden;
-
-    transform: scale(1,1);
-    transition: all 0.5s ease-in-out;
 }
+
 
 /* .item-container:hover
 {
@@ -32,7 +30,7 @@
 
 .item-price
 {
-    margin: 10px;
+    margin: 0px 10px;
     color: #9A1663;
 
     font-family: "Merriweather", serif;

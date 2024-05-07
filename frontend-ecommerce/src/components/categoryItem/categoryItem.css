@@ -1,20 +1,35 @@
 .categoryItemContainer
 {
-    width: 20vw;
+    width: 18vw;
     max-width: 200px;
     min-width: 100px;;
     /* height: 150px; */
-    background-color: rgb(204, 204, 252);
+    /* background-color: rgb(204, 204, 252); */
     margin: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.categoryItemImageContainer
+{
+    /* background-color: bisque; */
+    border-radius: 20px;
+    overflow: hidden;
+
+    cursor: pointer;
 }
 
 .categoryItemContainer img
 {
-    width: 50%;
+    width: 100%;
 }
 
 .categoryItemContainer p
 {
-
+    margin: 10px 0;
 }
+
+
 

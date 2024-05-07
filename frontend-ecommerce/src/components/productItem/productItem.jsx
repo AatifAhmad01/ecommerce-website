@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './productItem.css'
 import { useNavigate } from "react-router-dom";
 import ButtonOutline from "../buttonOutline/buttonOutline";
@@ -9,6 +9,8 @@ export default function ProductItem({product})
 {
     //Better find another way to do this
     // const [cart, setCart] = useLocalStorage("cartItems", { items: []});
+
+    const [fadeClass, setFaceClass] = useState("");
 
     const navigate = useNavigate();
 
@@ -42,8 +44,8 @@ export default function ProductItem({product})
 
     return(
         //onClick={onProductDetailsHandler}
-        <div className="item-container" >
-            <img src={`../../../public/images/products/${product.images[0]}.png`} className="item-image" onClick={onProductDetailsHandler}/>
+        <div className="item-container">
+            <img src={`/images/products/${product.images[0]}.png`} className="item-image" onClick={onProductDetailsHandler}/>
             <h6 className="item-title">{product.name}</h6>
             <h6 className="item-price">Rs. {product.price}</h6>
             <ButtonOutline onClick={addCartHandler}>{"Add To Cart"}</ButtonOutline>

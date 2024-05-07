@@ -2,10 +2,12 @@ import React from "react";
 import './categoryItem.css'
 import image from '../../../public/images/products/image1.png'
 
-export default function CategoryItem()
+export default function CategoryItem({onClick, imageUrl, text})
 {
     return <div className="categoryItemContainer">
-        <img src="../../../public/images/products/image1.png" alt="" />
-        <p>Best Selling</p>
+        <div className="categoryItemImageContainer" onClick={onClick}>
+            <img src={imageUrl} alt="" />
+        </div>
+        <p>{text}</p>
     </div>
 }
