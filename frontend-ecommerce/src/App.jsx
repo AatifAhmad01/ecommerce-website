@@ -17,17 +17,17 @@ function App() {
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/cart' element={<Cart/>}/>
-      <Route path='/productdetail' element={<ProductDetail category="Best Collections"/>}/>
-      <Route path='/bestcollections' element={<ShopCategory category="Best Collections"/>}/>
+      <Route path='/productdetail' element={<ProductDetail />}/>
+      <Route path='/skinprimer' element={<ShopCategory category="Skin Primer"/>}/>
       <Route path='/foundations' element={<ShopCategory category="Foundation"/>}/>
       <Route path='/facepowder' element={<ShopCategory category="Face Powder"/>}/>
-      <Route path='/eyemascara' element={<ShopCategory category="Eye Mascara"/>}/>
-      <Route path='/eyeliner' element={<ShopCategory category="Eye Liner"/>}/>
-      <Route path='/blushan' element={<ShopCategory category="Blushan"/>}/>
-      <Route path='/highlighters' element={<ShopCategory category="Highlighters"/>}/>
-      <Route path='/lipsticks' element={<ShopCategory category="Lipsticks"/>}/>
-      <Route path='/lipgloss' element={<ShopCategory category="Lipgloss"/>}/>
+      <Route path='/mascara&eyeliner' element={<ShopCategory category="Mascara & Eye Liner"/>}/>
+      <Route path='/blushan&highlighters' element={<ShopCategory category="Blushan & Highlighter"/>}/>
+      <Route path='/lipsticks&lipgloss' element={<ShopCategory category="Lipsticks & Lipgloss"/>}/>
+      <Route path='/makupfixer' element={<ShopCategory category="Makup Fixer"/>}/>
+      <Route path='/makupalltools' element={<ShopCategory category="Makup All Tools"/>}/>
       <Route path='/hairproducts' element={<ShopCategory category="Hair Products"/>}/>
+      <Route path='/perfums' element={<ShopCategory category="Perfums"/>}/>
 
     </Routes>
     </BrowserRouter>
