@@ -7,6 +7,7 @@ import {BrowserRouter , Routes , Route} from 'react-router-dom'
 import ProductDetail from './pages/productDetails/ProductDetail'
 import { HeadingContent } from './components/headingContent/headingContent';
 
+
 function App() {
 
   console.log("Update")

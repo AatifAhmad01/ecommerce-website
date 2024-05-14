@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import './productItem.css'
 import { useNavigate } from "react-router-dom";
-import ButtonOutline from "../buttonOutline/buttonOutline";
-
-// import itemImage from '../../../public/images/products/lipstick.jpg'
+import ButtonOutline from "../buttonOutline/buttonOutline"
+import { useDispatch } from "react-redux";
+import { addItem } from "../../redux/slices/cartSlice";
 
 export default function ProductItem({product})
 {
-    //Better find another way to do this
-    // const [cart, setCart] = useLocalStorage("cartItems", { items: []});
-
     const [fadeClass, setFaceClass] = useState("");
+
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
@@ -19,9 +18,13 @@ export default function ProductItem({product})
     }
 
     const addCartHandler = () => {
-
-
-
+        dispatch(addItem({
+            id: product.id,
+            name: product.name,
+            imageName: product.imageUrl,
+            quantity: 1,
+            price: product.price,
+        }))
     }
 
     return(

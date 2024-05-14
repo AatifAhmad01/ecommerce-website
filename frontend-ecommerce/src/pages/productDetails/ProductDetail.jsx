@@ -3,17 +3,17 @@ import { useLocation } from "react-router-dom";
 import ProductWraper from "../../components/pageWraper/pagewraper";
 import './productDetail.css'
 import ProductSection from "../../components/productSection/productSection";
-import { useLocalStorage } from "../../customHooks/useLocalStorage.js";
 import ButtonFill from "../../components/buttonFill/addToCartBtn.jsx";
 import MoreImageItem from "../../components/productMoreImageItem/moreImageItem.jsx";
-import { CartContext } from "../../context/CartContext.jsx";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../redux/slices/cartSlice.js";
 
 export default function ProductDetail() {
 
     const [quantity, setQuantity] = useState(1)
     const [imageIndex, setImageIndex] = useState(0);
 
-    const cartContext = useContext(CartContext);
+    const dispatch = useDispatch();
 
     const location = useLocation();
 
@@ -47,17 +47,13 @@ export default function ProductDetail() {
     }
     const addCartHandler = () => {
 
-        cartContext.onAddItem({
+        dispatch(addItem({
             id: productDetails.id,
             name: productDetails.name,
             imageName: productDetails.imageUrl,
             quantity: quantity,
             price: productDetails.price,
-        })
-
-        // console.log(cartContext);
-
-        // setItems(["hell", "helo", "he"])
+        }))
     }
 
     const onImageChangeHandler = (imageIndex)=> {
@@ -66,7 +62,6 @@ export default function ProductDetail() {
 
     useEffect(() => {
         window.scrollTo(0,0)
-        // localStorage.clear();
     }, [])
     return <ProductWraper>
         <div className="detailsContainer">

@@ -1,13 +1,10 @@
 import React, { useContext } from "react";
 import './navbar.css'
-import SearchBar from "../other/searchbar";
 import cartIcon from '../../assets/icons/cart-Icon.svg'
-import { CartContext } from "../../context/CartContext";
+import { Link } from "react-router-dom";
 
 function Navbar ()
 {
-    const cartContext = useContext(CartContext);
-
     return(
         // <div className="navbar-container-outer">
         //     <div className="navbar-continer">
@@ -78,10 +75,8 @@ function Navbar ()
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">{cartContext.items.length}</a>
+                {/* <a class="nav-link active" aria-current="page" href="/">Home</a> */}
+                <Link to={"/"}>Home</Link>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -89,20 +84,20 @@ function Navbar ()
                     Categories
                 </a>
                 <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/skinprimer">Skin Primer</a></li>
-                        <li><a class="dropdown-item" href="/foundation">Foundation</a></li>
-                        <li><a class="dropdown-item" href="/facepowder">Face Powder</a></li>
-                        <li><a class="dropdown-item" href="/mascara&eyeliner">Mascara & Eye Liner</a></li>
-                        <li><a class="dropdown-item" href="/blushan&highlighters">Blushan & Highlighter</a></li>
-                        <li><a class="dropdown-item" href="/lipsticks&lipgloss">Lipsticks & Lipgloss</a></li>
-                        <li><a class="dropdown-item" href="/makupfixer">Makup Fixer</a></li>
-                        <li><a class="dropdown-item" href="/hairproducts">Hair Products</a></li>
-                        <li><a class="dropdown-item" href="/makupalltools">Makup All Tools</a></li>
-                        <li><a class="dropdown-item" href="/perfums">Perfums</a></li>
+                        <li><Link class="dropdown-item" to="/skinprimer">Skin Primer</Link></li>
+                        <li><Link class="dropdown-item" to="/foundation">Foundation</Link></li>
+                        <li><Link class="dropdown-item" to="/facepowder">Face Powder</Link></li>
+                        <li><Link class="dropdown-item" to="/mascara&eyeliner">Mascara & Eye Liner</Link></li>
+                        <li><Link class="dropdown-item" to="/blushan&highlighters">Blushan & Highlighter</Link></li>
+                        <li><Link class="dropdown-item" to="/lipsticks&lipgloss">Lipsticks & Lipgloss</Link></li>
+                        <li><Link class="dropdown-item" to="/makupfixer">Makup Fixer</Link></li>
+                        <li><Link class="dropdown-item" to="/hairproducts">Hair Products</Link></li>
+                        <li><Link class="dropdown-item" to="/makupalltools">Makup All Tools</Link></li>
+                        <li><Link class="dropdown-item" to="/perfums">Perfums</Link></li>
                     </ul>
                 </li>
             </ul>
-            <a href="/cart" className="cart-mobile"><img src={cartIcon} alt="Cart"  className="cartIcon"/></a>
+            <Link to="/cart" className="cart-mobile"><img src={cartIcon} alt="Cart"  className="cartIcon"/></Link>
             </div>
         </div>
 

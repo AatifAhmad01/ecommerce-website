@@ -1,51 +1,64 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import './cart.css'
 import ButtonFill from "../../components/buttonFill/addToCartBtn";
+import CartItem from "../../components/cartItem/cartItem"
+
+import { removeItem } from "../../redux/slices/cartSlice";
+
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function Cart() {
 
     const [subtotal, setSubtotal] = useState(0);
+
+    const dispatch = useDispatch();
+
+
+    const selector = useSelector(state => state.cart)
 
     const checkOutHandler = () => {
 
     }
 
     const onRemoveItem = (itemId) => {
-        // const filteredItems = cart.items.filter(item => item.id != itemId)
-
-        // setCart({items: [...filteredItems]})
+        dispatch(removeItem(itemId))
 
         // calculateTotal();
     }
 
     const onItemQuantityChanged = (itemId, updatedQuantity) => {
 
-        const updatedItems = cart.items.map(item => {
+        // const updatedItems = cart.items.map(item => {
 
-            if(item.id == itemId)
-            {
-                item.quantity = updatedQuantity;
-            }
-            return item;
-        })
+        //     if(item.id == itemId)
+        //     {
+        //         item.quantity = updatedQuantity;
+        //     }
+        //     return item;
+        // })
 
-        setCart({items: [...updatedItems]})
+        // setCart({items: [...updatedItems]})
 
-        calculateTotal();
+        // calculateTotal();
     }
 
     const calculateTotal = () => {
-        setSubtotal(cart.items.reduce((acc, curr) => 
-        {
-            return acc + curr.price * curr.quantity;
-        }, 0));
+        // setSubtotal(cart.items.reduce((acc, curr) => 
+        // {
+        //     return acc + curr.price * curr.quantity;
+        // }, 0));
     }
+
+    useEffect(() => {
+        console.log(selector.items)
+    }, [])
 
     return<>
         <div className="cartDetailsContainer">
             <div className="cartItemsContainer">
             {
-                // cartContext.cartItems.map((item) => <CartItem cartItem={item} onUpdateQuantity={onItemQuantityChanged} onRemove={onRemoveItem} key={item.id}/>)
+                selector.items.map((item) => <CartItem cartItem={item} onUpdateQuantity={onItemQuantityChanged} onRemove={onRemoveItem} key={item.id}/>)
             }
             </div>
             <div className="productDetailsSection p-4">
