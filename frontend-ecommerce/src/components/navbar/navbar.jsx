@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import './navbar.css'
 import SearchBar from "../other/searchbar";
 import cartIcon from '../../assets/icons/cart-Icon.svg'
+import { CartContext } from "../../context/CartContext";
 
 function Navbar ()
 {
+    const cartContext = useContext(CartContext);
+
     return(
         // <div className="navbar-container-outer">
         //     <div className="navbar-continer">
@@ -76,6 +79,9 @@ function Navbar ()
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">{cartContext.items.length}</a>
                 </li>
 
                 <li class="nav-item dropdown">

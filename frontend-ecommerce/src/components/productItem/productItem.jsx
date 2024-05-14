@@ -20,26 +20,8 @@ export default function ProductItem({product})
 
     const addCartHandler = () => {
 
-        const cartItems = JSON.parse(localStorage.getItem("cartItems"))
 
-        for(var item of cartItems.items)
-        {
-            if(item.id == product.id){
 
-                return;
-            }
-        }
-
-        const itemToSet = {items: [...cartItems.items, { 
-            id: product.id,
-            name: product.name,
-            imageName: product.imageUrl,
-            quantity: 1,
-            price: product.price,
-            totalPrice: product.price
-        }]}
-
-        localStorage.setItem("cartItems",JSON.stringify(itemToSet))
     }
 
     return(

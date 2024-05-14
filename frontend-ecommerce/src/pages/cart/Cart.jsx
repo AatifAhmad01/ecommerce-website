@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './cart.css'
 import ButtonFill from "../../components/buttonFill/addToCartBtn";
-import CartItem from "../../components/cartItem/cartItem";
-import { useLocalStorage } from "../../customHooks/useLocalStorage";
 
 export default function Cart() {
-
-    const [cart, setCart] = useLocalStorage("cartItems", { items: []});
 
     const [subtotal, setSubtotal] = useState(0);
 
@@ -18,11 +14,11 @@ export default function Cart() {
 
         // console.log(itemId);
 
-        const filteredItems = cart.items.filter(item => item.id != itemId)
+        // const filteredItems = cart.items.filter(item => item.id != itemId)
 
-        setCart({items: [...filteredItems]})
+        // setCart({items: [...filteredItems]})
 
-        calculateTotal();
+        // calculateTotal();
     }
 
     const onItemQuantityChanged = (itemId, updatedQuantity) => {
@@ -52,7 +48,7 @@ export default function Cart() {
         <div className="cartDetailsContainer">
             <div className="cartItemsContainer">
             {
-                cart.items.map((item) => <CartItem cartItem={item} onUpdateQuantity={onItemQuantityChanged} onRemove={onRemoveItem} key={item.id}/>)
+                // cartContext.cartItems.map((item) => <CartItem cartItem={item} onUpdateQuantity={onItemQuantityChanged} onRemove={onRemoveItem} key={item.id}/>)
             }
             </div>
             <div className="productDetailsSection p-4">

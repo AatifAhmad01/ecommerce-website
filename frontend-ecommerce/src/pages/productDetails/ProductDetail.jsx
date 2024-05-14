@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { useLocation } from "react-router-dom";
 import ProductWraper from "../../components/pageWraper/pagewraper";
 import './productDetail.css'
@@ -6,12 +6,14 @@ import ProductSection from "../../components/productSection/productSection";
 import { useLocalStorage } from "../../customHooks/useLocalStorage.js";
 import ButtonFill from "../../components/buttonFill/addToCartBtn.jsx";
 import MoreImageItem from "../../components/productMoreImageItem/moreImageItem.jsx";
+import { CartContext } from "../../context/CartContext.jsx";
 
 export default function ProductDetail() {
 
     const [quantity, setQuantity] = useState(1)
     const [imageIndex, setImageIndex] = useState(0);
-    const [cart, setCart] = useLocalStorage("cartItems", { items: []});
+
+    const cartContext = useContext(CartContext);
 
     const location = useLocation();
 
@@ -44,29 +46,22 @@ export default function ProductDetail() {
         setQuantity(parseInt(e.target.value))
     }
     const addCartHandler = () => {
-        for(var item of cart.items)
-        {
-            if(item.id == productDetails.id){
-                item.quantity = quantity;
-                item.totalPrice = productDetails.price * quantity;
 
-                setCart({items: [...cart.items]})
-                return;
-            }
-        }
-
-        setCart({items: [...cart.items, { 
+        cartContext.onAddItem({
             id: productDetails.id,
             name: productDetails.name,
             imageName: productDetails.imageUrl,
             quantity: quantity,
             price: productDetails.price,
-        }]})
+        })
+
+        // console.log(cartContext);
+
+        // setItems(["hell", "helo", "he"])
     }
 
     const onImageChangeHandler = (imageIndex)=> {
         setImageIndex(imageIndex);
-        console.log("Image Change")
     }
 
     useEffect(() => {
