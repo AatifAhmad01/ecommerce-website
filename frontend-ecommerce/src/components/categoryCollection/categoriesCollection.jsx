@@ -14,13 +14,13 @@ export default function CategoriesCollection()
 
     return <ProductWraper>
         <div className="products-container">
-            <h1 className="products-heading">All Categories</h1>
+            <h1 className="products-heading">Seen Beauty Mall</h1>
         </div>
 
         <div className="categoryCollection">
             <div className="categoryCollectionInner">
                 <CategoryItem  imageUrl={"/images/categoryItemImage.png"} 
-                    onClick={() => onCategoryClickHandler("/bestcollections")} text={"Best Collection"}/>
+                    onClick={() => onCategoryClickHandler("/skinprimer")} text={"Skin Primer"}/>
 
                 <CategoryItem  imageUrl={"/images/categoryItemImage.png"} 
                     onClick={() => onCategoryClickHandler("/foundations")} text={"Foundations"}/>
@@ -29,25 +29,25 @@ export default function CategoriesCollection()
                     onClick={() => onCategoryClickHandler("/facepowder")} text={"Face Powder"}/>
 
                 <CategoryItem  imageUrl={"/images/categoryItemImage.png"} 
-                    onClick={() => onCategoryClickHandler("/eyemascara")} text={"Eye Mascara"}/>
+                    onClick={() => onCategoryClickHandler("/mascara&eyeliner")} text={"Mascara & Eye Liner"}/>
 
                 <CategoryItem  imageUrl={"/images/categoryItemImage.png"} 
-                    onClick={() => onCategoryClickHandler("/eyeliner")} text={"Eye Liner"}/>
+                    onClick={() => onCategoryClickHandler("/blushan&highlighters")} text={"Blushan & Highlighter"}/>
 
                 <CategoryItem  imageUrl={"/images/categoryItemImage.png"} 
-                    onClick={() => onCategoryClickHandler("/blushan")} text={"Blushan"}/>
+                    onClick={() => onCategoryClickHandler("/lipsticks&lipgloss")} text={"Lipsticks & Lipsgloss"}/>
 
                 <CategoryItem  imageUrl={"/images/categoryItemImage.png"} 
-                    onClick={() => onCategoryClickHandler("/highlighters")} text={"Highlighter"}/>
+                    onClick={() => onCategoryClickHandler("/makupfixer")} text={"Makup Fixer"}/>
 
                 <CategoryItem  imageUrl={"/images/categoryItemImage.png"} 
-                    onClick={() => onCategoryClickHandler("/lipsticks")} text={"Lipsticks"}/>
+                    onClick={() => onCategoryClickHandler("/hairproducts")} text={"Hair Products"}/>  
 
                 <CategoryItem  imageUrl={"/images/categoryItemImage.png"} 
-                    onClick={() => onCategoryClickHandler("/lipgloss")} text={"Lipgloss"}/>
+                    onClick={() => onCategoryClickHandler("/makupalltools")} text={"Makup All Tools"}/>    
 
                 <CategoryItem  imageUrl={"/images/categoryItemImage.png"} 
-                    onClick={() => onCategoryClickHandler("/hairproducts")} text={"Hair Products"}/>                    
+                    onClick={() => onCategoryClickHandler("/perfums")} text={"Perfums"}/>                  
 
             </div>
         </div>
