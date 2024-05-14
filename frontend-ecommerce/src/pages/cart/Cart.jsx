@@ -11,9 +11,6 @@ export default function Cart() {
     }
 
     const onRemoveItem = (itemId) => {
-
-        // console.log(itemId);
-
         // const filteredItems = cart.items.filter(item => item.id != itemId)
 
         // setCart({items: [...filteredItems]})
