@@ -89,16 +89,16 @@ function Navbar ()
                     Categories
                 </a>
                 <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/skinprimer">Skin Primer</a></li>
+                        <li><a class="dropdown-item" href="/bestcollections">Best Collection</a></li>
                         <li><a class="dropdown-item" href="/foundation">Foundation</a></li>
                         <li><a class="dropdown-item" href="/facepowder">Face Powder</a></li>
-                        <li><a class="dropdown-item" href="/mascara&eyeliner">Mascara & Eye Liner</a></li>
-                        <li><a class="dropdown-item" href="/blushan&highlighters">Blushan & Highlighter</a></li>
-                        <li><a class="dropdown-item" href="/lipsticks&lipgloss">Lipsticks & Lipgloss</a></li>
-                        <li><a class="dropdown-item" href="/makupfixer">Makup Fixer</a></li>
+                        <li><a class="dropdown-item" href="/eyemascara">Eye Mascara</a></li>
+                        <li><a class="dropdown-item" href="/eyeliner">Eye Liner</a></li>
+                        <li><a class="dropdown-item" href="/blushan">Blushan</a></li>
+                        <li><a class="dropdown-item" href="/highlighters">Highlighters</a></li>
+                        <li><a class="dropdown-item" href="/lipsticks">Lipsticks</a></li>
+                        <li><a class="dropdown-item" href="/lipgloss">Lipgloss</a></li>
                         <li><a class="dropdown-item" href="/hairproducts">Hair Products</a></li>
-                        <li><a class="dropdown-item" href="/makupalltools">Makup All Tools</a></li>
-                        <li><a class="dropdown-item" href="/perfums">Perfums</a></li>
                     </ul>
                 </li>
             </ul>
