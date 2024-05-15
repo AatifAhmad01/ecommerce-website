@@ -11,7 +11,8 @@ export function HeadingContent (){
     //Disable hero in some routes
     const hideHero = 
         location.pathname == "/productdetail" || 
-        location.pathname == "/cart" 
+        location.pathname == "/cart" || 
+        location.pathname == "/checkout" 
 
     return <div>
         <AnnouncementBar>{"Free delivery all over Pakistan."}</AnnouncementBar>

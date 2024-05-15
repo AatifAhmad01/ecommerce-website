@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import './cart.css'
 import ButtonFill from "../../components/buttonFill/addToCartBtn";
 import CartItem from "../../components/cartItem/cartItem"
+import { useNavigate } from "react-router-dom";
 import { updateItem, removeItem } from "../../redux/slices/cartSlice";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -9,6 +10,8 @@ import { useDispatch } from "react-redux";
 export default function Cart() {
 
     const [subtotal, setSubtotal] = useState(0);
+
+    const navigate = useNavigate();
     
     const selector = useSelector(state => state.cart)
     const dispatch = useDispatch();
@@ -16,7 +19,7 @@ export default function Cart() {
     const deliveryCharges = 350;
 
     const checkOutHandler = () => {
-
+        navigate("/checkout", { state: null })
     }
 
     const onRemoveItem = (itemId) => {
