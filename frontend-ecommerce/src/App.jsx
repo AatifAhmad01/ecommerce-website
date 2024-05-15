@@ -1,16 +1,30 @@
+import { useEffect } from 'react';
 import './App.css'
 import Home from './pages/home/home';
 import Cart from './pages/cart/Cart'
 import ShopCategory from './pages/shopCategory/ShopCategory'
-
 import {BrowserRouter , Routes , Route} from 'react-router-dom'
 import ProductDetail from './pages/productDetails/ProductDetail'
 import { HeadingContent } from './components/headingContent/headingContent';
 
+import { useDispatch } from 'react-redux';
+import { addAllItems } from './redux/slices/cartSlice';
+
 
 function App() {
 
-  console.log("Update")
+  const dispath = useDispatch()
+
+
+  useEffect(() => {
+
+    const localItems = localStorage.getItem("cartItems");
+
+    console.log(JSON.parse(localItems));
+
+    dispath(addAllItems(JSON.parse(localItems).items))
+
+  }, [])
 
   return (
     <>

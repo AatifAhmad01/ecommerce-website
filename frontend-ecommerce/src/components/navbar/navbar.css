@@ -88,7 +88,6 @@ a
 .cart-mobile
 {
     display: block;
-
 }
 
 .cartIcon
@@ -96,6 +95,28 @@ a
     width: 40px;
     color: #ffa200;
 }
+
+.cartIconConatiner
+{
+    /* background-color: gray; */
+    position: relative;
+}
+
+.cartBadgeContainer
+{
+    width: 20px;
+    border-radius: 10px;
+    background-color: rgb(255, 0, 0);
+    position: absolute;
+    top: -5px;
+    right: -5px;
+
+    text-align: center;
+    color: white;
+    font-size: small;
+}
+
+
 
 @media (width <= 600px) {
     .cart-desktop
@@ -106,5 +127,7 @@ a
     {
         display: none;
     }
-  }
+
+   
+}
 
