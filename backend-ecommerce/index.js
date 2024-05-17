@@ -1,17 +1,45 @@
-import express from 'express'
-import { PORT, corsOrigon } from './constants/constants.js'
-import cors from 'cors'
+import { PORT } from './constants/constants.js'
+import app from './app.js'
+import connect from './db/db.js'
 
-const app = express()
+const db = connect();
 
-app.use(cors(
-    {
-        origin: corsOrigon
-    }
-))
 
 app.get("/", (req, res) => {
-    res.status(200).send("Hello World");
+    res.status(200).json({
+        states: 200,
+        data: {
+            name: "Atif",
+            email: "m@gmail.com"
+        },
+        success: true
+    });
+})
+
+app.get("/user/signup", (req, res) => {
+
+    const query = `INSERT INTO users (username, password, role) VALUES ("Atif", "com", "admin")`;
+
+    // var sql = "INSERT INTO users (username, password, role) VALUES ('Company Inc', 'Highway 37', 'admin')";
+    db.query(query, (err, data) => {
+        if (err) res.json(err)
+
+        return res.json(data)
+    })
+
+})
+
+app.get("/user/login", async (req, res) => {
+
+    const query = `SELECT * FROM users`;
+    const users = await db.query(query, (err, data) => {
+        if (err) return res.json(err)
+
+        return res.json(data)
+    })
+
+    console.log(users)
+
 })
 
 app.listen(PORT, () => {
@@ -21,5 +49,9 @@ app.listen(PORT, () => {
 
 
 // Connect to db
+
+// Send Data to db
+
+
 
 // Start Server

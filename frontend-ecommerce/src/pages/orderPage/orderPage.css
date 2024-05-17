@@ -1,0 +1,24 @@
+.orderContainer{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orderFeedbackContainer
+{
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.orderFeedbackContainer h2
+{
+    margin-bottom: 30px;
+}
+
+.orderFeedbackContainer p
+{
+    margin-bottom: 10px;
+    font-size: larger;
+}

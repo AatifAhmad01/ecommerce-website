@@ -50,7 +50,7 @@ export default function ProductDetail() {
         dispatch(addItem({
             id: productDetails.id,
             name: productDetails.name,
-            imageName: productDetails.imageUrl,
+            images: productDetails.images,
             quantity: quantity,
             price: productDetails.price,
         }))
@@ -66,7 +66,7 @@ export default function ProductDetail() {
     return <ProductWraper>
         <div className="detailsContainer">
             <div className="productImageSection">
-                <img src={`../../../public/images/products/${productDetails.images[imageIndex]}.png`} className="productImage"></img>
+                <img src={`/images/products/${productDetails.images[imageIndex]}.png`} className="productImage"></img>
             </div>
             <div className="moreImagesContainer">
                 <MoreImageItem imageName={"image1"} imageIndex={0} selectedIndex={imageIndex} onClick={onImageChangeHandler}/>

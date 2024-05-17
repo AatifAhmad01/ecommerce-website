@@ -6,6 +6,7 @@ import Checkout from './pages/checkout/checkout';
 import ShopCategory from './pages/shopCategory/ShopCategory'
 import {BrowserRouter , Routes , Route} from 'react-router-dom'
 import ProductDetail from './pages/productDetails/ProductDetail'
+import OrderPage from './pages/orderPage/orderPage';
 import { HeadingContent } from './components/headingContent/headingContent';
 
 import { useDispatch } from 'react-redux';
@@ -20,11 +21,7 @@ function App() {
   useEffect(() => {
 
     const localItems = localStorage.getItem("cartItems");
-
-    console.log(JSON.parse(localItems));
-
-    dispath(addAllItems(JSON.parse(localItems).items))
-
+    dispath(addAllItems(JSON.parse(localItems)?.items || []))
   }, [])
 
   return (
@@ -36,6 +33,7 @@ function App() {
               <Route path='/cart' element={<Cart/>}/>
               <Route path='/checkout' element={<Checkout/>}/>
               <Route path='/productdetail' element={<ProductDetail />}/>
+              <Route path='/orderPage' element={<OrderPage />}/>
               <Route path='/skinprimer' element={<ShopCategory category="Skin Primer"/>}/>
               <Route path='/foundations' element={<ShopCategory category="Foundation"/>}/>
               <Route path='/facepowder' element={<ShopCategory category="Face Powder"/>}/>

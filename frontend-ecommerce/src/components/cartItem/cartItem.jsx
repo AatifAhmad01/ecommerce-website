@@ -44,7 +44,7 @@ export default function CartItem({onRemove, onUpdateQuantity, cartItem})
                 <div className="removeButtonContainer">
                     <button className="removeBtn" onClick={() => onRemove(cartItem.id)}><img src={closeIcon}></img></button>
                 </div>
-                <img src={`'../../../public/images/products/${cartItem.imageName}.jpg`} alt="" className="cartItemImage"/>
+                <img src={`/images/products/${cartItem.images[0]}.png`} alt="" className="cartItemImage"/>
                 <div className="cartItemDetailsContainer">
                     <p className="cartItemTitle">{cartItem.name}</p>
                     <p>Item Price: {cartItem.price}</p>

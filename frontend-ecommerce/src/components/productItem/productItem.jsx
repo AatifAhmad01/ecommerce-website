@@ -7,8 +7,6 @@ import { addItem } from "../../redux/slices/cartSlice";
 
 export default function ProductItem({product})
 {
-    const [fadeClass, setFaceClass] = useState("");
-
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -21,7 +19,7 @@ export default function ProductItem({product})
         dispatch(addItem({
             id: product.id,
             name: product.name,
-            imageName: product.imageUrl,
+            images: product.images,
             quantity: 1,
             price: product.price,
         }))

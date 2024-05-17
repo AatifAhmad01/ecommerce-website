@@ -12,7 +12,8 @@ export function HeadingContent (){
     const hideHero = 
         location.pathname == "/productdetail" || 
         location.pathname == "/cart" || 
-        location.pathname == "/checkout" 
+        location.pathname == "/checkout" || 
+        location.pathname == "/orderPage" 
 
     return <div>
         <AnnouncementBar>{"Free delivery all over Pakistan."}</AnnouncementBar>
