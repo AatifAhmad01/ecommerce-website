@@ -1,6 +1,7 @@
 import { PORT } from './constants/constants.js'
 import app from './app.js'
 import connect from './db/db.js'
+import { upload } from './middlewares/multer.middleware.js';
 
 const db = connect();
 
@@ -40,6 +41,10 @@ app.get("/user/login", async (req, res) => {
 
     console.log(users)
 
+})
+
+app.post("/upload", upload.single('file'), (req, res) => {
+    res.status(200).send("File Uploaded");
 })
 
 app.listen(PORT, () => {
