@@ -4,6 +4,7 @@ import ProductSection from "../../components/productSection/productSection";
 import Footer from "../../components/footer/footer";
 import CategoriesCollection from "../../components/categoryCollection/categoriesCollection";
 
+
 export default function Home()
 {
     return(

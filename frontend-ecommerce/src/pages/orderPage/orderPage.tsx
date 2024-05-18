@@ -2,8 +2,13 @@ import React, { useEffect } from "react";
 import "./orderPage.css"
 import ButtonFill from "../../components/buttonFill/addToCartBtn";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { removeAllItems } from "../../redux/slices/cartSlice";
+
 
 export default function OrderPage(){
+
+    const dispatch = useDispatch();
 
     const navigation = useNavigate();
 
@@ -12,7 +17,8 @@ export default function OrderPage(){
     }
 
     useEffect(() => {
-        localStorage.setItem("cartItems", "{items: []}")
+        localStorage.setItem("cartItems", '{"items": []}');
+        dispatch(removeAllItems());
     }, [])
 
     return <div className="orderContainer">

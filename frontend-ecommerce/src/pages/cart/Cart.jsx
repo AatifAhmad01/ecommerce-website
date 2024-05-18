@@ -46,14 +46,14 @@ export default function Cart() {
         <div className="cartDetailsContainer">
             <div className="cartItemsContainer">
             {
-                selector.items.map((item) => <CartItem cartItem={item} onUpdateQuantity={onItemQuantityChanged} onRemove={onRemoveItem} key={item.id}/>)
+                selector.items?.map((item) => <CartItem cartItem={item} onUpdateQuantity={onItemQuantityChanged} onRemove={onRemoveItem} key={item.id}/>)
             }
             {
-                selector.items.length ? null: <p className="noItemsCartText">No Items In Cart</p>
+                selector.items?.length ? null: <p className="noItemsCartText">No Items In Cart</p>
             }
             </div>
             {
-                selector.items.length ? <OrderSummery subtotal={subtotal} onClickAction={checkOutHandler} actionText={"Checkout"} showAction={true}/> : null
+                selector.items?.length ? <OrderSummery subtotal={subtotal} onClickAction={checkOutHandler} actionText={"Checkout"} showAction={true}/> : null
             }
         </div>
     </>

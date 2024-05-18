@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ProductWraper from "../../components/pageWraper/pagewraper";
 import './productDetail.css'
 import ProductSection from "../../components/productSection/productSection";
@@ -8,12 +8,19 @@ import MoreImageItem from "../../components/productMoreImageItem/moreImageItem.j
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/slices/cartSlice.js";
 
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';  
+import CloseIcon from '@mui/icons-material/Close';
+
 export default function ProductDetail() {
 
     const [quantity, setQuantity] = useState(1)
     const [imageIndex, setImageIndex] = useState(0);
+    const [open, setOpen] = useState(false);
 
     const dispatch = useDispatch();
+
+    const navigation = useNavigate();
 
     const location = useLocation();
 
@@ -54,16 +61,52 @@ export default function ProductDetail() {
             quantity: quantity,
             price: productDetails.price,
         }))
+
+        // navigation("/cart");
+        setOpen(true);
     }
 
     const onImageChangeHandler = (imageIndex)=> {
         setImageIndex(imageIndex);
     }
 
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+    const action = (
+        <React.Fragment>
+    
+          <IconButton
+            size="small"
+            aria-label="close"
+            color="inherit"
+            onClick={handleClose}
+          >
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        </React.Fragment>
+      );
+    
+
     useEffect(() => {
         window.scrollTo(0,0)
     }, [])
     return <ProductWraper>
+            <Snackbar
+                anchorOrigin={{ vertical: 'top',
+                horizontal: 'center', }}
+                open={open}
+                autoHideDuration={2000}
+                onClose={handleClose}
+                message="Item added to Cart!"
+                action={action}
+                key={"top" + "center"}
+            />
         <div className="detailsContainer">
             <div className="productImageSection">
                 <img src={`/images/products/${productDetails.images[imageIndex]}.png`} className="productImage"></img>
@@ -97,3 +140,6 @@ export default function ProductDetail() {
         <ProductSection category="New Arival"/>
     </ProductWraper>
 }
+
+
+
