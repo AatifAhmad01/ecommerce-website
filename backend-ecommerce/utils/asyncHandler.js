@@ -1,8 +1,8 @@
-const asyncHanlder = (requesHandler) => {
+const asyncHandler = (requesHandler) => {
     return (req, res, next) => {
         Promise.resolve(requesHandler(req, res, next))
             .then((err) => next(err))
     }
 }
 
-export default asyncHanlder
+module.exports = asyncHandler
