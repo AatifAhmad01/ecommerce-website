@@ -19,14 +19,29 @@ const allProducts = asyncHandler(async (req, res) => {
 });
 
 const addProduct = asyncHandler(async (req, res) => {
+
+
+
     res.status(200).send("Product Added")
 })
 
+
+
 const updateProduct = asyncHandler(async (req, res) => {
-    res.status(200).send("Product Updated")
+
+    const { productId } = req.params;
+
+    console.log(req.params)
+
+    res.status(200).send({
+        "Success": true,
+        productId,
+    })
 })
 
 const deleteProduct = asyncHandler(async (req, res) => {
+
+    console.log(req.body)
     res.status(200).send("Product Deleted")
 })
 
