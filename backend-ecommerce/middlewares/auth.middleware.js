@@ -1,33 +1,21 @@
-import jwt from 'jsonwebtoken'
-import asyncHanlder from '../utils/asyncHandler'
-import cookieParser from 'cookie-parser'
-import ApiError from '../utils/ApiError'
+const jwt = require('jsonwebtoken');
+const asyncHandler = require('../utils/asyncHandler');
+const ApiError = require('../utils/ApiError');
 
-
-export const verifyJWT = asyncHanlder(async (req, _, next) => {
-
-    // Extract token
-    // Varify Token
-    // Get user from db
-    // Return User
-
+const verifyJWT = asyncHandler(async (req, _, next) => {
     try {
-        const token = req.cookies?.accessToken || req.headers("Authorization")?.resplace("Barear ", "")
+        const token = req.cookies?.accessToken || req.headers["Authorization"]?.replace("Bearer ", "");
 
         if (!token) {
             throw new ApiError(400, "Unauthorized Access");
         }
 
-        const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-
-        console.log(decodedToken)
-
-
+        const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
         next();
+    } catch (error) {
+        throw new ApiError(401, "Invalid Access Token")
     }
-    catch (error) {
-        throw new ApiError(400, error?.message || "Inavlid Access Token")
-    }
+});
 
-})
+module.exports = verifyJWT;

@@ -15,4 +15,4 @@ class ApiError {
     }
 }
 
-export default ApiError;
+module.exports = ApiError;

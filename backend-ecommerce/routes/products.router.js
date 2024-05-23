@@ -1,16 +1,13 @@
 const express = require("express")
 
-const { allProducts, addProduct, updateProduct, deleteProduct } = require("../controller/product.controller")
+const { allProducts, addProduct, updateProduct, deleteProduct } = require("../controller/product.controller");
+const verifyJWT = require("../middlewares/auth.middleware");
 
 const router = express.Router();
 
-
-router.route("/").get(allProducts);
-router.route("/").post(addProduct);
-router.route("/:productId").patch(updateProduct);
-router.route("/").delete(deleteProduct);
-
-
+router.route("/").get(allProducts).post(verifyJWT, addProduct);
+router.route("/:productId").patch(verifyJWT, updateProduct);
+router.route("/:productId").delete(verifyJWT, deleteProduct);
 
 
 module.exports = router

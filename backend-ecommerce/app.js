@@ -1,5 +1,3 @@
-
-
 // const { upload } = require('./middlewares/multer.middleware.js')
 
 const express = require("express")
@@ -7,6 +5,7 @@ const cors = require('cors')
 const cookieParser = require("cookie-parser")
 const dotenv = require('dotenv')
 const productRouter = require('./routes/products.router.js')
+const userRouter = require('./routes/user.router.js')
 const asyncHandler = require("./utils/asyncHandler.js")
 
 dotenv.config();
@@ -36,7 +35,7 @@ app.use("/public/images", express.static("public/images"))
 //Routes
 
 app.use("/api/v1/products", productRouter)
-
+app.use("/api/v1/user", userRouter)
 
 
 
