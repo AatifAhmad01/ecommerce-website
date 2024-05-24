@@ -31,6 +31,7 @@ export default function Sidebar()
 
         </div>
         <div className="sidebar-authorization-container">
+            <h3 className='user-display-name'>Yasir</h3>
             <DangerButton>Logout</DangerButton>
         </div>
     </div>

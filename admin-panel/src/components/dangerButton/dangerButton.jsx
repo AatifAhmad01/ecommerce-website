@@ -3,5 +3,5 @@ import './dangerButton.css'
 
 export default function DangerButton({onClick, children})
 {
-    return <button>{children}</button>
+    return <button className='dangour-button'>{children}</button>
 }

@@ -1,4 +1,4 @@
-// const { upload } = require('./middlewares/multer.middleware.js')
+const upload = require('./middlewares/multer.middleware.js')
 
 const express = require("express")
 const cors = require('cors')
@@ -14,7 +14,6 @@ console.log(process.env.DB_HOST)
 
 const db = require('./db/db.js')
 
-// const connect = require('./db/db.js')
 
 const app = express()
 
@@ -73,11 +72,14 @@ app.get("/user/login", asyncHandler(async (req, res) => {
 }))
 
 
+app.post("/upload", upload.single('file'), (req, res) => {
 
+    const filePath = req.file?.path;
 
-// app.post("/upload", upload.single('file'), (req, res) => {
-//     res.status(200).send("File Uploaded");
-// })
+    console.log(filePath)
+
+    res.status(200).send("File Uploaded");
+})
 
 app.listen(PORT, () => {
     console.log(`Server is Running on port ${PORT}`)

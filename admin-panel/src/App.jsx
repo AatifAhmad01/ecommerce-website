@@ -4,10 +4,13 @@ import CurrentOrdersPage from "./pages/currentOrders/currentOrders.Page"
 import CompletedOrdersPage from "./pages/completedOrders/completedOrders.Page"
 import Sidebar from "./components/sidebar/sidebar"
 import UpdateProductPage from "./pages/updateProduct/updateProduct.Page"
+import AuthenticationPage from "./pages/authentication/authentication.Page"
 
 function App() {
 
-  return (
+
+  const AppScreens = () => {
+    return<>
     <Router>
       <Sidebar/>
       <Routes>
@@ -17,7 +20,18 @@ function App() {
         <Route path="/completedOrders" element={<CompletedOrdersPage/>}></Route>
       </Routes>
     </Router>
+    </>
+  }
 
+  const Root = () =>
+  {
+    return<>
+    {false ? <AuthenticationPage/> : <AppScreens/>} 
+    </>
+  }
+
+  return (
+    <Root/>
   )
 }
 

@@ -1,0 +1,10 @@
+#category-select
+{
+    max-width: 80%;
+    min-width: 80%;
+    height: 40px;
+    font-size: large;
+    padding-left: 10px;
+    border: 2px solid rgb(219, 219, 219);
+    border-radius: 10px;
+}

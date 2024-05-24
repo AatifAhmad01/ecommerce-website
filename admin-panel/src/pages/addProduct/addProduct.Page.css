@@ -1,0 +1,16 @@
+.details-page
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-details-area
+{
+    flex: 1;
+}
+
+.actions-area
+{
+    display: flex;
+}
