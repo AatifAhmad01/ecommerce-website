@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useContext} from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, {useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import ProductWraper from "../../components/pageWraper/pagewraper";
 import './productDetail.css'
 import ProductSection from "../../components/productSection/productSection";
@@ -11,20 +11,22 @@ import { addItem } from "../../redux/slices/cartSlice.js";
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';  
 import CloseIcon from '@mui/icons-material/Close';
+import { fetchProductsByCategory } from "../../http/products.http.js";
 
 export default function ProductDetail() {
 
     const [quantity, setQuantity] = useState(1)
-    const [imageIndex, setImageIndex] = useState(0);
+    const [selectedImageIndex, setImageIndex] = useState(0);
     const [open, setOpen] = useState(false);
 
-    const dispatch = useDispatch();
+    const [allProducts, setProducts] = useState([])
 
-    const navigation = useNavigate();
+    const dispatch = useDispatch();
 
     const location = useLocation();
 
     const productDetails = location.state.product;
+
 
     const addQuantityHandler = ()=> {
 
@@ -57,7 +59,7 @@ export default function ProductDetail() {
         dispatch(addItem({
             id: productDetails.id,
             name: productDetails.name,
-            images: productDetails.images,
+            image_url: productDetails.image_url[0],
             quantity: quantity,
             price: productDetails.price,
         }))
@@ -74,7 +76,6 @@ export default function ProductDetail() {
         if (reason === 'clickaway') {
             return;
         }
-
         setOpen(false);
     };
 
@@ -92,9 +93,15 @@ export default function ProductDetail() {
         </React.Fragment>
       );
     
+    const fetchProducts = async () => 
+    {
+        const res = await fetchProductsByCategory(productDetails.category)
+        setProducts(res.data.data)
+    }
 
     useEffect(() => {
         window.scrollTo(0,0)
+        fetchProducts();
     }, [])
     return <ProductWraper>
             <Snackbar
@@ -109,12 +116,22 @@ export default function ProductDetail() {
             />
         <div className="detailsContainer">
             <div className="productImageSection">
-                <img src={`/images/products/${productDetails.images[imageIndex]}.png`} className="productImage"></img>
+                <img src={`https://seenbeauty.pk/${productDetails.image_url[selectedImageIndex]}`} className="productImage"></img>
             </div>
             <div className="moreImagesContainer">
-                <MoreImageItem imageName={"image1"} imageIndex={0} selectedIndex={imageIndex} onClick={onImageChangeHandler}/>
-                <MoreImageItem imageName={"image2"} imageIndex={1} selectedIndex={imageIndex} onClick={onImageChangeHandler}/>
-                <MoreImageItem imageName={"image3"} imageIndex={2} selectedIndex={imageIndex} onClick={onImageChangeHandler}/>
+                {
+                    productDetails.image_url.map((item, index) => {
+                        return <MoreImageItem 
+                            imageIndex={index}
+                            imageName={"image1"} 
+                            imageUrl={`https://seenbeauty.pk/${item}`} 
+                            selectedIndex={selectedImageIndex} 
+                            onClick={onImageChangeHandler}
+                            key={index}
+                            />
+                    })
+                }
+                
             </div>
             <div className="productDetailsSection">
                 
@@ -137,7 +154,7 @@ export default function ProductDetail() {
                 <ButtonFill onClick={addCartHandler}>{"Add To Cart"}</ButtonFill>
             </div>
         </div>
-        <ProductSection category="New Arival"/>
+        <ProductSection category={productDetails.category} products={allProducts}/>
     </ProductWraper>
 }
 

@@ -14,7 +14,7 @@ export default function ProductItem({product, onClickAddCart})
     return(
         //onClick={onProductDetailsHandler}
         <div className="item-container">
-            <img src={`/images/products/${product.images[0]}.png`} className="item-image" onClick={onProductDetailsHandler}/>
+            <img src={`https://seenbeauty.pk/${product.image_url[0]}`} className="item-image" onClick={onProductDetailsHandler}/>
             <h6 className="item-title">{product.name}</h6>
             <h6 className="item-price">Rs. {product.price}</h6>
             <ButtonOutline onClick={() => onClickAddCart(product)}>{"Add To Cart"}</ButtonOutline>

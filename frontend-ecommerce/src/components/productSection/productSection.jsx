@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import './productSection.css'
 import ProductItem from "../productItem/productItem";
-import { products } from "../../models/products.js"
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/slices/cartSlice";
 
@@ -9,7 +8,7 @@ import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';  
 import CloseIcon from '@mui/icons-material/Close';
 
-export default function ProductSection({category})
+export default function ProductSection({category, products})
 {
     const [open, setOpen] = useState(false);
 
@@ -42,7 +41,7 @@ export default function ProductSection({category})
         dispatch(addItem({
             id: product.id,
             name: product.name,
-            images: product.images,
+            image_url: product.image_url[0],
             quantity: 1,
             price: product.price,
         }))
@@ -71,7 +70,7 @@ export default function ProductSection({category})
                 }
 
             </div>
-            <button className="more-button">Expore More</button>
+            {/* <button className="more-button">Expore More</button> */}
         </div>
 
     </>

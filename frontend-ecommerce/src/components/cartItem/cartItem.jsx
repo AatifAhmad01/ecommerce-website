@@ -4,7 +4,7 @@ import closeIcon from '../../assets/icons/close.svg'
 
 export default function CartItem({onRemove, onUpdateQuantity, cartItem})
 {
-// console.log(cartItem);
+console.log(cartItem);
 
     const [quantity, setQuantity] = useState(cartItem.quantity)
 
@@ -44,7 +44,7 @@ export default function CartItem({onRemove, onUpdateQuantity, cartItem})
                 <div className="removeButtonContainer">
                     <button className="removeBtn" onClick={() => onRemove(cartItem.id)}><img src={closeIcon}></img></button>
                 </div>
-                <img src={`/images/products/${cartItem.images[0]}.png`} alt="" className="cartItemImage"/>
+                <img src={`https:/seenbeauty.pk/${cartItem.image_url}`} alt="" className="cartItemImage"/>
                 <div className="cartItemDetailsContainer">
                     <p className="cartItemTitle">{cartItem.name}</p>
                     <p>Item Price: {cartItem.price}</p>
