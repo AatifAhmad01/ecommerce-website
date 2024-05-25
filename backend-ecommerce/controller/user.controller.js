@@ -15,7 +15,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
         const [userResult] = await db.execute("SELECT * FROM users WHERE username=?", [username]);
 
-        if (userResult[0].password != password) throw "Password Incorrect"
+        if (userResult[0].password != password) throw new ApiError(401, "Password Incorrect");
 
         const accessToken = jwt.sign({ id: userResult[0].id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.ACCESS_TOKEN_EXPIRY })
 
@@ -35,7 +35,7 @@ const loginUser = asyncHandler(async (req, res) => {
                 , "Login Successfully"))
     }
     catch (error) {
-        res.status(401).json(new ApiError(401, error))
+        res.status(401).json(new ApiError(401, error.message || "Someting went wronge"))
     }
 })
 

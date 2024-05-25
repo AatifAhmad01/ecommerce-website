@@ -2,7 +2,8 @@ const asyncHandler = require("../utils/asyncHandler");
 const db = require("../db/db.js");
 const ApiError = require("../utils/ApiError.js");
 const ApiResponse = require("../utils/ApiResponse.js");
-const fs = require('fs/promises')
+const fs = require('fs/promises');
+const ConvertProductsToArray = require("../utils/ManageProjects.js");
 
 
 const allProducts = asyncHandler(async (req, res) => {
@@ -16,31 +17,7 @@ const allProducts = asyncHandler(async (req, res) => {
     try {
         const [productsResult] = await db.query(query)
 
-        let products = []
-
-        const productsMap = {}
-
-        productsResult.forEach(product => {
-
-            if (product.product_id in productsMap) {
-                productsMap[product.product_id].image_url.push(product.image_url)
-            }
-            else {
-                productsMap[product.product_id] = {
-                    id: product.product_id,
-                    name: product.name,
-                    description: product.description,
-                    category: product.category,
-                    price: product.price,
-                    created_at: product.created_at,
-                    image_url: [product.image_url]
-                }
-            }
-        })
-
-        for (var key in productsMap) {
-            products.push(productsMap[key])
-        }
+        const products = ConvertProductsToArray(productsResult)
 
         res.status(200).json(new ApiResponse(200, products, "Products fetched successfully!"))
     }
@@ -66,27 +43,37 @@ const getProduct = asyncHandler(async (req, res) => {
 
         const [productResult] = await db.execute(query, [productId])
 
-        const productsMap = {}
+        const products = ConvertProductsToArray(productResult)
 
-        productResult.forEach(product => {
+        if (products.length == 0) throw new ApiError(401, "No product found");
 
-            if (product.product_id in productsMap) {
-                productsMap[product.product_id].image_url.push(product.image_url)
-            }
-            else {
-                productsMap[product.product_id] = {
-                    id: product.product_id,
-                    name: product.name,
-                    description: product.description,
-                    category: product.category,
-                    price: product.price,
-                    created_at: product.created_at,
-                    image_url: [product.image_url]
-                }
-            }
-        })
+        res.status(200).json(new ApiResponse(200, products[0], "Product fetched successfully"))
+    }
+    catch (error) {
+        throw new ApiError(401, error.message || "Something went wronge!")
+    }
+})
 
-        res.status(200).json(new ApiResponse(200, productsMap[productId], "Product fetched successfully"))
+const getProductByCategory = asyncHandler(async (req, res) => {
+
+    const catergory = req.params.category
+
+    if (!catergory) throw new ApiError(401, "Invalid product cetegory");
+
+    const query = `
+        SELECT *
+        FROM products p
+        LEFT JOIN product_images pi ON p.id = pi.product_id
+        WHERE p.category = ?
+    `;
+
+    try {
+
+        const [productResult] = await db.execute(query, [catergory])
+
+        const products = ConvertProductsToArray(productResult)
+
+        res.status(200).json(new ApiResponse(200, products, "Product fetched successfully"))
     }
     catch (error) {
         throw new ApiError(401, error.message || "Something went wronge!")
@@ -98,7 +85,7 @@ const addProduct = asyncHandler(async (req, res) => {
     const { name, description, category, price } = req.body;
     const images = req.files
 
-    if (!name || !description || !category || !price) {
+    if (!name || !description || !category || !price || !images.length) {
         throw new ApiError(401, "All Fields are required");
     }
 
@@ -232,4 +219,4 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
 
 
-module.exports = { allProducts, addProduct, getProduct, updateProduct, deleteProduct }
+module.exports = { allProducts, addProduct, getProduct, getProductByCategory, updateProduct, deleteProduct }

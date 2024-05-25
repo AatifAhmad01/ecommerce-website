@@ -1,7 +1,7 @@
 const express = require("express")
 const upload = require("../middlewares/multer.middleware.js")
 
-const { allProducts, addProduct, getProduct, updateProduct, deleteProduct } = require("../controller/product.controller");
+const { allProducts, addProduct, getProduct, getProductByCategory, updateProduct, deleteProduct } = require("../controller/product.controller");
 
 const verifyJWT = require("../middlewares/auth.middleware");
 
@@ -12,6 +12,8 @@ router.route("/:productId")
     .get(getProduct)
     .patch(verifyJWT, updateProduct)
     .delete(verifyJWT, deleteProduct);
+
+router.route("/category/:category").get(getProductByCategory)
 
 
 module.exports = router

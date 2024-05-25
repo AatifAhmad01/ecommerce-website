@@ -33,8 +33,8 @@ app.use("/public/images", express.static("public/images"))
 
 //Routes
 
-app.use("/api/v1/products", productRouter)
 app.use("/api/v1/user", userRouter)
+app.use("/api/v1/products", productRouter)
 
 
 
