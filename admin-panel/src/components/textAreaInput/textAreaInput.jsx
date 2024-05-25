@@ -3,12 +3,12 @@ import './textAreaInput.css'
 import React from 'react';
 
 
-export default function TextAreaInput({children})
+export default function TextAreaInput({name, value, onUpdate, children})
 {
     return <div className="text-input-container">
         <div className="text-input-label-container">
             <label htmlFor="text-input" className='text-input-label'>{children}</label>
         </div>
-        <textarea name="" id="text-area-input"/>
+        <textarea name={name} id="text-area-input" onBlur={onUpdate}/>
     </div>
 }

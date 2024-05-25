@@ -1,13 +1,54 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import './authentication.Page.css'
 import PrimaryButton from "../../components/primaryButton/primaryButton";
+import { userLogin } from "../../https/user.https";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function AuthenticationPage()
 {
+    const [userValues, setUserValues] = useState({})
+    const [response, setResponse] = useState("  ");
+    const userContext = useContext(UserContext);
+
+    const onChangeText = (e) => {
+        setUserValues({...userValues, [e.target.name]: e.target.value })
+    }
+
+    const onLoginHandler = async () => {
+        try
+        {
+            const loginRes = await userLogin(userValues.username, userValues.password)
+            loginRes.data.data.accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE2NjIxNTgzLCJleHAiOjE3MTY3MDc5ODN9.7HkoAuUZhBSKcV2pZHkr1BZ1Z98uCrwOQX225RizYXg"
+            userContext.onLogin(loginRes.data.data)
+        }
+        catch(error)
+        {
+            setResponse("Usernam ya Password ghalat de!")
+        }
+    }
+
     return <div className="authentication-page">
             <h1 className="login-text">Login</h1>
-            <input type="text" name="" id="usernameField" placeholder="Username" className="authentication-input"/>
-            <input type="password" name="" id="passwordField" placeholder="Password" className="authentication-input"/>
-            <PrimaryButton>Login</PrimaryButton>
+            <form action="">
+
+                <input type="text" 
+                    name="username" id="usernameField" 
+                    placeholder="Username" 
+                    className="authentication-input" 
+                    autoComplete="username"
+                    onBlur={onChangeText}/>
+                
+                <br/>
+
+                <input type="password" 
+                    name="password" 
+                    id="passwordField" 
+                    placeholder="Password" 
+                    className="authentication-input" 
+                    autoComplete="current-password"
+                    onBlur={onChangeText}/>
+            </form>
+            <p className="response-text">{response}</p>
+            <PrimaryButton onClick={onLoginHandler}>Login</PrimaryButton>
     </div>
 }

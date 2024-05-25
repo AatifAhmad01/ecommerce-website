@@ -18,7 +18,7 @@ export default function Sidebar()
             <h4 className='adminpanel-title'>Seen Beauty 💄 </h4>
 
             <Link className='linkButton' 
-                style={path == "/addProduct" ? selectedButtonStyle : null} to={"/addProduct"}>Add Product</Link>
+                style={path == "/" ? selectedButtonStyle : null} to={"/"}>Add Product</Link>
 
             <Link className='linkButton' 
                 style={path == "/updateProduct" ? selectedButtonStyle : null} to={"/updateProduct"}>Update Product</Link>

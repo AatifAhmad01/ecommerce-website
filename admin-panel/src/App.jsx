@@ -5,16 +5,19 @@ import CompletedOrdersPage from "./pages/completedOrders/completedOrders.Page"
 import Sidebar from "./components/sidebar/sidebar"
 import UpdateProductPage from "./pages/updateProduct/updateProduct.Page"
 import AuthenticationPage from "./pages/authentication/authentication.Page"
+import { useContext } from "react"
+import { UserContext } from "./contexts/UserContext"
 
 function App() {
 
+  const userContext = useContext(UserContext);
 
   const AppScreens = () => {
     return<>
     <Router>
       <Sidebar/>
       <Routes>
-        <Route path="/addProduct" element={<AddProductPage/>}></Route>
+        <Route path="/" element={<AddProductPage/>}></Route>
         <Route path="/updateProduct" element={<UpdateProductPage/>}></Route>
         <Route path="/currentOrders" element={<CurrentOrdersPage/>}></Route>
         <Route path="/completedOrders" element={<CompletedOrdersPage/>}></Route>
@@ -26,7 +29,8 @@ function App() {
   const Root = () =>
   {
     return<>
-    {false ? <AuthenticationPage/> : <AppScreens/>} 
+    {!userContext.user ? <AuthenticationPage/> : <AppScreens/>} 
+    {/* {false ? <AuthenticationPage/> : <AppScreens/>}  */}
     </>
   }
 
