@@ -1,0 +1,35 @@
+.order-product-item-container
+{
+    min-width: 500px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(244, 242, 242);
+}
+
+.order-product-item-image
+{
+    width: 150px;
+}
+
+.order-product-item-name
+{
+    width: 400px;
+}
+
+.order-product-item-quantity
+{
+    width: 50px;
+}
+
+.order-product-item-checkbox
+{
+    width: 30px;
+    height: 30px;
+}
+
+.order-product-item-container h3
+{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 20px;
+}

@@ -1,0 +1,16 @@
+.current-orders-page-container
+{
+    display: flex;
+    height: 95vh;
+}
+
+.current-orders-container
+{
+    overflow: auto;
+}
+
+.selected-order-details-container
+{
+    margin-left: 50px;
+    flex: 1
+}
