@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const userLogin = async (username, password) => {
-    const res = await axios.post("https://seenbeauty.pk/api/v1/user/login", {
+    const res = await axios.post("http://localhost:3000/api/v1/user/login", {
         username,
         password
     })

@@ -30,7 +30,8 @@ const loginUser = asyncHandler(async (req, res) => {
                 {
                     id: userResult[0].id,
                     username: userResult[0].username,
-                    role: userResult[0].role
+                    role: userResult[0].role,
+                    accessToken
                 }
                 , "Login Successfully"))
     }

@@ -3,8 +3,11 @@ const asyncHandler = require('../utils/asyncHandler');
 const ApiError = require('../utils/ApiError');
 
 const verifyJWT = asyncHandler(async (req, _, next) => {
+
     try {
-        const token = req.cookies?.accessToken || req.headers["Authorization"]?.replace("Bearer ", "");
+        let token = req.cookies?.accessToken || req.headers["authorization"];
+
+        console.log(token)
 
         if (!token) {
             throw new ApiError(400, "Unauthorized Access");
@@ -14,7 +17,7 @@ const verifyJWT = asyncHandler(async (req, _, next) => {
 
         next();
     } catch (error) {
-        throw new ApiError(401, "Invalid Access Token")
+        throw new ApiError(401, error.message || "Invalid Access Token")
     }
 });
 

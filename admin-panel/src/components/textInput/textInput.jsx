@@ -12,7 +12,7 @@ export default function TextInput({ name, value, onUpdate, children })
     return <div className="text-input-container">
         <div className="text-input-label-container">
             <label htmlFor="text-input" className='text-input-label'>{children}</label>
-            <input type="text" name={name} id="text-input" onBlur={onUpdateHanlder}/>
+            <input type="text" name={name} defaultValue={value} id="text-input" onBlur={onUpdateHanlder}/>
         </div>
     </div>
 }

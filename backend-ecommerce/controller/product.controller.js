@@ -85,8 +85,10 @@ const addProduct = asyncHandler(async (req, res) => {
     const { name, description, category, price } = req.body;
     const images = req.files
 
+    console.log(images)
+
     if (!name || !description || !category || !price || !images.length) {
-        throw new ApiError(401, "All Fields are required");
+        throw new ApiError(400, "All Fields are required");
     }
 
     const productQuery = `INSERT INTO products (name, description, category, price) VALUES (?,?,?,?)`

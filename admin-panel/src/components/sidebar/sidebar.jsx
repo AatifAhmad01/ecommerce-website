@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './sidebar.css'
 import DangerButton from '../dangerButton/dangerButton';
-
+import { UserContext } from '../../contexts/UserContext';
 
 export default function Sidebar()
 {
     const location = useLocation();
     const [path, setPath] = useState('/addProduct')
+
+    const userContext = useContext(UserContext)
 
     useEffect(()=> {
         setPath(location.pathname);
@@ -32,7 +34,7 @@ export default function Sidebar()
         </div>
         <div className="sidebar-authorization-container">
             <h3 className='user-display-name'>Yasir</h3>
-            <DangerButton>Logout</DangerButton>
+            <DangerButton onClick={userContext.onLogout}>Logout</DangerButton>
         </div>
     </div>
 }

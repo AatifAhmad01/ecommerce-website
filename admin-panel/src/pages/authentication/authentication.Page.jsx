@@ -18,7 +18,6 @@ export default function AuthenticationPage()
         try
         {
             const loginRes = await userLogin(userValues.username, userValues.password)
-            loginRes.data.data.accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE2NjIxNTgzLCJleHAiOjE3MTY3MDc5ODN9.7HkoAuUZhBSKcV2pZHkr1BZ1Z98uCrwOQX225RizYXg"
             userContext.onLogin(loginRes.data.data)
         }
         catch(error)

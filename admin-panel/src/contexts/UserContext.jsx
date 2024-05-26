@@ -11,7 +11,6 @@ const UserContextProvider = ({ children }) => {
     const [user, setUser] = useState(null)
 
     const loginUser = (user) => {
-        console.log(user)
         setUser(user)
     }
 
