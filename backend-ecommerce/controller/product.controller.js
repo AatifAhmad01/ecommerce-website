@@ -3,7 +3,7 @@ const db = require("../db/db.js");
 const ApiError = require("../utils/ApiError.js");
 const ApiResponse = require("../utils/ApiResponse.js");
 const fs = require('fs/promises');
-const ConvertProductsToArray = require("../utils/ManageProjects.js");
+const { ConvertProductsToArray } = require("../utils/ManageProjects.js");
 
 
 const allProducts = asyncHandler(async (req, res) => {

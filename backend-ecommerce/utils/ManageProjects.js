@@ -28,4 +28,49 @@ const ConvertProductsToArray = (fetchedProducts) => {
     return products
 }
 
-module.exports = ConvertProductsToArray
+const ConvertOrdersToArray = (fetchedOrders) => {
+
+    let orders = []
+    const ordersMap = {}
+
+    fetchedOrders.forEach(order => {
+
+        if (order.order_id in ordersMap) {
+            ordersMap[order.order_id].orderedItems.push({
+                product_id: order.product_id,
+                quantity: order.quantity,
+            })
+        }
+        else {
+            ordersMap[order.order_id] = {
+                id: order.order_id,
+                delivered: order.delivered,
+                orderedItems: [{
+                    product_id: order.product_id,
+                    quantity: order.quantity,
+                }],
+                customer: {
+                    firstname: order.firstname,
+                    lastname: order.lastname,
+                    address: order.address,
+                    appartment: order.appartment,
+                    city: order.city,
+                    postalcode: order.postalcode,
+                    phone: order.phone,
+                    extraphone: order.extraphone,
+                },
+                created_at: order.created_at,
+            }
+        }
+    })
+
+    for (var key in ordersMap) {
+        orders.push(ordersMap[key])
+    }
+
+    return orders
+}
+
+
+module.exports = { ConvertProductsToArray, ConvertOrdersToArray }
+

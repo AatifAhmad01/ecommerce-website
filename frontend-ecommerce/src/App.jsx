@@ -4,7 +4,7 @@ import Home from './pages/home/home';
 import Cart from './pages/cart/Cart'
 import Checkout from './pages/checkout/checkout';
 import ShopCategory from './pages/shopCategory/ShopCategory'
-import {BrowserRouter , Routes , Route} from 'react-router-dom'
+import {BrowserRouter, Routes , Route} from 'react-router-dom'
 import ProductDetail from './pages/productDetails/ProductDetail'
 import OrderPage from './pages/orderPage/orderPage';
 import { HeadingContent } from './components/headingContent/headingContent';
