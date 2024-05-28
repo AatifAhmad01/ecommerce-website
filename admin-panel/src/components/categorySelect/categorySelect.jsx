@@ -9,7 +9,7 @@ export default function CategorySelect({ name, value, onUpdate, children })
             <label htmlFor="text-input" className='text-input-label'>{children}</label>
         </div>
 
-        <select name={name} id="category-select" defaultValue={value} onBlur={onUpdate}>
+        <select name={name} id="category-select" value={value} onChange={onUpdate}>
             <option value="Skin Primer">Skin Primer</option>
             <option value="Foundation">Foundation</option>
             <option value="Face Powder">Face Powder</option>

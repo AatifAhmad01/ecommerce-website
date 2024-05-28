@@ -54,6 +54,35 @@ const getProduct = asyncHandler(async (req, res) => {
     }
 })
 
+const getProductByName = asyncHandler(async (req, res) => {
+
+    const productName = req.params.productName;
+
+    if (!productName) throw new ApiError(401, "Invalid product id");
+
+    const query = `
+        SELECT *
+        FROM products p
+        LEFT JOIN product_images pi ON p.id = pi.product_id
+        WHERE p.name = ?
+    `;
+
+    try {
+
+        const [productResult] = await db.execute(query, [productName])
+
+        const products = ConvertProductsToArray(productResult)
+
+        if (products.length == 0) throw new ApiError(401, "No product found");
+
+        res.status(200).json(new ApiResponse(200, products[0], "Product fetched successfully"))
+    }
+    catch (error) {
+        throw new ApiError(401, error.message || "Something went wronge!")
+    }
+})
+
+
 const getProductByCategory = asyncHandler(async (req, res) => {
 
     const catergory = req.params.category
@@ -221,4 +250,4 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
 
 
-module.exports = { allProducts, addProduct, getProduct, getProductByCategory, updateProduct, deleteProduct }
+module.exports = { allProducts, addProduct, getProduct, getProductByName, getProductByCategory, updateProduct, deleteProduct }

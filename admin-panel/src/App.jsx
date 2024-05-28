@@ -29,8 +29,8 @@ function App() {
   const Root = () =>
   {
     return<>
-    {/* {!userContext.user ? <AuthenticationPage/> : <AppScreens/>}  */}
-    {false ? <AuthenticationPage/> : <AppScreens/>} 
+    {!userContext.user ? <AuthenticationPage/> : <AppScreens/>} 
+    {/* {false ? <AuthenticationPage/> : <AppScreens/>}  */}
     </>
   }
 
