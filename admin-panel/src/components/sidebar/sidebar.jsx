@@ -33,7 +33,7 @@ export default function Sidebar()
 
         </div>
         <div className="sidebar-authorization-container">
-            <h3 className='user-display-name'>Yasir</h3>
+            <h3 className='user-display-name'>{userContext.user.username}</h3>
             <DangerButton onClick={userContext.onLogout}>Logout</DangerButton>
         </div>
     </div>

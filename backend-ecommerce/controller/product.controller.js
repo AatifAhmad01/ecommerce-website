@@ -45,7 +45,7 @@ const getProduct = asyncHandler(async (req, res) => {
 
         const products = ConvertProductsToArray(productResult)
 
-        if (products.length == 0) throw new ApiError(401, "No product found");
+        if (products.length == 0) throw new ApiError(204, "No product found");
 
         res.status(200).json(new ApiResponse(200, products[0], "Product fetched successfully"))
     }

@@ -13,6 +13,12 @@ const postProduct = async (product, accesssToken) => {
     return res
 }
 
+const getProductById = async (productId) => {
+
+    const res = await axios.get(`http://localhost:3000/api/v1/products/${productId}`)
+    return res
+}
+
 const getProductByName = async (productName, accesssToken) => {
     const res = await axios.get(`http://localhost:3000/api/v1/products/name/${productName}`, {
         headers: {
@@ -46,4 +52,4 @@ const deleteProduct = async (productId, accesssToken) => {
     return res
 }
 
-export { postProduct, getProductByName, updateProduct, deleteProduct }
+export { postProduct, getProductByName, getProductById, updateProduct, deleteProduct }

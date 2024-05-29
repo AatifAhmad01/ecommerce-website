@@ -1,6 +1,7 @@
 .order-product-item-container
 {
     min-width: 500px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     padding: 20px;

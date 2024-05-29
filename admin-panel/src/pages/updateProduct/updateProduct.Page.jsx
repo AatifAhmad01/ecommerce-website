@@ -5,18 +5,25 @@ import PageWrapper from '../../components/pageWrapper/pageWrapper';
 import ProductForm from '../../components/productForm/productForm';
 import { getProductByName } from '../../https/product.http';
 import { UserContext } from '../../contexts/UserContext';
+import ResponseText from '../../components/responesText/responseText';
 
 export default function UpdateProductPage()
 {
     const userContext = useContext(UserContext);
+    const [responseText, setResponseText] = useState("")
     const [productName, setProductName] = useState("")
-    const [product, setProduct] = useState('')
+    const [product, setProduct] = useState()
 
     const onProductNameHanlder = (e) => {
         setProductName(e.target.value)
     }
 
     const onclickFindProduct = async () => {
+
+        if(!productName){
+            setResponseText("Invalid Product Name");
+            return;
+        }
 
         try
         {
@@ -26,9 +33,15 @@ export default function UpdateProductPage()
         catch(error)
         {
             console.log(error)
+            setResponseText("Invalid Product Name");
         }
     }
 
+    const onFormCloseHanlder = () => {
+        setProduct(null);
+        setProductName(null)
+        setResponseText(null)
+    }
 
 
     return <PageWrapper>
@@ -39,10 +52,11 @@ export default function UpdateProductPage()
             <TextInput onUpdate={onProductNameHanlder}>Enter Product Name</TextInput>
             <br/>
             <PrimaryButton onClick={onclickFindProduct}>Find Product</PrimaryButton>
+            <ResponseText text={responseText}/>
             </div>
         }
 
-        { product ? <ProductForm isEditing={true} product={product}/> : null}
+        { product ? <ProductForm isEditing={true} product={product} onClose={onFormCloseHanlder}/> : null}
     
     </PageWrapper>
 }

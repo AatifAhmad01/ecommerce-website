@@ -7,8 +7,10 @@ import PrimaryButton from '../../components/primaryButton/primaryButton';
 import DangerButton from "../dangerButton/dangerButton";
 import { postProduct, deleteProduct, updateProduct } from "../../https/product.http";
 import { UserContext } from "../../contexts/UserContext";
+import ResponseText from "../responesText/responseText";
+import SecondaryButton from "../secondaryButton/secondaryButton";
 
-export default function ProductForm({ isEditing, product })
+export default function ProductForm({ isEditing, product, onClose })
 {
     const userContext = useContext(UserContext)
 
@@ -75,8 +77,7 @@ export default function ProductForm({ isEditing, product })
         try
         {
             await deleteProduct(product?.id, userContext.user?.accessToken)
-
-            setResponseError("Product Deleted!")
+            onClose();
         }
         catch(error)
         {
@@ -150,12 +151,13 @@ export default function ProductForm({ isEditing, product })
             <input type="file" src="" alt="" name="images" multiple id="imageInput"/>
             <br/>
             <br/>
-            <p className="response-text">{responseError}</p>
+            <ResponseText text={responseError}/>
         </div>
         <div className="actions-area">
             { isEditing ? null : <PrimaryButton onClick={addProductHanlder}>Add Product</PrimaryButton>}
             { isEditing ? <PrimaryButton onClick={updateProductHanlder}>Update Product</PrimaryButton> : null }
             { isEditing ? <DangerButton onClick={deleteProductHanlder}>Delete Product</DangerButton> : null }
+            { isEditing ? <SecondaryButton onClick={onClose}>Close</SecondaryButton> : null }
         </div>
     </div>
 </>

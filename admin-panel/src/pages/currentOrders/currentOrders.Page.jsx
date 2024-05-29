@@ -13,18 +13,18 @@ export default function CurrentOrdersPage()
     const [selectedOrder, setSelectedOrder] = useState(null)
     const [activeOrders, setActiveOrders] = useState([])
 
-    const selectOrderHanlder = () => {
-        console.log("ORder selected")
-        setSelectedOrder({
-            orderId: 123,
-            buyerName: "Atif"
-        })
+    const selectOrderHanlder = (orderDetails) => {
+        setSelectedOrder(orderDetails)
     }
 
     const getActiveOrders = async () => {
         const res = await getOrders(userContext.user?.accessToken)
         console.log(res)
         setActiveOrders(res.data.data)
+    }
+
+    const onDeliverOrderHanlder = (orderId) => {
+        console.log(orderId)
     }
 
     useEffect(() => {
@@ -36,12 +36,12 @@ export default function CurrentOrdersPage()
             <div className="current-orders-container">
 
                 {
-                    activeOrders.map(order => <CurrentOrderItem onClick={selectOrderHanlder} orderDetails={order}/>)
+                    activeOrders.map(order => <CurrentOrderItem key={order.id} onClick={selectOrderHanlder} orderDetails={order}/>)
                 }
 
             </div>
             <div className="selected-order-details-container">
-                {selectedOrder ? <OrderDetails/>: null}
+                {selectedOrder ? <OrderDetails orderDetails={selectedOrder} onDeliver={onDeliverOrderHanlder}/> : null}
             </div>
         </div>
     </PageWrapper>
