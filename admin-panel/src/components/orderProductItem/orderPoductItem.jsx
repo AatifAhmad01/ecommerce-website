@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './orderProductItem.css'
 import { getProductById } from "../../https/product.http";
+import { SERVER_SHORTURL } from "../../contants/constants";
 
 export default function OrderProductItem({orderItem}) 
 {
@@ -44,7 +45,7 @@ export default function OrderProductItem({orderItem})
     },[])
 
     return <div className="order-product-item-container">
-        <img className="order-product-item-image" src={`http://localhost:3000/${productDetails?.image_url[0]}`} alt="" />
+        <img className="order-product-item-image" src={`${SERVER_SHORTURL}/${productDetails?.image_url[0]}`} alt="" />
         <h3 className="order-product-item-name">{productDetails?.name}</h3>
         <h3 className="order-product-item-quantity-text">Quantity</h3>
         <h3 className="order-product-item-quantity">{orderItem.quantity}</h3>

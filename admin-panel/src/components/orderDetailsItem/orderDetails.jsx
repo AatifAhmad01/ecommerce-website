@@ -6,6 +6,9 @@ import './orderDetails.css'
 
 export default function OrderDetails({orderDetails, onDeliver})
 {
+
+    // Doesnot reload already spawn product items
+
     const { address, appartment, city, extraphone, firstname, lastname, phone, postalcode } = orderDetails.customer
 
     return <div className="order-details-item-container">
