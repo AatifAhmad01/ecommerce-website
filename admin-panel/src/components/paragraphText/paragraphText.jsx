@@ -5,7 +5,7 @@ export default function ParagraphText({label, children})
 {
     return <>
     {
-        label ? <label htmlFor="">{label}</label> : null
+        label ? <label htmlFor="" className="paragraph-text-label">{label}</label> : null
     }
     {
         children ? <p className="paragraph-text">{children}</p> : null

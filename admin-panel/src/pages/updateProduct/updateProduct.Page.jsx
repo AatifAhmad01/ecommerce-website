@@ -3,43 +3,44 @@ import TextInput from '../../components/textInput/textInput';
 import PrimaryButton from '../../components/primaryButton/primaryButton';
 import PageWrapper from '../../components/pageWrapper/pageWrapper';
 import ProductForm from '../../components/productForm/productForm';
-import { getProductByName } from '../../https/product.http';
+import { getProductById } from '../../https/product.http';
 import { UserContext } from '../../contexts/UserContext';
 import ResponseText from '../../components/responesText/responseText';
+import NumberInput from '../../components/numberInput/numberInput';
 
 export default function UpdateProductPage()
 {
     const userContext = useContext(UserContext);
     const [responseText, setResponseText] = useState("")
-    const [productName, setProductName] = useState("")
+    const [productId, setProductId] = useState("")
     const [product, setProduct] = useState()
 
     const onProductNameHanlder = (e) => {
-        setProductName(e.target.value)
+        setProductId(e.target.value)
     }
 
     const onclickFindProduct = async () => {
 
-        if(!productName){
-            setResponseText("Invalid Product Name");
+        if(!productId){
+            setResponseText("Invalid Product ID");
             return;
         }
 
         try
         {
-            const res = await getProductByName(productName, userContext.user?.accessToken)
+            const res = await getProductById(productId, userContext.user?.accessToken)
             setProduct(res.data.data);
         }
         catch(error)
         {
             console.log(error)
-            setResponseText("Invalid Product Name");
+            setResponseText("Invalid Product ID");
         }
     }
 
     const onFormCloseHanlder = () => {
         setProduct(null);
-        setProductName(null)
+        setProductId(null)
         setResponseText(null)
     }
 
@@ -49,7 +50,7 @@ export default function UpdateProductPage()
         {
             product ? null : <div>
 
-            <TextInput onUpdate={onProductNameHanlder}>Enter Product Name</TextInput>
+            <NumberInput onUpdate={onProductNameHanlder}>Enter Product Name</NumberInput>
             <br/>
             <PrimaryButton onClick={onclickFindProduct}>Find Product</PrimaryButton>
             <ResponseText text={responseText}/>

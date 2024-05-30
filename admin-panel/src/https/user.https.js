@@ -1,7 +1,8 @@
 import axios from "axios"
+import { SERVER_URL } from "../contants/constants"
 
 const userLogin = async (username, password) => {
-    const res = await axios.post("http://localhost:3000/api/v1/user/login", {
+    const res = await axios.post(`${SERVER_URL}/user/login`, {
         username,
         password
     })

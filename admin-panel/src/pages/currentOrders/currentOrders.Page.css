@@ -12,5 +12,6 @@
 .selected-order-details-container
 {
     margin-left: 50px;
-    flex: 1
+    flex: 1;
+    overflow: auto;
 }

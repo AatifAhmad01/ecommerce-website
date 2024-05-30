@@ -2,6 +2,7 @@ import React from "react";
 import OrderProductItem from "../orderProductItem/orderPoductItem";
 import ParagraphText from "../paragraphText/paragraphText";
 import PrimaryButton from "../primaryButton/primaryButton";
+import './orderDetails.css'
 
 export default function OrderDetails({orderDetails, onDeliver})
 {
@@ -10,7 +11,7 @@ export default function OrderDetails({orderDetails, onDeliver})
     return <div className="order-details-item-container">
 
         {
-            orderDetails?.orderedItems?.map(item => <OrderProductItem orderItem={item}/>)
+            orderDetails?.orderedItems?.map(item => <OrderProductItem key={item.id} orderItem={item}/>)
         }
 
         <ParagraphText label={"Address"}>{address}</ParagraphText>
@@ -22,7 +23,10 @@ export default function OrderDetails({orderDetails, onDeliver})
         <ParagraphText label={"Phone"}>{phone}</ParagraphText>
         <ParagraphText label={"Postal Code"}>{postalcode}</ParagraphText>
 
-        <PrimaryButton onClick={() => onDeliver(orderDetails.id)}>Deliver</PrimaryButton>
+        {
+            orderDetails.delivered == 0 ? <PrimaryButton onClick={() => onDeliver(orderDetails.id)}>Deliver</PrimaryButton> : null
+        }
+
         
     </div>
 }

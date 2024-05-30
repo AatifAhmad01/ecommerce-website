@@ -1,9 +1,9 @@
 import axios from "axios"
-
+import { SERVER_URL } from "../contants/constants"
 
 const postProduct = async (product, accesssToken) => {
 
-    const res = await axios.post("http://localhost:3000/api/v1/products", product, {
+    const res = await axios.post(`${SERVER_URL}/products`, product, {
         headers: {
             'Content-Type': 'multipart/form-data',
             "authorization": accesssToken
@@ -15,12 +15,12 @@ const postProduct = async (product, accesssToken) => {
 
 const getProductById = async (productId) => {
 
-    const res = await axios.get(`http://localhost:3000/api/v1/products/${productId}`)
+    const res = await axios.get(`${SERVER_URL}/products/${productId}`)
     return res
 }
 
 const getProductByName = async (productName, accesssToken) => {
-    const res = await axios.get(`http://localhost:3000/api/v1/products/name/${productName}`, {
+    const res = await axios.get(`${SERVER_URL}/products/name/${productName}`, {
         headers: {
             'Content-Type': 'multipart/form-data',
             "authorization": accesssToken
@@ -32,7 +32,7 @@ const getProductByName = async (productName, accesssToken) => {
 
 const updateProduct = async (productId, product, accesssToken) => {
 
-    const res = await axios.patch(`http://localhost:3000/api/v1/products/${productId}`, product, {
+    const res = await axios.patch(`${SERVER_URL}/products/${productId}`, product, {
         headers: {
             "authorization": accesssToken
         }
@@ -42,7 +42,7 @@ const updateProduct = async (productId, product, accesssToken) => {
 }
 
 const deleteProduct = async (productId, accesssToken) => {
-    const res = await axios.delete(`http://localhost:3000/api/v1/products/${productId}`, {
+    const res = await axios.delete(`${SERVER_URL}/products/${productId}`, {
         headers: {
             'Content-Type': 'multipart/form-data',
             "authorization": accesssToken

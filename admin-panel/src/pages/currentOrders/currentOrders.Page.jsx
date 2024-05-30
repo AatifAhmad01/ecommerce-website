@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './currentOrders.Page.css'
 import PageWrapper from '../../components/pageWrapper/pageWrapper';
 import CurrentOrderItem from '../../components/currentOrderItem/currentOrderItem';
 import OrderDetails from '../../components/orderDetailsItem/orderDetails';
-import { getOrders } from '../../https/orders.http';
+import { getOrders, deliverOrder } from '../../https/orders.http';
 import { UserContext } from '../../contexts/UserContext';
 
 export default function CurrentOrdersPage()
@@ -19,12 +19,19 @@ export default function CurrentOrdersPage()
 
     const getActiveOrders = async () => {
         const res = await getOrders(userContext.user?.accessToken)
-        console.log(res)
         setActiveOrders(res.data.data)
     }
 
     const onDeliverOrderHanlder = (orderId) => {
         console.log(orderId)
+
+        deliverOrder(orderId, userContext.user?.accessToken)
+        .then(() => {
+            const updatedOrers = activeOrders.filter(order => order.id != orderId)
+            setActiveOrders(updatedOrers);
+            setSelectedOrder(null)
+        })
+        .catch(error => console.log(error))
     }
 
     useEffect(() => {
