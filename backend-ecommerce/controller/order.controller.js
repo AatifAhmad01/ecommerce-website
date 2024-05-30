@@ -126,10 +126,23 @@ const deleteOrder = asyncHandler(async (req, res) => {
         res.status(200).json(new ApiResponse(200, {}, "Order deleted successfuly"))
     }
     catch (error) {
-        console.log(error)
+        throw new ApiError(500, error.message || "Something went wronge");
+    }
+})
+
+const deleteAllDelivered = asyncHandler(async (req, res) => {
+
+    try {
+        const deleteQuery = `DELETE FROM orders WHERE delivered = ?`
+
+        await db.execute(deleteQuery, [true])
+
+        res.status(200).json(new ApiResponse(200, {}, "Order deleted successfuly"))
+    }
+    catch (error) {
         throw new ApiError(500, error.message || "Something went wronge");
     }
 })
 
 
-module.exports = { getActiveOrders, getDeliveredOrders, postOrder, deliverOrder, deleteOrder }
+module.exports = { getActiveOrders, getDeliveredOrders, postOrder, deliverOrder, deleteOrder, deleteAllDelivered }

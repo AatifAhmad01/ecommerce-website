@@ -18,7 +18,6 @@ export default function OrderProductItem({orderItem})
         try
         {
             const res = await getProductById(orderItem.product_id)
-            console.log(res)
             setProductDetails({
                 id: res.data.data.id,
                 name: res.data.data.name,
@@ -36,13 +35,12 @@ export default function OrderProductItem({orderItem})
                     ]
                 }
             )
-            console.log(error)
         }
     }
 
     useEffect(() => {
         getProductDetails();
-    },[])
+    },[orderItem])
 
     return <div className="order-product-item-container">
         <img className="order-product-item-image" src={`${SERVER_SHORTURL}/${productDetails?.image_url[0]}`} alt="" />

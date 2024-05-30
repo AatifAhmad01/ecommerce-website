@@ -36,4 +36,29 @@ const deliverOrder = async (orderId, accesssToken) => {
 }
 
 
-export { getOrders, deliverOrder, getCompletedOrders }
+const deleteOrder = async (orderId, accesssToken) => {
+
+    console.log(accesssToken)
+
+    const res = await axios.delete(`${SERVER_URL}/orders/${orderId}`, {
+        headers: {
+            "authorization": accesssToken
+        }
+    })
+
+    return res
+}
+
+const deleteAllDeliveredOrders = async (accesssToken) => {
+
+    const res = await axios.delete(`${SERVER_URL}/orders/delivered`, {
+        headers: {
+            "authorization": accesssToken
+        },
+    })
+
+    return res
+}
+
+
+export { getOrders, deliverOrder, deleteOrder, deleteAllDeliveredOrders, getCompletedOrders }

@@ -3,7 +3,8 @@ import PageWrapper from '../../components/pageWrapper/pageWrapper';
 import CurrentOrderItem from '../../components/currentOrderItem/currentOrderItem';
 import OrderDetails from '../../components/orderDetailsItem/orderDetails';
 import { UserContext } from '../../contexts/UserContext';
-import { getCompletedOrders } from '../../https/orders.http';
+import { deleteAllDeliveredOrders, deleteOrder, getCompletedOrders } from '../../https/orders.http';
+import DangerButton from '../../components/dangerButton/dangerButton';
 
 export default function CompletedOrdersPage()
 {
@@ -21,6 +22,19 @@ export default function CompletedOrdersPage()
         setActiveOrders(res.data.data)
     }
 
+    const onDeleteOrderHanlder = async (orderId) => {
+        const res = await deleteOrder(orderId, userContext.user?.accessToken)
+        const updatedOrers = activeOrders.filter(order => order.id != orderId)
+        setActiveOrders([...updatedOrers])
+        setSelectedOrder(null)
+    }
+
+    const onDeletedDeliveredOrders = async () => {
+        await deleteAllDeliveredOrders(userContext.user?.accessToken)
+        setActiveOrders([])
+        setSelectedOrder(null)
+    }
+
     useEffect(() => {
         getActiveOrders();
     }, [])
@@ -35,8 +49,9 @@ export default function CompletedOrdersPage()
 
         </div>
         <div className="selected-order-details-container">
-            {selectedOrder ? <OrderDetails orderDetails={selectedOrder}/> : null}
+            {selectedOrder ? <OrderDetails orderDetails={selectedOrder} onDelete={onDeleteOrderHanlder}/> : null}
         </div>
     </div>
+    <DangerButton onClick={onDeletedDeliveredOrders}>Delete All</DangerButton>
 </PageWrapper>
 }

@@ -15,6 +15,8 @@ export default function Sidebar()
         setPath(location.pathname);
     }, [location])
 
+    //Add authorizations 
+
     return <div className="sidebar-container">
         <div className="sidebar-navigation-container">
             <h4 className='adminpanel-title'>Seen Beauty 💄 </h4>
