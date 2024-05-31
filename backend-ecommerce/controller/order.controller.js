@@ -2,7 +2,7 @@ const asyncHandler = require("../utils/asyncHandler.js")
 const db = require("../db/db.js");
 const ApiError = require("../utils/ApiError.js");
 const ApiResponse = require("../utils/ApiResponse.js");
-const { ConvertOrdersToArray } = require("../utils/ManageProjects.js");
+const { ConvertOrdersToArray, ConvertProductsToArray } = require("../utils/ManageProjects.js");
 
 const getActiveOrders = asyncHandler(async (req, res) => {
 
@@ -16,6 +16,8 @@ const getActiveOrders = asyncHandler(async (req, res) => {
         `;
 
         const [ordersResult] = await db.execute(ordersQuery)
+
+        console.log(ordersResult)
 
         const orders = ConvertOrdersToArray(ordersResult);
 
@@ -144,5 +146,52 @@ const deleteAllDelivered = asyncHandler(async (req, res) => {
     }
 })
 
+const getOrder = asyncHandler(async (req, res) => {
 
-module.exports = { getActiveOrders, getDeliveredOrders, postOrder, deliverOrder, deleteOrder, deleteAllDelivered }
+    const orderId = req.params.orderId
+
+    try {
+        const ordersQuery = `
+        SELECT * 
+        FROM orders o
+        LEFT JOIN order_items pi ON o.id = pi.order_id
+        LEFT JOIN customers c ON o.id = c.order_id
+        WHERE o.id = ?
+        `;
+
+        const [ordersResult] = await db.execute(ordersQuery, [orderId])
+
+        const orders = ConvertOrdersToArray(ordersResult);
+
+        let orderedProductIds = []
+
+        orders[0].orderedItems.forEach(orderItem => {
+            orderedProductIds.push(orderItem.product_id)
+        })
+
+        const orderProductsQuery = `
+        SELECT *
+        FROM products p
+        LEFT JOIN product_images pi ON p.id = pi.product_id
+        WHERE p.id IN (${orderedProductIds.join(",")})
+        `;
+
+        const [productsResult] = await db.execute(orderProductsQuery)
+
+        const orderProducts = ConvertProductsToArray(productsResult);
+
+        for (let i = 0; i < orders[0].orderedItems.length; i++) {
+            orderProducts[i] = { ...orderProducts[i], quantity: orders[0].orderedItems[i].quantity }
+        }
+
+        orders[0].orderedItems = orderProducts
+
+        res.status(200).json(new ApiResponse(200, orders[0], "Order fetched successfully!"))
+    }
+    catch (error) {
+        throw new ApiError(400, error.message || "Something went wronge")
+    }
+})
+
+
+module.exports = { getActiveOrders, getDeliveredOrders, getOrder, postOrder, deliverOrder, deleteOrder, deleteAllDelivered }

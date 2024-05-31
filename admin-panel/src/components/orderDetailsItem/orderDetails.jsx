@@ -4,17 +4,53 @@ import ParagraphText from "../paragraphText/paragraphText";
 import PrimaryButton from "../primaryButton/primaryButton";
 import './orderDetails.css'
 import DangerButton from "../dangerButton/dangerButton";
+import { gerOrder } from "../../https/orders.http.js";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function OrderDetails({orderDetails, onDeliver, onDelete})
 {
+    const userContext = useContext(UserContext)
+
+    const [orderPrice, setOrderPrice] = useState(0)
+    const [orderedItems, setOrderedItems] = useState([])
+
     const { address, appartment, city, extraphone, firstname, lastname, phone, postalcode } = orderDetails.customer
+
+
+    const getOrder = async () => {
+
+        try
+        {
+            const res = await gerOrder(orderDetails.id, userContext.user?.accessToken)
+
+            setOrderedItems(res.data.data.orderedItems)
+
+            const totalPrice = res.data.data.orderedItems.reduce((acc, item) => 
+                {
+                    return acc.price * acc.quantity + item.price * item.quantity
+                })
+
+            setOrderPrice(totalPrice)
+        }
+        catch(error)
+        {
+
+        }
+    }
+
+    useEffect(() => {
+        setOrderPrice(0)
+        getOrder()
+    }, [orderDetails])
 
     return <div className="order-details-item-container">
 
         {
-            orderDetails?.orderedItems.map(item => <OrderProductItem key={item.id} orderItem={item}/>)
+            orderedItems.map((item, index) => <OrderProductItem key={index} productDetails={item}/>)
         }
 
+        <ParagraphText label={"Total Order Price"}>{orderPrice}</ParagraphText>
         <ParagraphText label={"Address"}>{address}</ParagraphText>
         <ParagraphText label={"Appartment"}>{appartment}</ParagraphText>
         <ParagraphText label={"City"}>{city}</ParagraphText>

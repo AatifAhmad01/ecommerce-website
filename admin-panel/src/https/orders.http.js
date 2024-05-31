@@ -13,6 +13,17 @@ const getOrders = async (accesssToken) => {
     return res
 }
 
+const gerOrder = async (orderId, accesssToken) => {
+
+    const res = await axios.get(`${SERVER_URL}/orders/${orderId}`, {
+        headers: {
+            "authorization": accesssToken
+        },
+    })
+
+    return res
+}
+
 const getCompletedOrders = async (accesssToken) => {
 
     const res = await axios.get(`${SERVER_URL}/orders/delivered`, {
@@ -61,4 +72,4 @@ const deleteAllDeliveredOrders = async (accesssToken) => {
 }
 
 
-export { getOrders, deliverOrder, deleteOrder, deleteAllDeliveredOrders, getCompletedOrders }
+export { getOrders, gerOrder, deliverOrder, deleteOrder, deleteAllDeliveredOrders, getCompletedOrders }
