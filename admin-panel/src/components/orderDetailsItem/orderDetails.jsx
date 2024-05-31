@@ -26,10 +26,13 @@ export default function OrderDetails({orderDetails, onDeliver, onDelete})
 
             setOrderedItems(res.data.data.orderedItems)
 
-            const totalPrice = res.data.data.orderedItems.reduce((acc, item) => 
+            let totalPrice = 0;
+
+            res.data.data.orderedItems.forEach(item => 
                 {
-                    return acc.price * acc.quantity + item.price * item.quantity
-                })
+                    totalPrice += item.price * item.quantity
+                }
+            )
 
             setOrderPrice(totalPrice)
         }
@@ -40,7 +43,6 @@ export default function OrderDetails({orderDetails, onDeliver, onDelete})
     }
 
     useEffect(() => {
-        setOrderPrice(0)
         getOrder()
     }, [orderDetails])
 

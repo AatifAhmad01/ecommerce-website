@@ -114,8 +114,6 @@ const addProduct = asyncHandler(async (req, res) => {
     const { name, description, category, price } = req.body;
     const images = req.files
 
-    console.log(images)
-
     if (!name || !description || !category || !price || !images.length) {
         throw new ApiError(400, "All Fields are required");
     }

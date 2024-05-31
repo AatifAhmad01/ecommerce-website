@@ -6,14 +6,15 @@ const jwt = require("jsonwebtoken")
 
 const loginUser = asyncHandler(async (req, res) => {
 
-    const username = req.body.username;
-    const password = req.body.password;
+    const { username, password } = req.body;
 
     try {
 
         if (!username || !password) throw "Username or password in incorrect"
 
         const [userResult] = await db.execute("SELECT * FROM users WHERE username=?", [username]);
+
+        if (!userResult.length) throw new ApiError(401, "Username Incorrent!");
 
         if (userResult[0].password != password) throw new ApiError(401, "Password Incorrect");
 

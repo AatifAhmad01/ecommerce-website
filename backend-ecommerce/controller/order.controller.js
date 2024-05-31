@@ -17,8 +17,6 @@ const getActiveOrders = asyncHandler(async (req, res) => {
 
         const [ordersResult] = await db.execute(ordersQuery)
 
-        console.log(ordersResult)
-
         const orders = ConvertOrdersToArray(ordersResult);
 
         res.status(200).json(new ApiResponse(200, orders, "Active orders feteched successfully"))
