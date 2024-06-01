@@ -10,13 +10,20 @@ const loginUser = asyncHandler(async (req, res) => {
 
     try {
 
-        if (!username || !password) throw "Username or password in incorrect"
+        if (!username || !password) {
+            return res.status(400).json(new ApiError(400, "All Fields are required"));
+        }
 
         const [userResult] = await db.execute("SELECT * FROM users WHERE username=?", [username]);
+        console.log(userResult)
 
-        if (!userResult.length) throw new ApiError(401, "Username Incorrent!");
+        if (!userResult.length) {
+            return res.status(400).json(new ApiError(400, "Invalid username"));
+        }
 
-        if (userResult[0].password != password) throw new ApiError(401, "Password Incorrect");
+        if (userResult[0].password != password) {
+            return res.status(400).json(new ApiError(400, "Password Incorrect"));
+        }
 
         const accessToken = jwt.sign({ id: userResult[0].id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.ACCESS_TOKEN_EXPIRY })
 
@@ -37,7 +44,7 @@ const loginUser = asyncHandler(async (req, res) => {
                 , "Login Successfully"))
     }
     catch (error) {
-        res.status(401).json(new ApiError(401, error.message || "Someting went wronge"))
+        res.status(500).json(new ApiError(500, error.message || "Someting went wronge"))
     }
 })
 

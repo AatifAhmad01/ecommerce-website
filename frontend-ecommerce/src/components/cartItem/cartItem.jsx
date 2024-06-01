@@ -4,8 +4,6 @@ import closeIcon from '../../assets/icons/close.svg'
 
 export default function CartItem({onRemove, onUpdateQuantity, cartItem})
 {
-console.log(cartItem);
-
     const [quantity, setQuantity] = useState(cartItem.quantity)
 
     const addQuantityHandler = ()=> {
