@@ -9,6 +9,8 @@
     /* width: 100%; */
     cursor: pointer;
     font-size: medium;
+    min-width: 100px;
+    height: 38.5px;
 }
 
 .dangour-button:hover

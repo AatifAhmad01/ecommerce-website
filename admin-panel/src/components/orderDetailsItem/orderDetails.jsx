@@ -38,7 +38,6 @@ export default function OrderDetails({orderDetails, onDeliver, onDelete})
         }
         catch(error)
         {
-
         }
     }
 
@@ -66,7 +65,6 @@ export default function OrderDetails({orderDetails, onDeliver, onDelete})
             orderDetails.delivered == 0 ? <PrimaryButton onClick={() => onDeliver(orderDetails.id)}>Deliver</PrimaryButton> : 
             <DangerButton onClick={() => onDelete(orderDetails.id)}>Delete</DangerButton>
         }
-
         
     </div>
 }

@@ -69,7 +69,6 @@ export default function ProductForm({ isEditing, product, onClose })
 
             setResponseError(errorMessage)
         }
-
     }
 
     const deleteProductHanlder = async () => {
@@ -117,10 +116,10 @@ export default function ProductForm({ isEditing, product, onClose })
             await updateProduct(product.id, productDetails, userContext.user?.accessToken)
 
             setResponseError("Product Updated!")
+
         }
         catch(error)
         {
-            console.log(error)
             let errorMessage = ""
 
             if(error.response.status == 400)
@@ -155,9 +154,9 @@ export default function ProductForm({ isEditing, product, onClose })
         </div>
         <div className="actions-area">
             { isEditing ? null : <PrimaryButton onClick={addProductHanlder}>Add Product</PrimaryButton>}
-            { isEditing ? <PrimaryButton onClick={updateProductHanlder}>Update Product</PrimaryButton> : null }
-            { isEditing ? <DangerButton onClick={deleteProductHanlder}>Delete Product</DangerButton> : null }
-            { isEditing ? <SecondaryButton onClick={onClose}>Close</SecondaryButton> : null }
+            { isEditing ? <PrimaryButton onClick={updateProductHanlder} >Update Product</PrimaryButton> : null }
+            { isEditing ? <DangerButton onClick={deleteProductHanlder} >Delete Product</DangerButton> : null }
+            { isEditing ? <SecondaryButton onClick={onClose} >Close</SecondaryButton> : null }
         </div>
     </div>
 </>

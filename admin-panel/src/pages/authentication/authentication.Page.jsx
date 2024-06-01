@@ -8,6 +8,7 @@ export default function AuthenticationPage()
 {
     const [userValues, setUserValues] = useState({})
     const [response, setResponse] = useState("  ");
+    const [request, setRequest] = useState(false)
     const userContext = useContext(UserContext);
 
     const onChangeText = (e) => {
@@ -17,12 +18,17 @@ export default function AuthenticationPage()
     const onLoginHandler = async () => {
         try
         {
+            setRequest(true)
             const loginRes = await userLogin(userValues.username, userValues.password)
+            console.log(loginRes)
             userContext.onLogin(loginRes.data.data)
+            setRequest(false)
+
         }
         catch(error)
         {
-            setResponse("Usernam ya Password ghalat de!")
+            setResponse(error.response.data.message)
+            setRequest(false)
         }
     }
 
@@ -48,6 +54,6 @@ export default function AuthenticationPage()
                     onBlur={onChangeText}/>
             </form>
             <p className="response-text">{response}</p>
-            <PrimaryButton onClick={onLoginHandler}>Login</PrimaryButton>
+            <PrimaryButton onClick={onLoginHandler} isLoading={request}>Login</PrimaryButton>
     </div>
 }

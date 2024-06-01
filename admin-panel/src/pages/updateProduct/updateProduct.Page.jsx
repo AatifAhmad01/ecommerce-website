@@ -33,7 +33,6 @@ export default function UpdateProductPage()
         }
         catch(error)
         {
-            console.log(error)
             setResponseText("Invalid Product ID");
         }
     }
