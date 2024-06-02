@@ -7,6 +7,7 @@ import { updateItem, removeItem } from "../../redux/slices/cartSlice";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import OrderSummery from "../../components/orderSummery/orderSummery";
+import ButtonFill from "../../components/buttonFill/addToCartBtn";
 
 export default function Cart() {
 
@@ -53,7 +54,31 @@ export default function Cart() {
             }
             </div>
             {
-                selector.items?.length ? <OrderSummery subtotal={subtotal} onClickAction={checkOutHandler} actionText={"Checkout"} showAction={true}/> : null
+                // selector.items?.length ? <OrderSummery subtotal={subtotal} onClickAction={checkOutHandler} actionText={"Checkout"} showAction={true}/> : null
+
+            <div className="productDetailsSection" style={{height: "500px"}}>
+                    <div className="detailContainer">
+                        <div className="space-between">
+                            <div className="cont-1">
+                                <div className="textGroupContainer">
+                                    <h5>SUBTOTAL</h5>
+                                    <h5>Rs. {subtotal}</h5>
+                                </div>
+                                <div className="textGroupContainer">
+                                    <p>Delivery Charges</p>
+                                    <p>Free</p>
+                                    {/* <p>{subtotal < 1500 ? deliveryCharges : "Free"}</p> */}
+                                </div>
+                            </div>
+                            <div className="textGroupContainer">
+                                <h5>TOTAL TO PAY</h5>
+                                <h5>Rs. {subtotal}</h5>
+                            </div>
+                        </div>
+                    </div>
+        
+                <ButtonFill onClick={checkOutHandler}>{"Checkout"}</ButtonFill>
+            </div>
             }
         </div>
     </>

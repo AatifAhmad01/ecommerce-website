@@ -5,10 +5,14 @@ import { useNavigate } from "react-router-dom";
 import OrderSummery from "../../components/orderSummery/orderSummery";
 import { placeOrder } from "../../http/orders.http";
 import { useSelector } from "react-redux";
+import TransparentLoading from "../../components/transparentLoading/transparentLoading";
+
 
 export default function Checkout()
 {
     const navigate = useNavigate();
+
+    const [isLoading, setIsLoading] = useState(false)
 
     const [customerDetails, setCustomerDetails] = useState({
         firstname: { isValid: true, value: null},
@@ -58,6 +62,8 @@ export default function Checkout()
         try
         {
             validateCustomerForm();
+            
+            setIsLoading(true)
 
             const res = await placeOrder({
                 items: orderItems,
@@ -74,13 +80,14 @@ export default function Checkout()
                 }
             })
 
-            console.log(res)
+            const placedOrderId = res.data.data.orderId
 
-            // navigate("/orderPage", { state: null })
+            navigate("/orderPage", { state: { orderId: placedOrderId} })
         }
         catch(error)
         {
             console.log("Error " + error)
+            setIsLoading(false)
         }
 
     }
@@ -96,7 +103,9 @@ export default function Checkout()
                     '& > :not(style)': { m: 1, width: '100%', maxWidth: 500},
                 }} >
                     
-                    <TextField fullWidth id="demo-helper-text-aligned" label="Phone" name="extraphone"/>
+                    <TextField fullWidth id="demo-helper-text-aligned" label="Phone (Optional)" name="extraphone"/>
+                    <pre style={{marginLeft: "20px"}}>For promotions only.</pre>
+                    <br/>
 
                 </Box>
 
@@ -141,8 +150,7 @@ export default function Checkout()
 
     <OrderSummery subtotal={314} actionText={"Place Order"} onClickAction={onPlacOrdereHandler} orderItems={cartItems.items}></OrderSummery>
 
-    
-
+    { isLoading? <TransparentLoading>Placing Order</TransparentLoading> : null }
 </div>
 
 }

@@ -8,7 +8,7 @@ export default function OrderSummery({subtotal, orderItems, onClickAction, actio
 
     return <div className="productDetailsSection">
         {
-            orderItems ? orderItems.map(item => <OrderSummeryItem itemDetails={item}/>) : null
+            orderItems ? orderItems.map(item => <OrderSummeryItem key={item.id} itemDetails={item}/>) : null
         }
         <div className="detailContainer">
             <div className="space-between">

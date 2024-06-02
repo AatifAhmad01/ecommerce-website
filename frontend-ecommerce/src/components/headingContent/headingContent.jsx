@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Navbar from "../navbar/navbar";
 import Hero from "../hero/hero";
 import AnnouncementBar from "../announcementBar/announcementBar";
+import LoadingPage from "../transparentLoading/transparentLoading";
 
 export function HeadingContent (){
 
