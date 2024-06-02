@@ -137,6 +137,7 @@ export default function ProductDetail() {
                 
                 <div className="detailContainer">
                     <div className="detailContainerParent">
+                        <p className="m-3" style={{fontSize: "15px"}}>Product ID {productDetails.id}</p>
                         <p className="productTitle m-3">{productDetails.name}</p>
                         <p className="productDescription m-3" >{productDetails.description}</p>
                         <p className="price m-3">Price: {productDetails.price}</p>

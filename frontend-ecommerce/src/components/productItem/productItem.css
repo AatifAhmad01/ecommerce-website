@@ -12,13 +12,16 @@
     box-shadow: 0px 0px 10px rgb(220, 220, 220);
 } */
 
-
-.item-image
+.product-item-image-container
 {
     width: 100%;
-    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+.item-image
+{
+    height: 200px;
     cursor: pointer;
-
 }
 
 .item-title
