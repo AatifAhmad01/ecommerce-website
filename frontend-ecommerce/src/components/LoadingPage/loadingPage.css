@@ -1,0 +1,16 @@
+.spinning-logo
+{
+    height: 120px;
+    width: 120px;
+    animation: spinningAnim 1.5s linear infinite;
+}
+
+@keyframes spinningAnim {
+    0%  {
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+
+    }
+}

@@ -46,8 +46,8 @@ export default function CategoriesCollection()
                 <CategoryItem  imageUrl={"/images/categoryItemImage.png"} 
                     onClick={() => onCategoryClickHandler("/makupalltools")} text={"Makup All Tools"}/>    
 
-                <CategoryItem  imageUrl={"/images/categoryItemImage.png"} 
-                    onClick={() => onCategoryClickHandler("/perfums")} text={"Perfums"}/>                  
+                {/* <CategoryItem  imageUrl={"/images/categoryItemImage.png"} 
+                    onClick={() => onCategoryClickHandler("/perfums")} text={"Perfums"}/>                   */}
 
             </div>
         </div>

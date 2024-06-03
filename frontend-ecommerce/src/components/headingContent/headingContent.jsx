@@ -16,9 +16,13 @@ export function HeadingContent (){
         location.pathname == "/checkout" || 
         location.pathname == "/orderPage" 
 
-    return <div>
+    return <>
+    <div className="heading-content-container">
+
         <AnnouncementBar>{"Free delivery all over Pakistan."}</AnnouncementBar>
         <Navbar/>
-        { hideHero ?  null : <Hero/>}
     </div>
+        { hideHero ?  null : <Hero/>}
+    </>
+    
 }

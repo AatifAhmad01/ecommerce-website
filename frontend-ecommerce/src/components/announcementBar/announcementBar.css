@@ -6,4 +6,12 @@
     align-items: center;
     background-color: #9A1663;
     color: white;
+
+}
+
+.heading-content-container
+{
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }

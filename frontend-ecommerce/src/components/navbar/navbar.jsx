@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import './navbar.css'
 import cartIcon from '../../assets/icons/cart-Icon.svg'
 import { Link } from "react-router-dom";
-
 import { useSelector } from "react-redux";
 
 function Navbar ()
@@ -30,16 +29,18 @@ function Navbar ()
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                {/* <a class="nav-link active" aria-current="page" href="/">Home</a> */}
-                <Link to={"/"}>Home</Link>
+                
+
+
+                <li class="nav-item active">
+                    <Link class="nav-link" to={"/"}>Home</Link>
                 </li>
 
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Categories
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu ">
                         <li><Link class="dropdown-item" to="/skinprimer">Skin Primer</Link></li>
                         <li><Link class="dropdown-item" to="/foundation">Foundation</Link></li>
                         <li><Link class="dropdown-item" to="/facepowder">Face Powder</Link></li>
@@ -49,7 +50,7 @@ function Navbar ()
                         <li><Link class="dropdown-item" to="/makupfixer">Makup Fixer</Link></li>
                         <li><Link class="dropdown-item" to="/hairproducts">Hair Products</Link></li>
                         <li><Link class="dropdown-item" to="/makupalltools">Makup All Tools</Link></li>
-                        <li><Link class="dropdown-item" to="/perfums">Perfums</Link></li>
+                        {/* <li><Link class="dropdown-item" to="/perfums">Perfums</Link></li> */}
                     </ul>
                 </li>
             </ul>

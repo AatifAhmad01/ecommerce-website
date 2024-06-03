@@ -56,7 +56,7 @@ export default function Cart() {
             {
                 // selector.items?.length ? <OrderSummery subtotal={subtotal} onClickAction={checkOutHandler} actionText={"Checkout"} showAction={true}/> : null
 
-            <div className="productDetailsSection" style={{height: "500px"}}>
+                selector.items?.length ? <div className="productDetailsSection" style={{height: "500px"}}>
                     <div className="detailContainer">
                         <div className="space-between">
                             <div className="cont-1">
@@ -78,7 +78,7 @@ export default function Cart() {
                     </div>
         
                 <ButtonFill onClick={checkOutHandler}>{"Checkout"}</ButtonFill>
-            </div>
+            </div> : null
             }
         </div>
     </>
