@@ -42,7 +42,7 @@ function Navbar ()
                 </a>
                 <ul class="dropdown-menu ">
                         <li><Link class="dropdown-item" to="/skinprimer">Skin Primer</Link></li>
-                        <li><Link class="dropdown-item" to="/foundation">Foundation</Link></li>
+                        <li><Link class="dropdown-item" to="/foundations">Foundation</Link></li>
                         <li><Link class="dropdown-item" to="/facepowder">Face Powder</Link></li>
                         <li><Link class="dropdown-item" to="/mascara&eyeliner">Mascara & Eye Liner</Link></li>
                         <li><Link class="dropdown-item" to="/blushan&highlighters">Blushan & Highlighter</Link></li>

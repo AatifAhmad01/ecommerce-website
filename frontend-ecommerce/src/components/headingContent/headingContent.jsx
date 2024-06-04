@@ -11,11 +11,7 @@ export function HeadingContent (){
     const location = useLocation();
 
     //Disable hero in some routes
-    const hideHero = 
-        location.pathname == "/productdetail" || 
-        location.pathname == "/cart" || 
-        location.pathname == "/checkout" || 
-        location.pathname == "/orderPage" 
+    const hideHero = location.pathname == "/"
 
     return <>
     <div className="heading-content-container">
@@ -23,7 +19,7 @@ export function HeadingContent (){
         <Navbar/>
         <SocialMediaLinks/>
     </div>
-        { hideHero ?  null : <Hero/>}
+        { hideHero ?  <Hero/> : null}
     </>
     
 }

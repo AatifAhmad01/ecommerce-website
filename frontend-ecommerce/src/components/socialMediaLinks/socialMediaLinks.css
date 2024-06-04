@@ -1,11 +1,11 @@
 .socialMediaLinksContainer
 {
     position: fixed;
-    top: 50%;
+    top: 55%;
     right: 0;
 
-    width: 50px;
-    height: 180px;
+    width: 45px;
+    height: 160px;
     padding: 10px;
     border-radius: 20px 0 0 20px;
     background-color: white;
