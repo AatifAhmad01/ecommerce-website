@@ -5,6 +5,7 @@ import Footer from "../../components/footer/footer";
 import CategoriesCollection from "../../components/categoryCollection/categoriesCollection";
 import { fetchAllProducts } from "../../http/products.http";
 import LoadingPage from "../../components/LoadingPage/loadingPage";
+import Banner from "../../components/banner/banner";
 
 export default function Home()
 {
@@ -32,8 +33,15 @@ export default function Home()
     return(
         <>
             <div className="wrapper">
-            <CategoriesCollection/>
-            <ProductSection category="New Arival" products={allProducts}/>
+                <CategoriesCollection/>
+                <ProductSection category="New Arival" products={allProducts}/>
+                <Banner imageUrl={"images/premiumBanners/banner1.png"}/>
+                <Banner imageUrl={"images/premiumBanners/banner2.png"}/>
+                <ProductSection category="Laik Me" products={allProducts}/>
+                <Banner imageUrl={"images/banners/pic3.png"}/>
+                <Banner imageUrl={"images/banners/pic5.png"}/>
+                <ProductSection category="Makup" products={allProducts}/>
+
             </div>
             <Footer/>
             { fetchingData ? <LoadingPage>Loading</LoadingPage> : null }

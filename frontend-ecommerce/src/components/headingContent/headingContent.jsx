@@ -4,6 +4,7 @@ import Navbar from "../navbar/navbar";
 import Hero from "../hero/hero";
 import AnnouncementBar from "../announcementBar/announcementBar";
 import LoadingPage from "../transparentLoading/transparentLoading";
+import { SocialMediaLinks } from "../socialMediaLinks/socialMediaLinks";
 
 export function HeadingContent (){
 
@@ -18,9 +19,9 @@ export function HeadingContent (){
 
     return <>
     <div className="heading-content-container">
-
         <AnnouncementBar>{"Free delivery all over Pakistan."}</AnnouncementBar>
         <Navbar/>
+        <SocialMediaLinks/>
     </div>
         { hideHero ?  null : <Hero/>}
     </>
