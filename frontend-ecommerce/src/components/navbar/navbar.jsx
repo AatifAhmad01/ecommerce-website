@@ -50,7 +50,7 @@ function Navbar ()
                         <li><Link class="dropdown-item" to="/makupfixer">Makup Fixer</Link></li>
                         <li><Link class="dropdown-item" to="/hairproducts">Hair Products</Link></li>
                         <li><Link class="dropdown-item" to="/makupalltools">Makup All Tools</Link></li>
-                        {/* <li><Link class="dropdown-item" to="/perfums">Perfums</Link></li> */}
+                        <li><Link class="dropdown-item" to="/eyeshad">Eyeshad</Link></li>
                     </ul>
                 </li>
             </ul>

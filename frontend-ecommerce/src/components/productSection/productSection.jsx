@@ -63,7 +63,7 @@ export default function ProductSection({category, products})
         />
 
         <div className="products-container">
-            <h1 className="products-heading">{category}</h1>
+            <h2 className="products-heading">{category}</h2>
             <div className="product-list">
                 {
                     products.map(item => <ProductItem product={item} key={item.id} onClickAddCart={addCartHandler}/> )
