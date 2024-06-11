@@ -31,7 +31,7 @@ export default function CategoriesCollection()
                 <CategoryItem  imageUrl={"/images/categories/Mascara.jpeg"} 
                     onClick={() => onCategoryClickHandler("/mascara&eyeliner")} text={"Mascara & Eye Liner"}/>
 
-                <CategoryItem  imageUrl={"/images/categories/Blushan.png"} 
+                <CategoryItem  imageUrl={"/images/categories/Blushan.webp"} 
                     onClick={() => onCategoryClickHandler("/blushan&highlighters")} text={"Blushan & Highlighter"}/>
 
                 <CategoryItem  imageUrl={"/images/categories/Lipstick.png"} 

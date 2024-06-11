@@ -35,11 +35,11 @@ export default function Home()
             <div className="wrapper">
                 <CategoriesCollection/>
                 <ProductSection category="New Arival" products={allProducts}/>
-                <Banner imageUrl={"images/premiumBanners/banner1.png"}/>
-                <Banner imageUrl={"images/premiumBanners/banner2.png"}/>
+                <Banner imageUrl={"images/premiumBanners/Huda.webp"}/>
+                <Banner imageUrl={"images/premiumBanners/Lake_Facepowders.webp"}/>
                 <ProductSection category="Laik Me" products={allProducts}/>
-                <Banner imageUrl={"images/banners/pic3.png"}/>
-                <Banner imageUrl={"images/banners/pic5.png"}/>
+                <Banner imageUrl={"images/premiumBanners/Lakme_Foundation.webp"}/>
+                <Banner imageUrl={"images/premiumBanners/Anjilian.webp"}/>
                 <ProductSection category="Makup" products={allProducts}/>
 
             </div>

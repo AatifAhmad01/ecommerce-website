@@ -5,5 +5,5 @@
 
 
 //Live server
-export const SERVER_URL = "http://seenbeauty.pk/api/v1"
-export const SERVER_SHORTURL = "http://seenbeauty.pk"
+export const SERVER_URL = "https://seenbeauty.pk/api/v1"
+export const SERVER_SHORTURL = "https://seenbeauty.pk"
