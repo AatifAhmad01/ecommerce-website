@@ -1,0 +1,23 @@
+.primary-outline-button
+{
+    height: 40px;
+    max-width: 100%;
+    flex: 1;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: white;
+    border: #9A1663 solid 1px;
+    color: #9A1663;
+}
+
+.add-cart-button:active
+{
+    background-color: #640e40;
+    color: white;
+}
+.buttons-container
+{
+    display: flex;
+    align-items: center;
+}

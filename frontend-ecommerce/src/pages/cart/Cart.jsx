@@ -42,7 +42,6 @@ export default function Cart() {
 
     useEffect(() => {
         calculateTotal();
-
     }, [selector])
 
     return<>

@@ -11,7 +11,7 @@ import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';  
 import CloseIcon from '@mui/icons-material/Close';
 import { fetchProductsByCategory } from "../../http/products.http.js";
-import ButtonOutline from "../../components/buttonOutline/buttonOutline.jsx";
+import PrimaryOutline from "../../components/primaryButtonOutline/primaryOutline.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function ProductDetail() {
@@ -86,14 +86,15 @@ export default function ProductDetail() {
     const buyNowHandler = () => {
 
         localStorage.setItem("isBuying", true)
-
-        navigation("/checkout", { state: { item: {
+        localStorage.setItem("buyingItem", JSON.stringify({
             id: productDetails.id,
             name: productDetails.name,
             image_url: productDetails.image_url[0],
-            quantity: quantity,
+            quantity: 1,
             price: productDetails.price,
-        }}})
+        }))
+
+        navigation("/checkout")
     }
 
     const onImageChangeHandler = (imageIndex)=> {
@@ -183,8 +184,8 @@ export default function ProductDetail() {
                     </div>
                 </div>
 
-                <ButtonFill onClick={addCartHandler}>{"Add To Cart"}</ButtonFill>
-                <ButtonOutline onClick={buyNowHandler}>{"Buy Now"}</ButtonOutline>
+                <PrimaryOutline onClick={addCartHandler}>{"Add To Cart"}</PrimaryOutline>
+                <ButtonFill onClick={buyNowHandler}>{"Buy Now"}</ButtonFill>
             </div>
         </div>
         <ProductSection category={productDetails.category} products={allProducts}/>

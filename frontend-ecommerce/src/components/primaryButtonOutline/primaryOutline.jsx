@@ -1,15 +1,15 @@
 import React from "react";
-import './addToCartBtn.css'
+import './primaryOutline.css'
 import 'ldrs/ring'
 
 import { ring2 } from 'ldrs'
 ring2.register()
 
 
-export default function ButtonFill({children, onClick, loading = false})
+export default function PrimaryOutline({children, onClick, loading = false})
 {
     return  <div className="buttons-container">
-            <button className="add-cart-button" onClick={onClick}>{ loading ? <l-ring-2
+            <button className="primary-outline-button" onClick={onClick}>{ loading ? <l-ring-2
                 size="30"
                 stroke="5"
                 stroke-length="0.25"

@@ -5,17 +5,10 @@
     flex: 1;
     margin: 10px;
     border: #9A1663 solid 1px;
-    /* background-color: #9A1663; */
     background-color: #9a166300;
-    
     border-radius: 20px;
-
     cursor: pointer;
-
     color: #9A1663;
-    /* border: none; */
-    /* background-color: rgb(161, 0, 0); */
-    /* background-color: #272727; */
 }
 
 .buttonOutline:hover

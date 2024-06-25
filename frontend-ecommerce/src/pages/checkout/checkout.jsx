@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './checkout.css'
 import { TextField, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -29,14 +29,16 @@ export default function Checkout()
     let cartItems = { items: []};
     if(localStorage.getItem("isBuying") == "true")
     {
-        const location = useLocation();
-        cartItems.items.push(location.state.item);
+        cartItems.items.push(JSON.parse(localStorage.getItem("buyingItem")))
     }
     else
     {
         cartItems = useSelector((state) => state.cart)
     }
 
+    const subTotal = cartItems.items.reduce((acc, curr) => {
+        return acc + curr.price;
+    }, 0)
 
     const onTextChangeHanlder = (e) => {
 
@@ -97,12 +99,9 @@ export default function Checkout()
         }
         catch(error)
         {
-            console.log("Error " + error)
             setIsLoading(false)
         }
-
     }
-
 
     return <div className="cartDetailsContainer">
     <div className="cartItemsContainer">
@@ -159,9 +158,9 @@ export default function Checkout()
     }
     </div>
 
-    <OrderSummery subtotal={314} actionText={"Place Order"} onClickAction={onPlacOrdereHandler} orderItems={cartItems.items}></OrderSummery>
+    <OrderSummery subtotal={subTotal} actionText={"Place Order"} onClickAction={onPlacOrdereHandler} orderItems={cartItems.items}></OrderSummery>
 
-    { isLoading? <TransparentLoading>Placing Order</TransparentLoading> : null }
+    { isLoading ? <TransparentLoading>Placing Order</TransparentLoading> : null }
 </div>
 
 }
