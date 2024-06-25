@@ -6,6 +6,7 @@ import OrderSummery from "../../components/orderSummery/orderSummery";
 import { placeOrder } from "../../http/orders.http";
 import { useSelector } from "react-redux";
 import TransparentLoading from "../../components/transparentLoading/transparentLoading";
+import { useLocation } from "react-router-dom";
 
 
 export default function Checkout()
@@ -25,7 +26,17 @@ export default function Checkout()
         extraPhone: { isValid: true, value: 0}
     })
 
-    const cartItems = useSelector(state => state.cart)
+    let cartItems = { items: []};
+    if(localStorage.getItem("isBuying") == "true")
+    {
+        const location = useLocation();
+        cartItems.items.push(location.state.item);
+    }
+    else
+    {
+        cartItems = useSelector((state) => state.cart)
+    }
+
 
     const onTextChangeHanlder = (e) => {
 

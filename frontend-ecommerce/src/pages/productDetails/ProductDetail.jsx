@@ -7,11 +7,12 @@ import ButtonFill from "../../components/buttonFill/addToCartBtn.jsx";
 import MoreImageItem from "../../components/productMoreImageItem/moreImageItem.jsx";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/slices/cartSlice.js";
-
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';  
 import CloseIcon from '@mui/icons-material/Close';
 import { fetchProductsByCategory } from "../../http/products.http.js";
+import ButtonOutline from "../../components/buttonOutline/buttonOutline.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductDetail() {
 
@@ -26,6 +27,12 @@ export default function ProductDetail() {
     const location = useLocation();
 
     const productDetails = location.state.product;
+
+    const navigation = useNavigate();
+
+
+
+
 
 
     const addQuantityHandler = ()=> {
@@ -45,14 +52,22 @@ export default function ProductDetail() {
     }
 
     const enterQuantityAmount = (e) => {
-        if(isNaN(e.target.value) || e.target.value == "0") return;
 
-        if(e.target.value.length < 1) {
-            setQuantity("");
-            return;
-        }
+        if(e.target.value.includes(".")) return;
 
-        setQuantity(parseInt(e.target.value))
+        const enteredQuantity = e.target.value;
+        setQuantity(enteredQuantity)
+    }
+    const enterQuantityEnd = (e) => {
+
+        let enteredQuantity = parseInt(e.target.value);
+        
+        if(enteredQuantity == NaN || !enteredQuantity) return setQuantity(1);
+
+        enteredQuantity = Math.round(enteredQuantity);
+
+        if(enteredQuantity < 1) enteredQuantity = 1;
+        setQuantity(enteredQuantity);
     }
     const addCartHandler = () => {
 
@@ -66,6 +81,19 @@ export default function ProductDetail() {
 
         // navigation("/cart");
         setOpen(true);
+    }
+
+    const buyNowHandler = () => {
+
+        localStorage.setItem("isBuying", true)
+
+        navigation("/checkout", { state: { item: {
+            id: productDetails.id,
+            name: productDetails.name,
+            image_url: productDetails.image_url[0],
+            quantity: quantity,
+            price: productDetails.price,
+        }}})
     }
 
     const onImageChangeHandler = (imageIndex)=> {
@@ -143,16 +171,20 @@ export default function ProductDetail() {
                         <p className="price m-3">Price: {productDetails.price}</p>
                     </div>
                     <div className="priceContainer">
-                        <p className="price">Price: {productDetails.price}</p>
+                        <p className="price">Subtotal: {productDetails.price * quantity}</p>
                         <div className="quantityContainer">
                             <button className="quantityBtn" onClick={substractQuantityHandler}>-</button>
-                            <input  name="" id="" value={quantity} className="quantityInput" onChange={enterQuantityAmount}/>
+                            <input  name="" id="" className="quantityInput" value={quantity} type="number"
+                                onChange={enterQuantityAmount}
+                                onBlur={enterQuantityEnd}/>
+
                             <button className="quantityBtn" onClick={addQuantityHandler}>+</button>
                         </div>
                     </div>
                 </div>
 
                 <ButtonFill onClick={addCartHandler}>{"Add To Cart"}</ButtonFill>
+                <ButtonOutline onClick={buyNowHandler}>{"Buy Now"}</ButtonOutline>
             </div>
         </div>
         <ProductSection category={productDetails.category} products={allProducts}/>

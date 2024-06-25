@@ -19,6 +19,8 @@ export default function Cart() {
     const dispatch = useDispatch();
     
     const checkOutHandler = () => {
+
+        localStorage.setItem("isBuying", false)
         navigate("/checkout", { state: null })
     }
 
