@@ -48,15 +48,14 @@ export default function Checkout()
     }
 
     const validateCustomerForm = () => {
-        const { firstname, address, city, postalcode, phone  } = customerDetails;
+        const { firstname, address, city, phone  } = customerDetails;
 
-        if(!firstname.value || !address.value || !city.value || !postalcode.value || !phone.value)
+        if(!firstname.value || !address.value || !city.value || !phone.value)
         {
             setCustomerDetails({...customerDetails, 
                 ["firstname"]: { isValid: !!firstname.value, value: firstname.value},
                 ["address"]: { isValid: !!address.value, value: address.value},
                 ["city"]: { isValid: !!city.value, value: city.value},
-                ["postalcode"]: { isValid: !!postalcode.value, value: postalcode.value},
                 ["phone"]: { isValid: !!phone.value, value: phone.value},
             })
 
@@ -69,7 +68,7 @@ export default function Checkout()
         let orderItems = []
 
         cartItems.items.forEach(item => {
-            orderItems.push({product_id: item.id, quantity: item.quantity})
+            orderItems.push({product_id: item.id, quantity: item.quantity, color: item.color})
         })
 
         try
@@ -147,7 +146,7 @@ export default function Checkout()
                     <TextField error={!customerDetails.city.isValid} fullWidth id="demo-helper-text-aligned" label="City" name="city"
                         onChange={onTextChangeHanlder}/>
 
-                    <TextField error={!customerDetails.postalcode.isValid} fullWidth id="demo-helper-text-aligned" label="Postal code" name="postalcode" type="number"
+                    <TextField fullWidth id="demo-helper-text-aligned" label="Postal code (Optional)" name="postalcode" type="number"
                         onChange={onTextChangeHanlder}/>
 
                     <TextField error={!customerDetails.phone.isValid} fullWidth id="demo-helper-text-aligned" label="Phone" name="phone" type="number"

@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ProductWraper from "../../components/pageWraper/pagewraper";
 import './productDetail.css'
 import ProductSection from "../../components/productSection/productSection";
@@ -12,26 +12,24 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { fetchProductsByCategory } from "../../http/products.http.js";
 import PrimaryOutline from "../../components/primaryButtonOutline/primaryOutline.jsx";
-import { useNavigate } from "react-router-dom";
+import VariantColor from "../../components/colorVariant/variantColor.jsx";
+import ReactImageMagnify from 'react-image-magnify';
 
 export default function ProductDetail() {
 
     const [quantity, setQuantity] = useState(1)
+    const [allProducts, setProducts] = useState([])
     const [selectedImageIndex, setImageIndex] = useState(0);
     const [open, setOpen] = useState(false);
-
-    const [allProducts, setProducts] = useState([])
+    const [colors, setColors] = useState([])
+    const [selectedColor, setSelectedColor] = useState(null)
 
     const dispatch = useDispatch();
-
     const location = useLocation();
-
-    const productDetails = location.state.product;
-
     const navigation = useNavigate();
 
 
-
+    const productDetails = location.state.product;
 
 
 
@@ -62,7 +60,7 @@ export default function ProductDetail() {
 
         let enteredQuantity = parseInt(e.target.value);
         
-        if(enteredQuantity == NaN || !enteredQuantity) return setQuantity(1);
+        if(!enteredQuantity) return setQuantity(1);
 
         enteredQuantity = Math.round(enteredQuantity);
 
@@ -77,6 +75,7 @@ export default function ProductDetail() {
             image_url: productDetails.image_url[0],
             quantity: quantity,
             price: productDetails.price,
+            color: selectedColor
         }))
 
         // navigation("/cart");
@@ -92,6 +91,7 @@ export default function ProductDetail() {
             image_url: productDetails.image_url[0],
             quantity: 1,
             price: productDetails.price,
+            color: selectedColor
         }))
 
         navigation("/checkout")
@@ -107,6 +107,10 @@ export default function ProductDetail() {
         }
         setOpen(false);
     };
+
+    const onClicVariant = (color) => {
+        setSelectedColor(color)
+    }
 
     const action = (
         <React.Fragment>
@@ -131,6 +135,13 @@ export default function ProductDetail() {
     useEffect(() => {
         window.scrollTo(0,0)
         fetchProducts();
+
+        if(productDetails.colors)
+        {
+            const colors = productDetails.colors.split(",");
+            setColors(colors)
+            setSelectedColor(colors[0])
+        }
     }, [])
     return <ProductWraper>
             <Snackbar
@@ -143,9 +154,24 @@ export default function ProductDetail() {
                 action={action}
                 key={"top" + "center"}
             />
+
         <div className="detailsContainer">
             <div className="productImageSection">
-                <img src={`https://seenbeauty.pk/${productDetails.image_url[selectedImageIndex]}`} className="productImage"></img>
+                {/* <img src={`https://seenbeauty.pk/${productDetails.image_url[selectedImageIndex]}`} className="productImage"></img> */}
+                <div className="productImage">
+                <ReactImageMagnify {...{
+                    smallImage: {
+                        alt: 'Wristwatch by Ted Baker London',
+                        src: `https://seenbeauty.pk/${productDetails.image_url[selectedImageIndex]}`,
+                        height: 400,
+                        width: 300,
+                    },
+                    largeImage: {
+                        src: `https://seenbeauty.pk/${productDetails.image_url[selectedImageIndex]}`,
+                        width: 1200,
+                        height: 1800,
+                    }}} />
+                </div>
             </div>
             <div className="moreImagesContainer">
                 {
@@ -169,8 +195,14 @@ export default function ProductDetail() {
                         <p className="m-3" style={{fontSize: "15px"}}>Product ID {productDetails.id}</p>
                         <p className="productTitle m-3">{productDetails.name}</p>
                         <p className="productDescription m-3" >{productDetails.description}</p>
+                        <div className="variants-container">
+                        {
+                            colors.map((item, index) => <VariantColor color={item} onClick={onClicVariant} selectedColor={selectedColor}/>)
+                        }
+                        </div>
                         <p className="price m-3">Price: {productDetails.price}</p>
                     </div>
+
                     <div className="priceContainer">
                         <p className="price">Subtotal: {productDetails.price * quantity}</p>
                         <div className="quantityContainer">
@@ -184,8 +216,9 @@ export default function ProductDetail() {
                     </div>
                 </div>
 
-                <PrimaryOutline onClick={addCartHandler}>{"Add To Cart"}</PrimaryOutline>
-                <ButtonFill onClick={buyNowHandler}>{"Buy Now"}</ButtonFill>
+
+                <PrimaryOutline onClick={addCartHandler} isDisabled={!productDetails.instock}>{"Add To Cart"}</PrimaryOutline>
+                <ButtonFill onClick={buyNowHandler} isDisbled={!productDetails.instock}>{"Buy Now"}</ButtonFill>
             </div>
         </div>
         <ProductSection category={productDetails.category} products={allProducts}/>

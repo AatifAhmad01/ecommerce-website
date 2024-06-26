@@ -6,10 +6,13 @@ import { ring2 } from 'ldrs'
 ring2.register()
 
 
-export default function PrimaryOutline({children, onClick, loading = false})
+export default function PrimaryOutline({children, onClick, loading = false, isDisabled})
 {
     return  <div className="buttons-container">
-            <button className="primary-outline-button" onClick={onClick}>{ loading ? <l-ring-2
+            <button className="primary-outline-button" onClick={onClick}
+                disabled={isDisabled}
+                >
+                { loading ? <l-ring-2
                 size="30"
                 stroke="5"
                 stroke-length="0.25"

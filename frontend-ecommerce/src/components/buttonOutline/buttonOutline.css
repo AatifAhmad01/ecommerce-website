@@ -11,7 +11,7 @@
     color: #9A1663;
 }
 
-.buttonOutline:hover
+/* .buttonOutline:hover
 {
     background-color: #E0144C;
     color: white;
@@ -21,9 +21,15 @@
 {
     background-color: #9A1663;
     color: white;
-}
+} */
 .buttons-container
 {
     display: flex;
     align-items: center;
+}
+
+.buttonOutline:disabled
+{
+    border: #aeaeae solid 1px;
+    color: #aeaeae;
 }

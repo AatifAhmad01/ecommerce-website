@@ -14,16 +14,22 @@
     /* border: none; */
     /* background-color: rgb(161, 0, 0); */
     background-color: #9A1663;
-;
 }
 
-.add-cart-button:active
+/* .add-cart-button:active
 {
     background-color: #640e40;
     color: white;
-}
+} */
 .buttons-container
 {
-    display: flex;
+    display: flex;  
     align-items: center;
+}
+
+.add-cart-button:disabled
+{
+    border: #aeaeae solid 1px;
+    color: #aeaeae;
+    background-color: #717171;
 }

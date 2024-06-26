@@ -11,13 +11,14 @@
     color: #9A1663;
 }
 
-.add-cart-button:active
-{
-    background-color: #640e40;
-    color: white;
-}
 .buttons-container
 {
     display: flex;
     align-items: center;
+}
+
+.primary-outline-button:disabled
+{
+    border: #aeaeae solid 1px;
+    color: #aeaeae;
 }

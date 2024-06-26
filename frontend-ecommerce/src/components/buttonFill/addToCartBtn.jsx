@@ -6,10 +6,13 @@ import { ring2 } from 'ldrs'
 ring2.register()
 
 
-export default function ButtonFill({children, onClick, loading = false})
+export default function ButtonFill({children, onClick, loading = false, isDisbled})
 {
     return  <div className="buttons-container">
-            <button className="add-cart-button" onClick={onClick}>{ loading ? <l-ring-2
+            <button className="add-cart-button" onClick={onClick}
+                disabled={isDisbled}
+                >
+                { loading ? <l-ring-2
                 size="30"
                 stroke="5"
                 stroke-length="0.25"

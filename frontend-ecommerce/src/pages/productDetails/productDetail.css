@@ -47,8 +47,9 @@
 .productDetailsSection
 {
     width: 400px;
-    max-width: 500px;
-    min-height: 500px;
+    height: 600px;
+    /* max-width: 600px;
+    min-height: 600px; */
 
     /* background-color: gray; */
     /* border: solid 2px black; */
@@ -109,6 +110,12 @@
     font-size: large;
     font-family: "Merriweather", serif;
     font-weight: 700;
+}
+
+.variants-container
+{
+    margin-left: 16px;
+    display: flex;
 }
 
 
