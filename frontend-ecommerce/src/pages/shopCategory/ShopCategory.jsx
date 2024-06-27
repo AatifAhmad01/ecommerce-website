@@ -1,10 +1,13 @@
 import React, {useState, useLayoutEffect} from "react";
+import { useLocation } from "react-router-dom";
 import ProductSection from "../../components/productSection/productSection";
 import { fetchProductsByCategory } from "../../http/products.http";
 import LoadingPage from "../../components/LoadingPage/loadingPage";
 import Banner from "../../components/banner/banner";
 
 export default function ShopCategory({category}) {
+
+    const loaction = useLocation();
 
     const [allProducts, setProducts] = useState([])
     const [fetchingData, setFitchingData] = useState(true)
@@ -18,8 +21,7 @@ export default function ShopCategory({category}) {
 
     useLayoutEffect(() => {
         fetchProducts();
-    }, [])
-
+    }, [loaction])
 
     return<>
         <div className="wrapper">
@@ -27,6 +29,5 @@ export default function ShopCategory({category}) {
             <ProductSection category={category} products={allProducts}/>
         </div>
         { fetchingData ? <LoadingPage>Loading</LoadingPage> : null }
-
     </>
 }

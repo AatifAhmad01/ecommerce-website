@@ -43,6 +43,7 @@ function App() {
               <Route path='/makupfixer' element={<ShopCategory category="Makup Fixer"/>}/>
               <Route path='/makupalltools' element={<ShopCategory category="Makup All Tools"/>}/>
               <Route path='/hairproducts' element={<ShopCategory category="Hair Products"/>}/>
+              <Route path='/nailpolish' element={<ShopCategory category="Nail Polish"/>}/>
               <Route path='/eyeshad' element={<ShopCategory category="Eyeshad"/>}/>
             </Routes>
         </BrowserRouter>

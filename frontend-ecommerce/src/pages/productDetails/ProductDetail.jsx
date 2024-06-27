@@ -132,17 +132,20 @@ export default function ProductDetail() {
         setProducts(res.data.data)
     }
 
+    useEffect(()=> {
+        fetchProducts();
+    }, [])
+
     useEffect(() => {
         window.scrollTo(0,0)
-        fetchProducts();
-
         if(productDetails.colors)
         {
             const colors = productDetails.colors.split(",");
             setColors(colors)
             setSelectedColor(colors[0])
         }
-    }, [])
+    }, [productDetails])
+
     return <ProductWraper>
             <Snackbar
                 anchorOrigin={{ vertical: 'top',

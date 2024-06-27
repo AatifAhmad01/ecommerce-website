@@ -17,7 +17,10 @@ function Navbar ()
             <span class="navbar-toggler-icon"></span>
             </button>
             {/* <a class="navbar-brand" href="#">Navbar</a> */}
-            <h1 className="logo">Seen Beauty</h1>
+            {/* <h1 className="logo">Seen Beauty</h1> */}
+            <Link to="/">
+                <img src="images/Seen_Beauty.png" className="nav-logo" alt="" />
+            </Link>
             {/* <a href="/cart"><span className="material-symbols-rounded cart-icon cart-desktop">local_mall</span></a> */}
 
             <div className="cartIconConatiner cart-desktop">
@@ -29,17 +32,15 @@ function Navbar ()
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                
 
-
-                <li class="nav-item active">
-                    <Link class="nav-link" to={"/"}>Home</Link>
-                </li>
+                <li class="nav-item active"><Link class="nav-link" to={"/"}>Home</Link></li>
 
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Categories
                 </a>
+
+
                 <ul class="dropdown-menu ">
                         <li><Link class="dropdown-item" to="/skinprimer">Skin Primer</Link></li>
                         <li><Link class="dropdown-item" to="/foundations">Foundation</Link></li>
@@ -51,8 +52,10 @@ function Navbar ()
                         <li><Link class="dropdown-item" to="/hairproducts">Hair Products</Link></li>
                         <li><Link class="dropdown-item" to="/makupalltools">Makup All Tools</Link></li>
                         <li><Link class="dropdown-item" to="/eyeshad">Eyeshad</Link></li>
+                        <li><Link class="dropdown-item" to="/nailpolish">Nail Polish</Link></li>
                     </ul>
                 </li>
+                <li class="nav-item active"><Link class="nav-link" to={"/"}>Huda Beauty</Link></li>
             </ul>
             <div className="cartIconConatiner cart-mobile">
                 <Link to="/cart" ><img src={cartIcon} alt="Cart"  className="cartIcon"/></Link>
