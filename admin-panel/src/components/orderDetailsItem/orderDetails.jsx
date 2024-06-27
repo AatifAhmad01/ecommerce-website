@@ -15,7 +15,11 @@ export default function OrderDetails({orderDetails, onDeliver, onDelete})
     const [orderPrice, setOrderPrice] = useState(0)
     const [orderedItems, setOrderedItems] = useState([])
 
-    const { address, appartment, city, extraphone, firstname, lastname, phone, postalcode } = orderDetails.customer
+    const { address, appartment, city, extraphone, firstname, lastname, phone, postalcode} = orderDetails.customer
+    const {created_at} = orderDetails
+
+    const [orderDate, setOrderDate] = useState(new Date())
+    const [orderDays, setOrderDays] = useState(new Date())
 
 
     const getOrder = async () => {
@@ -43,7 +47,11 @@ export default function OrderDetails({orderDetails, onDeliver, onDelete})
 
     useEffect(() => {
         getOrder()
+        setOrderDate(new Date(created_at))
+        // setOrderDays(new Date(new Date() - orderDate))
     }, [orderDetails])
+
+
 
     return <div className="order-details-item-container">
 
@@ -51,6 +59,9 @@ export default function OrderDetails({orderDetails, onDeliver, onDelete})
             orderedItems.map((item, index) => <OrderProductItem key={index} productDetails={item}/>)
         }
 
+
+
+        <ParagraphText label={"Date"}>{orderDate.getDate()} - {orderDate.getMonth()} - {orderDate.getFullYear()} {orderDays.getDate()}</ParagraphText>
         <ParagraphText label={"Total Order Price"}>{orderPrice}</ParagraphText>
         <ParagraphText label={"Address"}>{address}</ParagraphText>
         <ParagraphText label={"Appartment"}>{appartment}</ParagraphText>
