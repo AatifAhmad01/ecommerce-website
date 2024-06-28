@@ -10,6 +10,7 @@ export default function CategorySelect({ name, value, onUpdate, children })
         </div>
 
         <select name={name} id="category-select" value={value} onChange={onUpdate}>
+            <option value="none">None</option>
             <option value="Skin Primer">Skin Primer</option>
             <option value="Foundation">Foundation</option>
             <option value="Face Powder">Face Powder</option>
@@ -20,6 +21,7 @@ export default function CategorySelect({ name, value, onUpdate, children })
             <option value="Makup All Tools">Makup All Tools</option>
             <option value="Hair Products">Hair Products</option>
             <option value="Perfums">Perfums</option>
+            <option value="Nail Polish">Nail Polish</option>
         </select>
     </div>
     </>

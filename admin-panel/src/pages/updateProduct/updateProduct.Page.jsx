@@ -29,6 +29,7 @@ export default function UpdateProductPage()
         try
         {
             const res = await getProductById(productId, userContext.user?.accessToken)
+            console.log(res)
             setProduct(res.data.data);
         }
         catch(error)
@@ -49,7 +50,7 @@ export default function UpdateProductPage()
         {
             product ? null : <div>
 
-            <NumberInput onUpdate={onProductNameHanlder}>Enter Product Name</NumberInput>
+            <NumberInput onUpdate={onProductNameHanlder}>Enter Product ID</NumberInput>
             <br/>
             <PrimaryButton onClick={onclickFindProduct}>Find Product</PrimaryButton>
             <ResponseText text={responseText}/>

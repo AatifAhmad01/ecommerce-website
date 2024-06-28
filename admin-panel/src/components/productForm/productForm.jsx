@@ -9,6 +9,7 @@ import { postProduct, deleteProduct, updateProduct } from "../../https/product.h
 import { UserContext } from "../../contexts/UserContext";
 import ResponseText from "../responesText/responseText";
 import SecondaryButton from "../secondaryButton/secondaryButton";
+import './productForm.css'
 
 export default function ProductForm({ isEditing, product, onClose })
 {
@@ -17,17 +18,32 @@ export default function ProductForm({ isEditing, product, onClose })
     const [productDetails, setProductDetails] = useState({
         name: "",
         description: "",
-        category: "Skin Primer",
+        category: "None",
+        brand: "",
+        colors: "",
+        instock: true,
         price: 0
     })
 
     const [responseError, setResponseError] = useState("")
+    const [loading, setLoading] = useState({})
+
+    const onApiLoading = (name) => setLoading(state => ({...state, [name]: true}));
+    const onEndLoading = (name) => setLoading(state => ({...state, [name]: false}));
 
     const onTextUpdateHandler = (e) => {
-        setProductDetails({...productDetails, [e.target.name]: e.target.value})
+        const {name, value} = e.target;
+        setProductDetails({...productDetails, [name]: value})
+    }
+
+    const onInstockChange = (e) =>
+    {
+        setProductDetails({...productDetails, [e.target.name]: e.target.checked})
     }
 
     const addProductHanlder = async () => {
+        setResponseError("");
+        onApiLoading("add")
         try
         {
             const imagesInput = document.getElementById("imageInput")
@@ -37,6 +53,8 @@ export default function ProductForm({ isEditing, product, onClose })
             formData.append('name', productDetails.name)
             formData.append('description', productDetails.description)
             formData.append('category', productDetails.category)
+            formData.append('brand', productDetails.brand)
+            formData.append('colors', productDetails.colors)
             formData.append('price', productDetails.price)
 
             for(var key in imagesInput.files)
@@ -49,7 +67,10 @@ export default function ProductForm({ isEditing, product, onClose })
             setProductDetails({
                 name: "",
                 description: "",
-                category: "Skin Primer",
+                category: "None",
+                brand: "",
+                colors: "",
+                instock: true,
                 price: 0
             })
             setResponseError("Product Posted!")
@@ -69,9 +90,12 @@ export default function ProductForm({ isEditing, product, onClose })
 
             setResponseError(errorMessage)
         }
+
+        onEndLoading("add")
     }
 
     const deleteProductHanlder = async () => {
+        onApiLoading("delete")
 
         try
         {
@@ -93,10 +117,14 @@ export default function ProductForm({ isEditing, product, onClose })
 
             setResponseError(errorMessage)
         }
+
+        onEndLoading("delete")
+
     }
 
     const updateProductHanlder = async () => {
-
+        setResponseError("");
+        onApiLoading("update")
         try
         {
             // const imagesInput = document.getElementById("imageInput")
@@ -106,6 +134,9 @@ export default function ProductForm({ isEditing, product, onClose })
             formData.append('name', productDetails.name)
             formData.append('description', productDetails.description)
             formData.append('category', productDetails.category)
+            formData.append('brand', productDetails.brand)
+            formData.append('colors', productDetails.colors)
+            formData.append('instock', productDetails.instock)
             formData.append('price', productDetails.price)
 
             // for(var key in imagesInput.files)
@@ -133,6 +164,8 @@ export default function ProductForm({ isEditing, product, onClose })
 
             setResponseError(errorMessage)
         }
+
+        onEndLoading("update")
     }
 
     useEffect(() => {
@@ -146,14 +179,25 @@ export default function ProductForm({ isEditing, product, onClose })
             <TextInput name={"name"} onUpdate={onTextUpdateHandler} value={productDetails.name}>Product Name</TextInput>
             <TextAreaInput name={"description"} onUpdate={onTextUpdateHandler} value={productDetails.description}>Description</TextAreaInput>
             <CategorySelect name={"category"} onUpdate={onTextUpdateHandler} value={productDetails.category}>Category</CategorySelect>
+            <TextInput name={"brand"} onUpdate={onTextUpdateHandler} value={productDetails.brand}>Brand</TextInput>
+            <TextInput name={"colors"} onUpdate={onTextUpdateHandler} value={productDetails.colors}>Colors</TextInput>
             <NumberInput name={"price"} onUpdate={onTextUpdateHandler} value={productDetails.price}>Price</NumberInput>
+            <div className="instock-text">
+                {
+                 isEditing && <span>In Stock</span>
+                }
+                {
+                 isEditing && <input type="checkbox" name="instock" id="instock-checkbox" onChange={onInstockChange} checked={productDetails.instock}/>
+                }
+            </div>
+            <br/>
             <input type="file" src="" alt="" name="images" multiple id="imageInput"/>
             <br/>
             <br/>
             <ResponseText text={responseError}/>
         </div>
         <div className="actions-area">
-            { isEditing ? null : <PrimaryButton onClick={addProductHanlder}>Add Product</PrimaryButton>}
+            { isEditing ? null : <PrimaryButton onClick={addProductHanlder} isLoading={loading.add}>Add Product</PrimaryButton>}
             { isEditing ? <PrimaryButton onClick={updateProductHanlder} >Update Product</PrimaryButton> : null }
             { isEditing ? <DangerButton onClick={deleteProductHanlder} >Delete Product</DangerButton> : null }
             { isEditing ? <SecondaryButton onClick={onClose} >Close</SecondaryButton> : null }

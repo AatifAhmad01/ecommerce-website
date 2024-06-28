@@ -19,7 +19,6 @@ export default function OrderDetails({orderDetails, onDeliver, onDelete})
     const {created_at} = orderDetails
 
     const [orderDate, setOrderDate] = useState(new Date())
-    const [orderDays, setOrderDays] = useState(new Date())
 
 
     const getOrder = async () => {
@@ -48,7 +47,6 @@ export default function OrderDetails({orderDetails, onDeliver, onDelete})
     useEffect(() => {
         getOrder()
         setOrderDate(new Date(created_at))
-        // setOrderDays(new Date(new Date() - orderDate))
     }, [orderDetails])
 
 
@@ -61,7 +59,7 @@ export default function OrderDetails({orderDetails, onDeliver, onDelete})
 
 
 
-        <ParagraphText label={"Date"}>{orderDate.getDate()} - {orderDate.getMonth()} - {orderDate.getFullYear()} {orderDays.getDate()}</ParagraphText>
+        <ParagraphText label={"Date"}>{orderDate.getDate()} - {orderDate.getMonth()} - {orderDate.getFullYear()}</ParagraphText>
         <ParagraphText label={"Total Order Price"}>{orderPrice}</ParagraphText>
         <ParagraphText label={"Address"}>{address}</ParagraphText>
         <ParagraphText label={"Appartment"}>{appartment}</ParagraphText>

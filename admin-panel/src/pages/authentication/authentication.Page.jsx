@@ -20,7 +20,6 @@ export default function AuthenticationPage()
         {
             setRequest(true)
             const loginRes = await userLogin(userValues.username, userValues.password)
-            console.log(loginRes)
             userContext.onLogin(loginRes.data.data)
             setRequest(false)
 
