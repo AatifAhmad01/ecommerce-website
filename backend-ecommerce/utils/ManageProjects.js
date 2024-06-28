@@ -14,7 +14,10 @@ const ConvertProductsToArray = (fetchedProducts) => {
                 name: product.name,
                 description: product.description,
                 category: product.category,
+                brand: product.brand,
                 price: product.price,
+                colors: product.colors,
+                instock: product.instock,
                 created_at: product.created_at,
                 image_url: [product.image_url]
             }

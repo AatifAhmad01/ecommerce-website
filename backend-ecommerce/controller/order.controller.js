@@ -62,12 +62,12 @@ const postOrder = asyncHandler(async (req, res) => {
 
         const orderId = orderResult.insertId;
 
-        let orderItemsQuery = `INSERT INTO order_items (product_id, quantity, order_id) VALUES `
+        let orderItemsQuery = `INSERT INTO order_items (product_id, quantity, order_id, color) VALUES `
 
         let itemValue = []
 
         items.forEach(item => {
-            itemValue.push(`("${item.product_id}", "${item.quantity}", "${orderId}")`)
+            itemValue.push(`("${item.product_id}", "${item.quantity}", "${orderId}", "${item.color}")`)
         });
 
         itemValue.join(", ")

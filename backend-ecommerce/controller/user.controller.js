@@ -15,7 +15,6 @@ const loginUser = asyncHandler(async (req, res) => {
         }
 
         const [userResult] = await db.execute("SELECT * FROM users WHERE username=?", [username]);
-        console.log(userResult)
 
         if (!userResult.length) {
             return res.status(400).json(new ApiError(400, "Invalid username"));

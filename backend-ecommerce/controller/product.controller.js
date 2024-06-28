@@ -8,6 +8,8 @@ const { ConvertProductsToArray } = require("../utils/ManageProjects.js");
 
 const allProducts = asyncHandler(async (req, res) => {
 
+    const { random } = req.query
+
     const query = `
         SELECT *
         FROM products p
@@ -19,6 +21,21 @@ const allProducts = asyncHandler(async (req, res) => {
 
         const products = ConvertProductsToArray(productsResult)
 
+        if (random == "true") {
+
+            let minProduct = 0;
+
+            while (minProduct < products.length) {
+                const randomI = Math.floor((Math.random() * products.length - minProduct) + minProduct)
+
+                const tempProduct = products[minProduct]
+                products[minProduct] = products[randomI]
+                products[randomI] = tempProduct
+
+                minProduct++;
+            }
+
+        }
         res.status(200).json(new ApiResponse(200, products, "Products fetched successfully!"))
     }
     catch (error) {
@@ -30,7 +47,7 @@ const getProduct = asyncHandler(async (req, res) => {
 
     const productId = req.params.productId;
 
-    if (!productId) throw new ApiError(401, "Invalid product id");
+    if (!productId) throw new ApiError(400, "Invalid product id");
 
     const query = `
         SELECT *
@@ -86,6 +103,7 @@ const getProductByName = asyncHandler(async (req, res) => {
 const getProductByCategory = asyncHandler(async (req, res) => {
 
     const catergory = req.params.category
+    const { random } = req.query
 
     if (!catergory) throw new ApiError(401, "Invalid product cetegory");
 
@@ -100,7 +118,22 @@ const getProductByCategory = asyncHandler(async (req, res) => {
 
         const [productResult] = await db.execute(query, [catergory])
 
-        const products = ConvertProductsToArray(productResult)
+        let products = ConvertProductsToArray(productResult)
+
+        if (random == "true") {
+
+            let minProduct = 0;
+
+            while (minProduct < products.length) {
+                const randomI = Math.floor((Math.random() * products.length - minProduct) + minProduct)
+
+                const tempProduct = products[minProduct]
+                products[minProduct] = products[randomI]
+                products[randomI] = tempProduct
+
+                minProduct++;
+            }
+        }
 
         res.status(200).json(new ApiResponse(200, products, "Product fetched successfully"))
     }
@@ -111,20 +144,20 @@ const getProductByCategory = asyncHandler(async (req, res) => {
 
 const addProduct = asyncHandler(async (req, res) => {
 
-    const { name, description, category, price } = req.body;
+    const { name, description, category, brand, price, colors } = req.body;
     const images = req.files
 
     if (!name || !description || !category || !price || !images.length) {
         throw new ApiError(400, "All Fields are required");
     }
 
-    const productQuery = `INSERT INTO products (name, description, category, price) VALUES (?,?,?,?)`
+    const productQuery = `INSERT INTO products (name, description, category, brand, price, colors) VALUES (?,?,?,?,?,?)`
 
     try {
         const conn = await db.getConnection();
         await conn.beginTransaction();
 
-        const [productResult] = await conn.execute(productQuery, [name, description, category, price])
+        const [productResult] = await conn.execute(productQuery, [name, description, category, brand, price, colors])
 
         const addedProductId = productResult.insertId
 
@@ -152,6 +185,7 @@ const addProduct = asyncHandler(async (req, res) => {
                 description,
                 category,
                 price,
+                colors
             },
             "Product Added Successfully"
         ))
@@ -164,22 +198,16 @@ const addProduct = asyncHandler(async (req, res) => {
 const updateProduct = asyncHandler(async (req, res) => {
 
     const productId = req.params.productId;
-    const { name, description, category, price } = req.body;
+    const { name, description, category, brand, colors, price, instock = true } = req.body;
     const images = req.files
 
-    if (!name || !description || !category || !price) {
-        throw new ApiError(401, "All Fields are required");
-    }
-
-    const productQuery = `UPDATE products SET name = ?, description = ?, category = ?, price = ? WHERE id = ?`
+    const productQuery = `UPDATE products SET name = ?, description = ?, category = ?, brand = ?, colors = ?, price = ?, instock = ? WHERE id = ?`
 
     try {
-        const conn = await db.getConnection();
-        await conn.beginTransaction();
+        // const conn = await db.getConnection();
+        // await conn.beginTransaction();
 
-        const [productResult] = await conn.execute(productQuery, [name, description, category, price, productId])
-
-        const addedProductId = productResult.insertId
+        await db.execute(productQuery, [name, description, category, brand, colors, price, instock, productId])
 
         // let imagesQuery = `INSERT INTO product_images (product_id, image_url) VALUES `;
 
@@ -195,22 +223,13 @@ const updateProduct = asyncHandler(async (req, res) => {
 
         // await conn.execute(imagesQuery)
 
-        await conn.commit();
-        conn.release();
+        // await conn.commit();
+        // conn.release();
 
-        res.status(200).json(new ApiResponse(200,
-            {
-                id: addedProductId,
-                name,
-                description,
-                category,
-                price,
-            },
-            "Product Added Successfully"
-        ))
+        res.status(200).json(new ApiResponse(200, {}, "Product Updated Successfully"))
     }
     catch (error) {
-        throw new ApiError(401, error?.message || "Something went wronge")
+        throw new ApiError(500, error?.message || "Something went wronge")
     }
 })
 
