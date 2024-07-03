@@ -9,19 +9,15 @@ function Navbar ()
 
     const cartSelector = useSelector(state => state.cart)
 
-
     return(
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            {/* <a class="navbar-brand" href="#">Navbar</a> */}
-            {/* <h1 className="logo">Seen Beauty</h1> */}
             <Link to="/">
                 <img src="images/Seen_Beauty.png" className="nav-logo" alt="" />
             </Link>
-            {/* <a href="/cart"><span className="material-symbols-rounded cart-icon cart-desktop">local_mall</span></a> */}
 
             <div className="cartIconConatiner cart-desktop">
                 <Link to="/cart"><img src={cartIcon} alt="Cart"  className="cartIcon"/></Link>
