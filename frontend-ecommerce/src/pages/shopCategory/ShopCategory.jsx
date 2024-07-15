@@ -25,7 +25,7 @@ export default function ShopCategory({category}) {
 
     return<>
         <div className="wrapper">
-            <Banner imageUrl={`images/banners/${category}.png`}/>
+            <Banner imageUrl={`images/banners/${category}.webp`}/>
             <ProductSection category={category} products={allProducts}/>
         </div>
         { fetchingData ? <LoadingPage>Loading</LoadingPage> : null }
