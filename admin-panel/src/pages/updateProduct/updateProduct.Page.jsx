@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import TextInput from '../../components/textInput/textInput';
 import PrimaryButton from '../../components/primaryButton/primaryButton';
 import PageWrapper from '../../components/pageWrapper/pageWrapper';
 import ProductForm from '../../components/productForm/productForm';
@@ -44,9 +43,7 @@ export default function UpdateProductPage()
         setResponseText(null)
     }
 
-
     return <PageWrapper>
-
         {
             product ? null : <div>
 

@@ -1,8 +1,8 @@
 .order-product-item-container
 {
-    min-width: 500px;
     margin-bottom: 20px;
     display: flex;
+    justify-content: space-around;
     align-items: center;
     padding: 20px;
     background-color: rgb(244, 242, 242);
@@ -15,12 +15,12 @@
 
 .order-product-item-name
 {
-    width: 400px;
+    /* width: 400px; */
 }
 
 .order-product-item-quantity
 {
-    width: 50px;
+    /* width: 50px; */
 }
 
 .order-product-item-checkbox

@@ -1,17 +1,33 @@
 .current-orders-page-container
 {
+    flex: 1;
     display: flex;
     height: 90vh;
+    background-color: 'blue';
 }
 
 .current-orders-container
 {
     overflow: auto;
+    width: 480px;
 }
 
 .selected-order-details-container
 {
-    margin-left: 50px;
     flex: 1;
+    margin-left: 50px;
     overflow: auto;
+}
+
+.orderSearchLabel
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#orderSearch
+{
+    padding: 10px;
+    border-radius: 10px;
+    border: solid black 1px;
+    margin: 10px;
 }

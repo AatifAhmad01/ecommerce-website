@@ -4,8 +4,6 @@ import { SERVER_SHORTURL } from "../../contants/constants";
 
 export default function OrderProductItem({productDetails}) 
 {
-    // console.log(productDetails)
-
     return <div className="order-product-item-container">
         <img className="order-product-item-image" src={`${SERVER_SHORTURL}/${productDetails?.image_url[0]}`} alt="" />
         {/* <h3 className="order-product-item-name">{productDetails?.image_url[0]}</h3> */}

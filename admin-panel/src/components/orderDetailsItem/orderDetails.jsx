@@ -50,14 +50,11 @@ export default function OrderDetails({orderDetails, onDeliver, onDelete})
     }, [orderDetails])
 
 
-
     return <div className="order-details-item-container">
 
         {
             orderedItems.map((item, index) => <OrderProductItem key={index} productDetails={item}/>)
         }
-
-
 
         <ParagraphText label={"Date"}>{orderDate.getDate()} - {orderDate.getMonth()} - {orderDate.getFullYear()}</ParagraphText>
         <ParagraphText label={"Total Order Price"}>{orderPrice}</ParagraphText>

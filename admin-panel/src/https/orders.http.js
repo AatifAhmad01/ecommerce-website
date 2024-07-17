@@ -49,8 +49,6 @@ const deliverOrder = async (orderId, accesssToken) => {
 
 const deleteOrder = async (orderId, accesssToken) => {
 
-    console.log(accesssToken)
-
     const res = await axios.delete(`${SERVER_URL}/orders/${orderId}`, {
         headers: {
             "authorization": accesssToken

@@ -12,6 +12,7 @@ export default function CompletedOrdersPage()
 
     const [selectedOrder, setSelectedOrder] = useState(null)
     const [activeOrders, setActiveOrders] = useState([])
+    const [tempActiveOrders, setTempActiveOrder] = useState([])
 
     const selectOrderHanlder = (orderDetails) => {
         setSelectedOrder(orderDetails)
@@ -20,19 +21,34 @@ export default function CompletedOrdersPage()
     const getActiveOrders = async () => {
         const res = await getCompletedOrders(userContext.user?.accessToken)
         setActiveOrders(res.data.data)
+        setTempActiveOrder(res.data.data)
     }
 
     const onDeleteOrderHanlder = async (orderId) => {
-        const res = await deleteOrder(orderId, userContext.user?.accessToken)
-        const updatedOrers = activeOrders.filter(order => order.id != orderId)
+        await deleteOrder(orderId, userContext.user?.accessToken)
+        const updatedOrers = tempActiveOrders.filter(order => order.id != orderId)
         setActiveOrders([...updatedOrers])
+        setTempActiveOrder([...updatedOrers])
         setSelectedOrder(null)
     }
 
-    const onDeletedDeliveredOrders = async () => {
+    const onDeleteAllOrders = async () => {
         await deleteAllDeliveredOrders(userContext.user?.accessToken)
         setActiveOrders([])
         setSelectedOrder(null)
+    }
+
+    const searchOrderHanlder = (e) => {
+        const orderId = e.target.value
+
+        if(!orderId) 
+        {
+            setActiveOrders(tempActiveOrders);
+            return;
+        }
+
+        const updatedOrers = tempActiveOrders.filter(order => order.id == orderId)
+        setActiveOrders(updatedOrers);
     }
 
     useEffect(() => {
@@ -40,18 +56,20 @@ export default function CompletedOrdersPage()
     }, [])
 
     return <PageWrapper>
-    <div className="current-orders-page-container">
-        <div className="current-orders-container">
+        <label htmlFor="orderSearch" className='orderSearchLabel'>Search Order</label>
+        <input type="search" name="searchOrder" id="orderSearch" placeholder='Enter Order Id' onChange={searchOrderHanlder}/>
+        <div className="current-orders-page-container">
+            <div className="current-orders-container">
 
-            {
-                activeOrders.map(order => <CurrentOrderItem key={order.id} onClick={selectOrderHanlder} orderDetails={order}/>)
-            }
+                {
+                    activeOrders.map(order => <CurrentOrderItem key={order.id} onClick={selectOrderHanlder} orderDetails={order}/>)
+                }
 
+            </div>
+            <div className="selected-order-details-container">
+                {selectedOrder ? <OrderDetails orderDetails={selectedOrder} onDelete={onDeleteOrderHanlder}/> : null}
+            </div>
         </div>
-        <div className="selected-order-details-container">
-            {selectedOrder ? <OrderDetails orderDetails={selectedOrder} onDelete={onDeleteOrderHanlder}/> : null}
-        </div>
-    </div>
-    <DangerButton onClick={onDeletedDeliveredOrders}>Delete All</DangerButton>
+        <DangerButton onClick={onDeleteAllOrders}>Delete All</DangerButton>
 </PageWrapper>
 }
