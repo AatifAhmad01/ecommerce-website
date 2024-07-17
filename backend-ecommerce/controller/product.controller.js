@@ -8,16 +8,22 @@ const { ConvertProductsToArray } = require("../utils/ManageProjects.js");
 
 const allProducts = asyncHandler(async (req, res) => {
 
-    const { random } = req.query
+    const { random, page = 1, pageSize = 20 } = req.query
+
+    const offset = (page - 1) * pageSize;
 
     const query = `
         SELECT *
-        FROM products p
+        FROM (  SELECT * 
+                FROM products 
+                LIMIT ? 
+                OFFSET ?) p
+
         LEFT JOIN product_images pi ON p.id = pi.product_id
     `;
 
     try {
-        const [productsResult] = await db.query(query)
+        const [productsResult] = await db.execute(query, [pageSize, offset])
 
         const products = ConvertProductsToArray(productsResult)
 
@@ -99,11 +105,10 @@ const getProductByName = asyncHandler(async (req, res) => {
     }
 })
 
-
 const getProductByCategory = asyncHandler(async (req, res) => {
 
     const catergory = req.params.category
-    const { random } = req.query
+    const { random, size } = req.query // size is max items per category
 
     if (!catergory) throw new ApiError(401, "Invalid product cetegory");
 
@@ -114,9 +119,40 @@ const getProductByCategory = asyncHandler(async (req, res) => {
         WHERE p.category = ?
     `;
 
+    const maxProductQuery = `
+        WITH RankedProducts AS (
+            SELECT 
+                *,
+                ROW_NUMBER() OVER (PARTITION BY category) as rn
+            FROM 
+                products
+            WHERE 
+                category != 'None'
+        )
+        SELECT 
+            *
+        FROM 
+            RankedProducts p
+        LEFT JOIN 
+            product_images pi ON p.id = pi.product_id
+        WHERE 
+            rn <= ?;
+    `;
+
     try {
 
-        const [productResult] = await db.execute(query, [catergory])
+        let queryResponse;
+
+        if (size) {
+            queryResponse = await db.execute(maxProductQuery, [size])
+        }
+        else {
+            queryResponse = await db.execute(query, [catergory])
+        }
+
+        const [productResult] = queryResponse;
+
+        console.log(productResult)
 
         let products = ConvertProductsToArray(productResult)
 
@@ -142,10 +178,54 @@ const getProductByCategory = asyncHandler(async (req, res) => {
     }
 })
 
+const getProductByBrand = asyncHandler(async (req, res) => {
+
+    const brand = req.params.brand
+    const { random } = req.query
+
+    if (!brand) throw new ApiError(401, "Invalid product brand");
+
+    const query = `
+        SELECT *
+        FROM products p
+        LEFT JOIN product_images pi ON p.id = pi.product_id
+        WHERE p.brand = ?
+    `;
+
+    try {
+
+        const [productResult] = await db.execute(query, [brand])
+
+        let products = ConvertProductsToArray(productResult)
+
+        if (random == "true") {
+
+            let minProduct = 0;
+
+            while (minProduct < products.length) {
+                const randomI = Math.floor((Math.random() * products.length - minProduct) + minProduct)
+
+                const tempProduct = products[minProduct]
+                products[minProduct] = products[randomI]
+                products[randomI] = tempProduct
+
+                minProduct++;
+            }
+        }
+
+        res.status(200).json(new ApiResponse(200, products, "Products fetched successfully"))
+    }
+    catch (error) {
+        throw new ApiError(401, error.message || "Something went wronge!")
+    }
+})
+
 const addProduct = asyncHandler(async (req, res) => {
 
     const { name, description, category, brand, price, colors } = req.body;
     const images = req.files
+
+    console.log(images)
 
     if (!name || !description || !category || !price || !images.length) {
         throw new ApiError(400, "All Fields are required");
@@ -191,6 +271,10 @@ const addProduct = asyncHandler(async (req, res) => {
         ))
     }
     catch (error) {
+        images.forEach(image => {
+            fs.unlink(image.path)
+        });
+
         throw new ApiError(401, error?.message || "Something went wronge")
     }
 })
@@ -267,4 +351,4 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
 
 
-module.exports = { allProducts, addProduct, getProduct, getProductByName, getProductByCategory, updateProduct, deleteProduct }
+module.exports = { allProducts, addProduct, getProduct, getProductByName, getProductByCategory, getProductByBrand, updateProduct, deleteProduct }
