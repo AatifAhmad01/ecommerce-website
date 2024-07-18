@@ -3,7 +3,6 @@ import { websiteUrl } from "../constants/websiteUrl"
 
 const fetchAllProducts = async () => {
     const res = await axios.get(`${websiteUrl}/api/v1/products?random=true`)
-
     return res
 }
 
@@ -12,4 +11,9 @@ const fetchProductsByCategory = async (category) => {
     return res
 }
 
-export { fetchAllProducts, fetchProductsByCategory }
+const fetchProductsBrand = async (brand) => {
+    const res = await axios.get(`${websiteUrl}/api/v1/products/brand/${brand}?random=true`)
+    return res
+}
+
+export { fetchAllProducts, fetchProductsByCategory, fetchProductsBrand }

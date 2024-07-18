@@ -51,7 +51,10 @@ function Navbar ()
                         <li><Link class="dropdown-item" to="/nailpolish">Nail Polish</Link></li>
                     </ul>
                 </li>
-                <li class="nav-item active"><Link class="nav-link" to={"/"}>Huda Beauty</Link></li>
+                <li class="nav-item active"><Link class="nav-link" to={"/hudabeauty"}>Huda Beauty</Link></li>
+                <li class="nav-item active"><Link class="nav-link" to={"/lakemefacepowder"}>BB Lakme Facepowder</Link></li>
+                <li class="nav-item active"><Link class="nav-link" to={"/lakemefoundation"}>BB Lakme Foundation</Link></li>
+                <li class="nav-item active"><Link class="nav-link" to={"/anjilian"}>Anjilian</Link></li>
             </ul>
             <div className="cartIconConatiner cart-mobile">
                 <Link to="/cart" ><img src={cartIcon} alt="Cart"  className="cartIcon"/></Link>

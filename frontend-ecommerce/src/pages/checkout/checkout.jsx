@@ -113,7 +113,7 @@ export default function Checkout()
                 }} >
                     
                     <TextField fullWidth id="demo-helper-text-aligned" label="Phone (Optional)" name="extraphone"/>
-                    <pre style={{marginLeft: "20px"}}>For promotions only.</pre>
+                    <pre style={{marginLeft: "20px"}}>For updates only.</pre>
                     <br/>
 
                 </Box>

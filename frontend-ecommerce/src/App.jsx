@@ -4,7 +4,8 @@ import Home from './pages/home/home';
 import Cart from './pages/cart/Cart'
 import Checkout from './pages/checkout/checkout';
 import ShopCategory from './pages/shopCategory/ShopCategory'
-import {BrowserRouter, Routes , Route} from 'react-router-dom'
+import ShopBrand from './pages/shopBrand/shopBrand';
+import { BrowserRouter, Routes , Route}  from 'react-router-dom'
 import ProductDetail from './pages/productDetails/ProductDetail'
 import OrderPage from './pages/orderPage/orderPage';
 import { HeadingContent } from './components/headingContent/headingContent';
@@ -45,6 +46,12 @@ function App() {
               <Route path='/hairproducts' element={<ShopCategory category="Hair Products"/>}/>
               <Route path='/nailpolish' element={<ShopCategory category="Nail Polish"/>}/>
               <Route path='/eyeshad' element={<ShopCategory category="Eyeshad"/>}/>
+
+              <Route path='/hudabeauty' element={<ShopBrand brand="Huda Beauty"/>}/>
+              <Route path='/lakemefacepowder' element={<ShopBrand brand="Lakeme Facepowders"/>}/>
+              <Route path='/lakemefoundation' element={<ShopBrand brand="Lakme Foundation"/>}/>
+              <Route path='/anjilian' element={<ShopBrand brand="Anjilian"/>}/>
+
             </Routes>
         </BrowserRouter>
     </>

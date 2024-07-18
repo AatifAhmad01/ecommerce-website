@@ -1,11 +1,21 @@
 .footer-container
 {
     width: 100%;
-    height: 50px;
-    background-color: #272727;
+    /* height: 50px; */
     background-color: #9A1663;
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.f-inner-container
+{
+    width: 100%;
+    max-width: 1200px;
+
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -13,4 +23,64 @@
 {
     color: white;
     margin: 0;
+}
+
+.f-logo-container
+{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.f-list
+{
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 20px 0 ;
+}
+
+.f-logo-list
+{
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    padding: 0;
+}
+
+.f-text
+{
+    color: white;
+}
+
+.f-icon
+{
+    height: 40px;
+    margin: 5px;
+}
+
+.f-logo-img
+{
+    height: 70px;
+}
+
+.f-about-container
+{
+    width: 400px;
+}
+
+@media (width <= 600px) {
+
+    .f-logo-container
+    {
+        width: 100%;
+    }
+
+    .f-inner-container
+    {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
 }

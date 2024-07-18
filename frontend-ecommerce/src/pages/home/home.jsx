@@ -6,6 +6,7 @@ import CategoriesCollection from "../../components/categoryCollection/categories
 import { fetchAllProducts } from "../../http/products.http";
 import LoadingPage from "../../components/LoadingPage/loadingPage";
 import Banner from "../../components/banner/banner";
+import { Link } from "react-router-dom";
 
 export default function Home()
 {
@@ -35,11 +36,16 @@ export default function Home()
             <div className="wrapper">
                 <CategoriesCollection/>
                 <ProductSection category="New Arival" products={allProducts}/>
-                <Banner imageUrl={"images/premiumBanners/Huda.webp"}/>
-                <Banner imageUrl={"images/premiumBanners/Lake_Facepowders.webp"}/>
+                <Link to="/hudabeauty">
+                    <Banner imageUrl={"images/premiumBanners/Huda Beauty.webp"}/></Link>
+
+                <Link to="/lakemefacepowder">
+                <Banner imageUrl={"images/premiumBanners/Lake Facepowders.webp"}/></Link>
                 <ProductSection category="Laik Me" products={allProducts}/>
-                <Banner imageUrl={"images/premiumBanners/Lakme_Foundation.webp"}/>
-                <Banner imageUrl={"images/premiumBanners/Anjilian.webp"}/>
+                <Link to="/lakemefoundation">
+                <Banner imageUrl={"images/premiumBanners/Lakme Foundation.webp"}/></Link>
+                <Link to="/anjilian">
+                <Banner imageUrl={"images/premiumBanners/Anjilian.webp"}/></Link>
                 <ProductSection category="Makup" products={allProducts}/>
 
             </div>
