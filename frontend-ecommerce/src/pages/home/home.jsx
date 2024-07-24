@@ -40,13 +40,13 @@ export default function Home()
                 <ProductSection category="Laik Me" products={allProducts}/>
 
                 <Link to="/lakemefoundation">
-                    <Banner imageUrl={"images/premiumBanners/Lakme Foundation.webp"}/></Link>
+                    <Banner imageUrl={"images/brandBanners/Lakme Foundation.webp"}/></Link>
                 <Link to="/lakemefacepowder">
-                    <Banner imageUrl={"images/premiumBanners/Lake Facepowders.webp"}/></Link>
+                    <Banner imageUrl={"images/brandBanners/Lakeme Facepowders.webp"}/></Link>
                 <Link to="/hudabeauty">
-                    <Banner imageUrl={"images/premiumBanners/Huda Beauty.webp"}/></Link>
+                    <Banner imageUrl={"images/brandBanners/Huda Beauty.webp"}/></Link>
                 <Link to="/anjilian">
-                    <Banner imageUrl={"images/premiumBanners/Anjilian.webp"}/></Link>
+                    <Banner imageUrl={"images/brandBanners/Anjilian.webp"}/></Link>
 
                 <ProductSection category="Makup" products={allProducts}/>
 
