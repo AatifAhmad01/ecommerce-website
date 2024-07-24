@@ -3,9 +3,6 @@ import './orderSummeryItem.css'
 
 export default function OrderSummeryItem({itemDetails})
 {
-
-
-
     return <div className="order-summery-item-container">
         <div className="order-summery-item-image-container">
             <img className="order-summery-item-image" src={`https:/seenbeauty.pk/${itemDetails.image_url}`} alt="" />

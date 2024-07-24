@@ -3,6 +3,7 @@ import './addToCartBtn.css'
 import 'ldrs/ring'
 
 import { ring2 } from 'ldrs'
+import ButtonText from "../buttonText/buttonText";
 ring2.register()
 
 
@@ -19,7 +20,7 @@ export default function ButtonFill({children, onClick, loading = false, isDisble
                 bg-opacity="0.1"
                 speed="0.8" 
                 color="white" 
-                ></l-ring-2> : children
+                ></l-ring-2> : <ButtonText>{children}</ButtonText>
             }</button>
         </div>
 }

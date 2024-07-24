@@ -6,12 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { updateItem, removeItem } from "../../redux/slices/cartSlice";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import OrderSummery from "../../components/orderSummery/orderSummery";
 import ButtonFill from "../../components/buttonFill/addToCartBtn";
 
 export default function Cart() {
 
     const [subtotal, setSubtotal] = useState(0);
+    const [coupon, setCoupon] = useState("");
+    const [couponResponse, setCouponResponse] = useState("");
 
     const navigate = useNavigate();
     
@@ -40,6 +41,15 @@ export default function Cart() {
         }, 0));
     }
 
+    const onEnterCoupon = (e) => {
+        setCoupon(e.target.value)
+    }
+
+    const onApplyCoupon = () => {
+        setCoupon("")
+        setCouponResponse("Invalid coupon code.")
+    }
+
     useEffect(() => {
         calculateTotal();
     }, [selector])
@@ -55,9 +65,7 @@ export default function Cart() {
             }
             </div>
             {
-                // selector.items?.length ? <OrderSummery subtotal={subtotal} onClickAction={checkOutHandler} actionText={"Checkout"} showAction={true}/> : null
-
-                selector.items?.length ? <div className="productDetailsSection" style={{height: "500px"}}>
+                selector.items?.length ? <div className="order-details-container" style={{height: "300px"}}>
                     <div className="detailContainer">
                         <div className="space-between">
                             <div className="cont-1">
@@ -68,7 +76,13 @@ export default function Cart() {
                                 <div className="textGroupContainer">
                                     <p>Delivery Charges</p>
                                     <p>Free</p>
-                                    {/* <p>{subtotal < 1500 ? deliveryCharges : "Free"}</p> */}
+                                </div>
+                                <div className="textGroupContainer">
+                                    <input type="text" className="coupon-input" placeholder="Enter coupon code." value={coupon} onChange={onEnterCoupon}/>
+                                    <button className="coupon-apply-btn" onClick={onApplyCoupon}>Apply</button>
+                                </div>
+                                <div className="textGroupContainer">
+                                    <p className="coupon-response-text">{couponResponse}</p>
                                 </div>
                             </div>
                             <div className="textGroupContainer">

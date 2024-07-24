@@ -1,4 +1,16 @@
 .productDetailsSection
 {
-    margin: 0 20px;
+    margin: 0 10px;
+}
+.order-summery-container
+{
+    min-width: 400px;
+}
+
+@media (width <= 600px)
+{
+    .order-summery-container
+    {
+        min-width: auto;
+    }
 }

@@ -9,10 +9,9 @@ import { BrowserRouter, Routes , Route}  from 'react-router-dom'
 import ProductDetail from './pages/productDetails/ProductDetail'
 import OrderPage from './pages/orderPage/orderPage';
 import { HeadingContent } from './components/headingContent/headingContent';
-
 import { useDispatch } from 'react-redux';
 import { addAllItems } from './redux/slices/cartSlice';
-
+import Footer from './components/footer/footer';
 
 function App() {
 
@@ -53,6 +52,7 @@ function App() {
               <Route path='/anjilian' element={<ShopBrand brand="Anjilian"/>}/>
 
             </Routes>
+            <Footer/>
         </BrowserRouter>
     </>
   )

@@ -19,6 +19,7 @@
 
 .detailContainerParent
 {
+    padding: 10px;
     flex: 1;
 }
 
@@ -48,11 +49,6 @@
 {
     width: 400px;
     height: 600px;
-    /* max-width: 600px;
-    min-height: 600px; */
-
-    /* background-color: gray; */
-    /* border: solid 2px black; */
     display: flex;
     flex-direction: column;
     position: sticky;
@@ -73,7 +69,7 @@
 
 .priceContainer
 {
-    margin: 20px;
+    margin: 10px;
     display: flex;
     justify-content: space-between;
 }
@@ -131,15 +127,11 @@
     {
         margin-top: 20px;
     }
-    .productDescription
-    {
-        margin: 20px;
-    }
+
 
     .productDetailsSection
     {
-        height: 400px;
-
+        min-height: 500px;
     }
 
     .moreImagesContainer

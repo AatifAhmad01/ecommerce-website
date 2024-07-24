@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
-import './checkout.css'
+import React, { useState} from "react";
 import { TextField, Box } from "@mui/material";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import './checkout.css'
 import OrderSummery from "../../components/orderSummery/orderSummery";
 import { placeOrder } from "../../http/orders.http";
-import { useSelector } from "react-redux";
 import TransparentLoading from "../../components/transparentLoading/transparentLoading";
+import FormStaticInput from "../../components/formStaticInput/formStaticInput";
+
 import { useLocation } from "react-router-dom";
 
 
@@ -124,15 +126,15 @@ export default function Checkout()
                 }} noValidate >
                     
                     <TextField fullWidth id="demo-helper-text-aligned" label="Country/Region" disabled defaultValue={"Pakistan"}/>
-                </Box>
+            </Box>
 
-                <Box component="form"
+            <Box component="form"
                 sx={{
                     '& > :not(style)': { m: 1, width: '100%', maxWidth: 500},
-                }} >
+                }} autoComplete="on">
                     
                     <TextField error={!customerDetails.firstname.isValid} fullWidth id="demo-helper-text-aligned" className="remove-number-arraow" label="First Name" name="firstname" 
-                        onChange={onTextChangeHanlder}/>
+                        onChange={onTextChangeHanlder} />
 
                     <TextField fullWidth id="demo-helper-text-aligned" label="Last Name (Optional)" name="lastname"
                         onChange={onTextChangeHanlder}/>
@@ -151,7 +153,32 @@ export default function Checkout()
 
                     <TextField error={!customerDetails.phone.isValid} fullWidth id="demo-helper-text-aligned" label="Phone" name="phone" type="number"
                         onChange={onTextChangeHanlder}/>
-                </Box>
+            </Box>
+
+
+            <Box component="form"
+                sx={{
+                    '& > :not(style)': { m: 1, width: '100%', maxWidth: 500},
+                }} noValidate className="form-box">
+
+                <div className="save-information-container">
+                    <input type="checkbox" name="" id="" className="save-info-checkbox"/>
+                    <p>Save this information for future</p>
+                </div>
+
+                <div className="shipping-method-container">
+                    <p className="form-label">Shipping method</p>
+                    <FormStaticInput mainText={"Stardard"} secondaryText={"Free"}/>
+                </div>
+
+                <div className="payment-method-container">
+                    <p className="form-label">Payment</p>
+                    <FormStaticInput mainText={"Cash on Delivery (COD)"} secondaryText={""}/>
+                </div>
+
+            </Box>
+
+
             </form>
         </div>
     }

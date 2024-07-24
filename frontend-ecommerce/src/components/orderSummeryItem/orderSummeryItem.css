@@ -12,7 +12,8 @@
 .order-summery-item-image-container
 {
     position: relative;
-
+    border: 1px solid  black;
+    border-radius: 10px;
 }
 
 .order-summer-item-quantity

@@ -160,7 +160,6 @@ export default function ProductDetail() {
 
         <div className="detailsContainer">
             <div className="productImageSection">
-                {/* <img src={`https://seenbeauty.pk/${productDetails.image_url[selectedImageIndex]}`} className="productImage"></img> */}
                 <div className="productImage">
                 <ReactImageMagnify {...{
                     smallImage: {
@@ -171,9 +170,13 @@ export default function ProductDetail() {
                     },
                     largeImage: {
                         src: `https://seenbeauty.pk/${productDetails.image_url[selectedImageIndex]}`,
-                        width: 1200,
                         height: 1800,
-                    }}} />
+                        width: 1200,
+                    },
+                    isHintEnabled: true,
+                    enlargedImagePosition: 'over',
+                    shouldHideHintAfterFirstActivation: false,
+                    }} />
                 </div>
             </div>
             <div className="moreImagesContainer">
@@ -195,15 +198,15 @@ export default function ProductDetail() {
                 
                 <div className="detailContainer">
                     <div className="detailContainerParent">
-                        <p className="m-3" style={{fontSize: "15px"}}>Product ID {productDetails.id}</p>
-                        <p className="productTitle m-3">{productDetails.name}</p>
-                        <p className="productDescription m-3" >{productDetails.description}</p>
+                        <p className="mt-3" style={{fontSize: "15px"}}>Product ID {productDetails.id}</p>
+                        <p className="productTitle mt-3">{productDetails.name}</p>
+                        <p className="productDescription mt-3" >{productDetails.description}</p>
                         <div className="variants-container">
                         {
                             colors.map((item, index) => <VariantColor color={item} onClick={onClicVariant} selectedColor={selectedColor}/>)
                         }
                         </div>
-                        <p className="price m-3">Price: {productDetails.price}</p>
+                        <p className="price mt-3">Price: {productDetails.price}</p>
                     </div>
 
                     <div className="priceContainer">

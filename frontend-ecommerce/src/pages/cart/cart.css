@@ -26,7 +26,7 @@
 
 .textGroupContainer
 {
-    margin: 20px;
+    margin: 20px 10px;
 
     display: flex;
     justify-content: space-between;
@@ -34,6 +34,29 @@
 
 .noItemsCartText{
     text-align: center;
+}
+
+.coupon-input
+{
+    width: 280px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.coupon-apply-btn
+{
+    background-color: #9A1663;
+    border-radius: 10px;
+    padding: 0 20px;
+    color: white;
+    border: none;
+}
+
+.order-details-container
+{
+    width: 400px;
+    margin-left: 30px;
 }
 
 
@@ -53,6 +76,12 @@
     .cartItemsContainer
     {
         min-height: auto;
+    }
+
+    .order-details-container
+    {
+        width: 100%;
+        margin-left: auto;
     }
 }
 

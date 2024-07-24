@@ -1,8 +1,9 @@
 import React from "react";
 import './primaryOutline.css'
 import 'ldrs/ring'
-
+import ButtonText from "../buttonText/buttonText";
 import { ring2 } from 'ldrs'
+
 ring2.register()
 
 
@@ -19,7 +20,7 @@ export default function PrimaryOutline({children, onClick, loading = false, isDi
                 bg-opacity="0.1"
                 speed="0.8" 
                 color="white" 
-                ></l-ring-2> : children
+                ></l-ring-2> : <ButtonText>{children}</ButtonText>
             }</button>
         </div>
 }

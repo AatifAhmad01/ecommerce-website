@@ -6,7 +6,7 @@ export default function OrderSummery({subtotal, orderItems, onClickAction, actio
 {
     // const deliveryCharges = 200;
 
-    return <div className="productDetailsSection">
+    return <div className="order-summery-container">
         {
             orderItems ? orderItems.map(item => <OrderSummeryItem key={item.id} itemDetails={item}/>) : null
         }

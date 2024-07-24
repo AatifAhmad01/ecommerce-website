@@ -3,3 +3,20 @@
     /* background-color: rgb(63, 145, 216); */
 }
 
+.save-information-container
+{
+    display: flex;
+}
+
+.save-info-checkbox
+{
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+
+.form-label
+{
+    font-weight: 600;
+    margin: 25px 0 10px 0;
+}
