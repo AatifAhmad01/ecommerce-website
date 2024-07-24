@@ -37,12 +37,14 @@ export default function CartItem({onRemove, onUpdateQuantity, cartItem})
         onUpdateQuantity(cartItem.id, quantity);
     }, [quantity])
 
+    console.log(`https:/seenbeauty.pk/${cartItem.image_url}`)
+
     return <div className="cartItemContainer">
                 <div className="cartItemDetailsOuterContainer">
                 <div className="removeButtonContainer">
                     <button className="removeBtn" onClick={() => onRemove(cartItem.id)}><img src={closeIcon}></img></button>
                 </div>
-                <img src={`https:/seenbeauty.pk/${cartItem.image_url}`} alt="" className="cartItemImage"/>
+                <img src={`https://seenbeauty.pk/${cartItem.image_url}`} alt="" className="cartItemImage"/>
                 <div className="cartItemDetailsContainer">
                     <p className="cartItemTitle">{cartItem.name}</p>
                     <p>Item Price: {cartItem.price}</p>
