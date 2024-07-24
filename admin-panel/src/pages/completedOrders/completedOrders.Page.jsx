@@ -25,7 +25,7 @@ export default function CompletedOrdersPage()
     }
 
     const onDeleteOrderHanlder = async (orderId) => {
-        await deleteOrder(orderId, userContext.user?.accessToken)
+            await deleteOrder(orderId, userContext.user?.accessToken)
         const updatedOrers = tempActiveOrders.filter(order => order.id != orderId)
         setActiveOrders([...updatedOrers])
         setTempActiveOrder([...updatedOrers])
