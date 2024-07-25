@@ -114,12 +114,15 @@ export default function ProductForm({ isEditing, product, onClose })
             {
                 errorMessage = "Not login"
             }
+            else
+            {
+                errorMessage = "Something went wronge."
+            }
 
             setResponseError(errorMessage)
         }
 
         onEndLoading("delete")
-
     }
 
     const updateProductHanlder = async () => {

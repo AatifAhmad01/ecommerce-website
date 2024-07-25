@@ -345,7 +345,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
         conn.release();
     }
     catch (error) {
-        throw new ApiError(401, error.message || "Something went wronge!")
+        throw new ApiError(500, error.message || "Something went wronge!")
     }
 })
 
