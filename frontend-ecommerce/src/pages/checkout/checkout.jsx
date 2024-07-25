@@ -162,8 +162,8 @@ export default function Checkout()
                 }} noValidate className="form-box">
 
                 <div className="save-information-container">
-                    <input type="checkbox" name="" id="" className="save-info-checkbox"/>
-                    <p>Save this information for future</p>
+                    <input type="checkbox" name="" id="saveForFuture" className="save-info-checkbox"/>
+                    <label htmlFor="saveForFuture">Save this information for future</label>
                 </div>
 
                 <div className="shipping-method-container">

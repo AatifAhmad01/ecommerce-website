@@ -74,6 +74,23 @@ const ConvertOrdersToArray = (fetchedOrders) => {
     return orders
 }
 
+const RandomizeArray = (array) => {
 
-module.exports = { ConvertProductsToArray, ConvertOrdersToArray }
+    let minIndex = 0;
+
+    while (minIndex < array.length) {
+        const randomI = Math.floor((Math.random() * array.length - minIndex) + minIndex)
+
+        const tempProduct = array[minIndex]
+        array[minIndex] = array[randomI]
+        array[randomI] = tempProduct
+
+        minIndex++;
+    }
+
+    return array;
+}
+
+
+module.exports = { ConvertProductsToArray, ConvertOrdersToArray, RandomizeArray }
 

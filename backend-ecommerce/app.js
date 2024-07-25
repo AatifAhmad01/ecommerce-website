@@ -29,7 +29,7 @@ app.use("/api/v1/user", userRouter)
 app.use("/api/v1/products", productRouter)
 app.use("/api/v1/orders", orderRouter)
 
-app.get("/healthcheck", (req, res) => {
+app.get("/api/v1/healthcheck", (req, res) => {
     res.status(200).send("The Application Is Running Perfectly");
 })
 

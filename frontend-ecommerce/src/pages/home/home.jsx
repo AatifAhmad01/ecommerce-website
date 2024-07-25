@@ -1,30 +1,65 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import './home.css'
 import ProductSection from "../../components/productSection/productSection";
-import Footer from "../../components/footer/footer";
 import CategoriesCollection from "../../components/categoryCollection/categoriesCollection";
-import { fetchAllProducts } from "../../http/products.http";
+import { fetchAllProducts, fetchNewArialProducts } from "../../http/products.http";
 import LoadingPage from "../../components/LoadingPage/loadingPage";
 import Banner from "../../components/banner/banner";
 import { Link } from "react-router-dom";
+import PrimaryButton from "../../components/primaryButton/primaryButton";
 
 export default function Home()
 {
     const [allProducts, setProducts] = useState([])
+    const [newArival, setNewArival] = useState([])
     const [fetchingData, setFitchingData] = useState(true)
+    const [fetchingMoreProducts, setFitchingMoreProducts] = useState(false)
+    const [showMoreButton, setMoreButton] = useState(true)
+    const [page, setPage] = useState(1)
+
+
+    const pageSize = 10;
+
+
+
 
     const fetchProducts = async () => {
         try
         {
-            const res = await fetchAllProducts();
-            setProducts(res.data.data)
-            setFitchingData(false)
+            const allProductsRes = await fetchAllProducts(page, pageSize);
+            const newArivalRes = await fetchNewArialProducts(1);
+
+            console.log(newArivalRes)
+
+            setProducts(allProductsRes.data.data)
+            setNewArival(newArivalRes.data.data)
         }
         catch(error)
         {
-            setFitchingData(false)
+            console.log(error)
+        }
+        
+        setFitchingData(false)
+    }
+
+    const fetchMoreProducts = async () => {
+
+        setPage(state => state + 1)
+
+        setFitchingMoreProducts(true)
+
+        try
+        {
+            const res = await fetchAllProducts(page, pageSize);
+            setProducts(state => ([...state, ...res.data.data]))
+            if (res.data.data.length <= pageSize) setMoreButton(false);
+        }
+        catch(err)
+        {
+            console.log(err)
         }
 
+        setFitchingMoreProducts(false)
     }
 
     useLayoutEffect(() => {
@@ -35,9 +70,7 @@ export default function Home()
         <>
             <div className="wrapper">
                 <CategoriesCollection/>
-                <ProductSection category="New Arival" products={allProducts}/>
-
-                <ProductSection category="Laik Me" products={allProducts}/>
+                <ProductSection category="New Arival" products={newArival}/>
 
                 <Link to="/lakemefoundation">
                     <Banner imageUrl={"images/brandBanners/Lakme Foundation.webp"}/></Link>
@@ -50,6 +83,7 @@ export default function Home()
 
                 <ProductSection category="Makup" products={allProducts}/>
 
+                { showMoreButton && <PrimaryButton onClick={fetchMoreProducts} loading={fetchingMoreProducts}>More Products</PrimaryButton> }
             </div>
             { fetchingData ? <LoadingPage>Loading</LoadingPage> : null }
         </>

@@ -6,21 +6,21 @@
 
 .hero-item-first
 {
-    background-image: url('../../assets/hero.jpg');
+    /* background-image: url('../../assets/hero.jpg'); */
     background-size: cover;
     background-position: center;
 }
 
 .hero-item-second
 {
-    background-image: url('../../assets/hero2.jpg');
+    /* background-image: url('../../assets/hero2.jpg'); */
     background-size: cover;
     background-position: center;
 }
 
 .hero-item-third
 {
-    background-image: url('../../assets/hero3.jpg');
+    /* background-image: url('../../assets/hero3.jpg'); */
     background-size: cover;
     background-position: center;
 }

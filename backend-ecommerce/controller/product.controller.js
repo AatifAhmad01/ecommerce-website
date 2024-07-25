@@ -3,7 +3,7 @@ const db = require("../db/db.js");
 const ApiError = require("../utils/ApiError.js");
 const ApiResponse = require("../utils/ApiResponse.js");
 const fs = require('fs/promises');
-const { ConvertProductsToArray } = require("../utils/ManageProjects.js");
+const { ConvertProductsToArray, RandomizeArray } = require("../utils/ManageProjects.js");
 
 
 const allProducts = asyncHandler(async (req, res) => {
@@ -25,29 +25,59 @@ const allProducts = asyncHandler(async (req, res) => {
     try {
         const [productsResult] = await db.execute(query, [pageSize, offset])
 
-        const products = ConvertProductsToArray(productsResult)
+        let products = ConvertProductsToArray(productsResult)
 
         if (random == "true") {
 
-            let minProduct = 0;
-
-            while (minProduct < products.length) {
-                const randomI = Math.floor((Math.random() * products.length - minProduct) + minProduct)
-
-                const tempProduct = products[minProduct]
-                products[minProduct] = products[randomI]
-                products[randomI] = tempProduct
-
-                minProduct++;
-            }
-
+            products = RandomizeArray(products);
         }
         res.status(200).json(new ApiResponse(200, products, "Products fetched successfully!"))
     }
     catch (error) {
-        throw new ApiError(401, error.message || "Something went wronge!")
+        throw new ApiError(500, error.message || "Something went wronge!")
     }
 });
+
+const getProductsFromAllCategores = asyncHandler(async (req, res,) => {
+
+    const { random, size = 1 } = req.query // size is max items per category
+
+    const query = `
+        WITH RankedProducts AS (
+            SELECT 
+                *,
+                ROW_NUMBER() OVER (PARTITION BY category) as rn
+            FROM 
+                products
+            WHERE 
+                category != 'None'
+        )
+        SELECT 
+            *
+        FROM 
+            RankedProducts p
+        LEFT JOIN 
+            product_images pi ON p.id = pi.product_id
+        WHERE 
+            rn <= ?;
+    `;
+
+    try {
+
+        const [productResult] = await db.execute(query, [size])
+
+        let products = ConvertProductsToArray(productResult)
+
+        if (random == "true") {
+            products = RandomizeArray(products);
+        }
+
+        res.status(200).json(new ApiResponse(200, products, "Products fetched successfully"))
+    }
+    catch (error) {
+        throw new ApiError(500, error.message || "Something went wronge!")
+    }
+})
 
 const getProduct = asyncHandler(async (req, res) => {
 
@@ -108,7 +138,7 @@ const getProductByName = asyncHandler(async (req, res) => {
 const getProductByCategory = asyncHandler(async (req, res) => {
 
     const catergory = req.params.category
-    const { random, size } = req.query // size is max items per category
+    const { random } = req.query // size is max items per category
 
     if (!catergory) throw new ApiError(401, "Invalid product cetegory");
 
@@ -119,56 +149,15 @@ const getProductByCategory = asyncHandler(async (req, res) => {
         WHERE p.category = ?
     `;
 
-    const maxProductQuery = `
-        WITH RankedProducts AS (
-            SELECT 
-                *,
-                ROW_NUMBER() OVER (PARTITION BY category) as rn
-            FROM 
-                products
-            WHERE 
-                category != 'None'
-        )
-        SELECT 
-            *
-        FROM 
-            RankedProducts p
-        LEFT JOIN 
-            product_images pi ON p.id = pi.product_id
-        WHERE 
-            rn <= ?;
-    `;
-
     try {
 
-        let queryResponse;
-
-        if (size) {
-            queryResponse = await db.execute(maxProductQuery, [size])
-        }
-        else {
-            queryResponse = await db.execute(query, [catergory])
-        }
-
-        const [productResult] = queryResponse;
-
-        console.log(productResult)
+        const [productResult] = await db.execute(query, [catergory])
 
         let products = ConvertProductsToArray(productResult)
 
         if (random == "true") {
 
-            let minProduct = 0;
-
-            while (minProduct < products.length) {
-                const randomI = Math.floor((Math.random() * products.length - minProduct) + minProduct)
-
-                const tempProduct = products[minProduct]
-                products[minProduct] = products[randomI]
-                products[randomI] = tempProduct
-
-                minProduct++;
-            }
+            products = RandomizeArray(products);
         }
 
         res.status(200).json(new ApiResponse(200, products, "Product fetched successfully"))
@@ -351,4 +340,14 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
 
 
-module.exports = { allProducts, addProduct, getProduct, getProductByName, getProductByCategory, getProductByBrand, updateProduct, deleteProduct }
+module.exports = {
+    allProducts,
+    getProductsFromAllCategores,
+    addProduct,
+    getProduct,
+    getProductByName,
+    getProductByCategory,
+    getProductByBrand,
+    updateProduct,
+    deleteProduct
+}
