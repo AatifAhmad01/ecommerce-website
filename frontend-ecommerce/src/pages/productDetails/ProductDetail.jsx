@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from "react";
+import './productDetail.css'
 import { useLocation, useNavigate } from "react-router-dom";
 import ProductWraper from "../../components/pageWraper/pagewraper";
-import './productDetail.css'
 import ProductSection from "../../components/productSection/productSection";
 import ButtonFill from "../../components/buttonFill/addToCartBtn.jsx";
 import MoreImageItem from "../../components/productMoreImageItem/moreImageItem.jsx";
@@ -12,7 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { fetchProductsByCategory } from "../../http/products.http.js";
 import PrimaryOutline from "../../components/primaryButtonOutline/primaryOutline.jsx";
-import VariantColor from "../../components/colorVariant/variantColor.jsx";
+import ProductVarietyText from "../../components/productVarietyText/productVarietyText.jsx";
 import ReactImageMagnify from 'react-image-magnify';
 
 export default function ProductDetail() {
@@ -22,7 +22,7 @@ export default function ProductDetail() {
     const [selectedImageIndex, setImageIndex] = useState(0);
     const [open, setOpen] = useState(false);
     const [colors, setColors] = useState([])
-    const [selectedColor, setSelectedColor] = useState(null)
+    const [selectedVariant, setSelectedVariant] = useState(null)
 
     const dispatch = useDispatch();
     const location = useLocation();
@@ -75,7 +75,7 @@ export default function ProductDetail() {
             image_url: productDetails.image_url[0],
             quantity: quantity,
             price: productDetails.price,
-            color: selectedColor
+            color: selectedVariant
         }))
 
         // navigation("/cart");
@@ -91,7 +91,7 @@ export default function ProductDetail() {
             image_url: productDetails.image_url[0],
             quantity: 1,
             price: productDetails.price,
-            color: selectedColor
+            color: selectedVariant
         }))
 
         navigation("/checkout")
@@ -108,8 +108,8 @@ export default function ProductDetail() {
         setOpen(false);
     };
 
-    const onClicVariant = (color) => {
-        setSelectedColor(color)
+    const onClicVariant = (variant) => {
+        setSelectedVariant(variant)
     }
 
     const action = (
@@ -142,7 +142,7 @@ export default function ProductDetail() {
         {
             const colors = productDetails.colors.split(",");
             setColors(colors)
-            setSelectedColor(colors[0])
+            setSelectedVariant(colors[0])
         }
     }, [productDetails])
 
@@ -203,7 +203,7 @@ export default function ProductDetail() {
                         <p className="productDescription mt-3" >{productDetails.description}</p>
                         <div className="variants-container">
                         {
-                            colors.map((item, index) => <VariantColor color={item} onClick={onClicVariant} selectedColor={selectedColor}/>)
+                            colors.map((item, index) => <ProductVarietyText text={item} onClick={onClicVariant} selectedVariant={selectedVariant}/>)
                         }
                         </div>
                         <p className="price mt-3">Price: {productDetails.price}</p>

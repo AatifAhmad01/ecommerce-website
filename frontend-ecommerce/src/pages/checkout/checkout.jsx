@@ -177,8 +177,6 @@ export default function Checkout()
                 </div>
 
             </Box>
-
-
             </form>
         </div>
     }

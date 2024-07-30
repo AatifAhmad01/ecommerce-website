@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from "react";
-import './home.css'
+import './home.css';
 import ProductSection from "../../components/productSection/productSection";
 import CategoriesCollection from "../../components/categoryCollection/categoriesCollection";
 import { fetchAllProducts, fetchNewArialProducts } from "../../http/products.http";
@@ -7,6 +7,7 @@ import LoadingPage from "../../components/LoadingPage/loadingPage";
 import Banner from "../../components/banner/banner";
 import { Link } from "react-router-dom";
 import PrimaryButton from "../../components/primaryButton/primaryButton";
+import PopupWindow from "../../components/popupWindow/popupWindow";
 
 export default function Home()
 {
@@ -83,7 +84,9 @@ export default function Home()
 
                 <ProductSection category="Makup" products={allProducts}/>
 
-                { showMoreButton && <PrimaryButton onClick={fetchMoreProducts} loading={fetchingMoreProducts}>More Products</PrimaryButton> }
+                <div className="show-more-button-conatiner">
+                    { showMoreButton && <PrimaryButton onClick={fetchMoreProducts} loading={fetchingMoreProducts}>More Products</PrimaryButton> }
+                </div>
             </div>
             { fetchingData ? <LoadingPage>Loading</LoadingPage> : null }
         </>

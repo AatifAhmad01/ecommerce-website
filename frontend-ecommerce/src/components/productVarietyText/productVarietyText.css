@@ -1,0 +1,9 @@
+.text-variant-item
+{
+    padding: 10px;
+}
+
+.text-variant-item-selected
+{
+    border: solid #9A1663 2px;
+}

@@ -20,7 +20,7 @@ function Navbar ()
             </Link>
 
             <div className="cartIconConatiner cart-desktop">
-                <Link to="/cart"><img src={cartIcon} alt="Cart"  className="cartIcon"/></Link>
+                <Link to="#/cart"><img src={cartIcon} alt="Cart"  className="cartIcon"/></Link>
                 <div className="cartBadgeContainer cart-desktop">
                     <p>{cartSelector.items.length}</p>
                 </div>

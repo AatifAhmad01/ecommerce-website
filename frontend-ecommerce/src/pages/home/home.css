@@ -5,3 +5,8 @@
     align-items: center;
     flex-direction: column;
 }
+
+.show-more-button-conatiner
+{
+    margin: 30px;
+}
