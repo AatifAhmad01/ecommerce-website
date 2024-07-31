@@ -114,7 +114,6 @@ export default function ProductDetail() {
 
     const action = (
         <React.Fragment>
-    
           <IconButton
             size="small"
             aria-label="close"

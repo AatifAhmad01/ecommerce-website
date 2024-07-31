@@ -161,6 +161,8 @@ const getOrder = asyncHandler(async (req, res) => {
 
         const orders = ConvertOrdersToArray(ordersResult);
 
+        if (!orders.length) throw new ApiError(404, "No Order Found");
+
         let orderedProductIds = []
 
         orders[0].orderedItems.forEach(orderItem => {
@@ -178,8 +180,10 @@ const getOrder = asyncHandler(async (req, res) => {
 
         const orderProducts = ConvertProductsToArray(productsResult);
 
+        console.log(orderProducts)
+
         for (let i = 0; i < orders[0].orderedItems.length; i++) {
-            orderProducts[i] = { ...orderProducts[i], quantity: orders[0].orderedItems[i].quantity }
+            orderProducts[i] = { ...orderProducts[i], quantity: orders[0].orderedItems[i].quantity, selectedVariant: orders[0].orderedItems[i].color }
         }
 
         orders[0].orderedItems = orderProducts
@@ -187,7 +191,7 @@ const getOrder = asyncHandler(async (req, res) => {
         res.status(200).json(new ApiResponse(200, orders[0], "Order fetched successfully!"))
     }
     catch (error) {
-        throw new ApiError(400, error.message || "Something went wronge")
+        throw new ApiError(500, error.message || "Something went wronge")
     }
 })
 

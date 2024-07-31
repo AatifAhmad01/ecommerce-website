@@ -29,6 +29,8 @@ export default function OrderDetails({orderDetails, onDeliver, onDelete})
 
             setOrderedItems(res.data.data.orderedItems)
 
+            console.log(res.data.data.orderedItems)
+
             let totalPrice = 0;
 
             res.data.data.orderedItems.forEach(item => 

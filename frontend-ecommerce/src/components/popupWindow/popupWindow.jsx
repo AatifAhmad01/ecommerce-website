@@ -12,6 +12,7 @@ export default function PopupWindow({heading, text, onClose})
             </div>
             <div className="popup-window-inner">
                 <p>{text}</p>
+                
             </div>
             <div className="popup-window-footer">
                 <ButtonFill onClick={onClose}>Close</ButtonFill>

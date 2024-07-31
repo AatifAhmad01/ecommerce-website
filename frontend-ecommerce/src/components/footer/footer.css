@@ -17,18 +17,17 @@
 
     display: flex;
     justify-content: space-between;
-    align-items: center;
+
+    color: white;
 }
 
 .footer-details
 {
-    color: white;
     margin: 0;
 }
 
 .f-logo-container
 {
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,7 +38,6 @@
     list-style: none;
     text-decoration: none;
     padding: 0;
-    margin: 20px 0 ;
 }
 
 .f-logo-list
@@ -53,6 +51,7 @@
 .f-text
 {
     color: white;
+    margin-left: 5px;
 }
 
 .f-icon
@@ -71,7 +70,8 @@
     width: 400px;
 }
 
-@media (width <= 600px) {
+
+@media (width <= 1080px) {
 
     .f-logo-container
     {

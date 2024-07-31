@@ -42,6 +42,7 @@ const ConvertOrdersToArray = (fetchedOrders) => {
             ordersMap[order.order_id].orderedItems.push({
                 product_id: order.product_id,
                 quantity: order.quantity,
+                color: order.color,
             })
         }
         else {
@@ -51,6 +52,7 @@ const ConvertOrdersToArray = (fetchedOrders) => {
                 orderedItems: [{
                     product_id: order.product_id,
                     quantity: order.quantity,
+                    color: order.color,
                 }],
                 customer: {
                     firstname: order.firstname,

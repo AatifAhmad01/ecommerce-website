@@ -13,11 +13,7 @@ const app = express()
 
 const PORT = process.env.PORT
 
-app.use(cors(
-    {
-        origin: "*"
-    }
-))
+app.use(cors())
 app.use(express.json({ limit: '16kb' }))
 app.use(express.urlencoded({ extended: true, limit: '16kb' }))
 app.use(express.static('public'))
@@ -29,7 +25,7 @@ app.use("/api/v1/user", userRouter)
 app.use("/api/v1/products", productRouter)
 app.use("/api/v1/orders", orderRouter)
 
-app.get("/api/v1/healthcheck", (req, res) => {
+app.get("/", (req, res) => {
     res.status(200).send("The Application Is Running Perfectly");
 })
 

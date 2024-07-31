@@ -7,7 +7,6 @@ import LoadingPage from "../../components/LoadingPage/loadingPage";
 import Banner from "../../components/banner/banner";
 import { Link } from "react-router-dom";
 import PrimaryButton from "../../components/primaryButton/primaryButton";
-import PopupWindow from "../../components/popupWindow/popupWindow";
 
 export default function Home()
 {

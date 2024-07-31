@@ -77,10 +77,10 @@ export default function Cart() {
                                     <p>Delivery Charges</p>
                                     <p>Free</p>
                                 </div>
-                                <div className="textGroupContainer">
+                                {/* <div className="textGroupContainer">
                                     <input type="text" className="coupon-input" placeholder="Enter coupon code." value={coupon} onChange={onEnterCoupon}/>
                                     <button className="coupon-apply-btn" onClick={onApplyCoupon}>Apply</button>
-                                </div>
+                                </div> */}
                                 <div className="textGroupContainer">
                                     <p className="coupon-response-text">{couponResponse}</p>
                                 </div>
