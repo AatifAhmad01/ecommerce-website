@@ -17,16 +17,13 @@ export default function Home()
     const [showMoreButton, setMoreButton] = useState(true)
     const [page, setPage] = useState(1)
 
-
     const pageSize = 10;
-
-
-
 
     const fetchProducts = async () => {
         try
         {
             const allProductsRes = await fetchAllProducts(page, pageSize);
+            if (allProductsRes.data.data.length <= pageSize) setMoreButton(false);
             const newArivalRes = await fetchNewArialProducts(1);
 
             console.log(newArivalRes)
@@ -81,7 +78,7 @@ export default function Home()
                 <Link to="/anjilian">
                     <Banner imageUrl={"images/brandBanners/Anjilian.webp"}/></Link>
 
-                <ProductSection category="Makup" products={allProducts}/>
+                <ProductSection category="Top Selling Products" products={allProducts}/>
 
                 <div className="show-more-button-conatiner">
                     { showMoreButton && <PrimaryButton onClick={fetchMoreProducts} loading={fetchingMoreProducts}>More Products</PrimaryButton> }

@@ -33,6 +33,7 @@ export default function ProductDetail() {
 
 
 
+
     const addQuantityHandler = ()=> {
 
         if(!quantity) {
@@ -199,7 +200,16 @@ export default function ProductDetail() {
                     <div className="detailContainerParent">
                         <p className="mt-3" style={{fontSize: "15px"}}>Product ID {productDetails.id}</p>
                         <p className="productTitle mt-3">{productDetails.name}</p>
-                        <p className="productDescription mt-3" >{productDetails.description}</p>
+                        
+                        <textarea type="text" className="productDescription mt-3" rows={15} value={productDetails.description} disabled style={{
+                                width: "100%",
+                                border: "none",
+                                backgroundColor: 'white',
+                                resize: 'none'
+                        }}/>
+
+                        {/* <pre className="productDescription mt-3" >{productDetails.description}</pre> */}
+                        <p className="productTitle mt-2">{"Shades"}</p>
                         <div className="variants-container">
                         {
                             colors.map((item, index) => <ProductVarietyText text={item} onClick={onClicVariant} selectedVariant={selectedVariant}/>)
