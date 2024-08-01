@@ -117,6 +117,11 @@
     outline: none;
 }
 
+.css-1eqdgzv-MuiPaper-root-MuiSnackbarContent-root
+{
+    background-color: #9A1663 !important;
+}
+
 @media (width <= 600px) {
     .detailsContainer
     {
