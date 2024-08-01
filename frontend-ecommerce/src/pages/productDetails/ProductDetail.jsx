@@ -201,11 +201,12 @@ export default function ProductDetail() {
                         <p className="mt-3" style={{fontSize: "15px"}}>Product ID {productDetails.id}</p>
                         <p className="productTitle mt-3">{productDetails.name}</p>
                         
-                        <textarea type="text" className="productDescription mt-3" rows={15} value={productDetails.description} disabled style={{
+                        <textarea type="text" id="description-text" className="mt-3" rows={15} value={productDetails.description} readOnly style={{
                                 width: "100%",
                                 border: "none",
                                 backgroundColor: 'white',
-                                resize: 'none'
+                                resize: 'none',
+                                color: 'black'
                         }}/>
 
                         {/* <pre className="productDescription mt-3" >{productDetails.description}</pre> */}

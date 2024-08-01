@@ -112,6 +112,11 @@
     display: flex;
 }
 
+#description-text:read-only
+{
+    outline: none;
+}
+
 @media (width <= 600px) {
     .detailsContainer
     {
