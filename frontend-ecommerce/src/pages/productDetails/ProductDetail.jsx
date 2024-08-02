@@ -156,6 +156,7 @@ export default function ProductDetail() {
                 message="Item added to Cart!"
                 action={action}
                 key={"top" + "center"}
+                ContentProps={ {color: 'blue'} }
             />
 
         <div className="detailsContainer">

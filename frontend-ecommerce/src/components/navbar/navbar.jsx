@@ -20,7 +20,7 @@ function Navbar ()
             </Link>
 
             <div className="cartIconConatiner cart-desktop">
-                <Link to="#/cart"><img src={cartIcon} alt="Cart"  className="cartIcon"/></Link>
+                <Link to="cart"><img src={cartIcon} alt="Cart"  className="cartIcon"/></Link>
                 <div className="cartBadgeContainer cart-desktop">
                     <p>{cartSelector.items.length}</p>
                 </div>
@@ -57,7 +57,7 @@ function Navbar ()
                 <li class="nav-item active"><Link class="nav-link" to={"/anjilian"}>Anjilian</Link></li>
             </ul>
             <div className="cartIconConatiner cart-mobile">
-                <Link to="/cart" ><img src={cartIcon} alt="Cart"  className="cartIcon"/></Link>
+                <Link to="cart" ><img src={cartIcon} alt="Cart"  className="cartIcon"/></Link>
                 <div className="cartBadgeContainer">
                 <p>{cartSelector.items.length}</p>
                 </div>

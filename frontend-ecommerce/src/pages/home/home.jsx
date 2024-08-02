@@ -25,9 +25,6 @@ export default function Home()
             const allProductsRes = await fetchAllProducts(page, pageSize);
             if (allProductsRes.data.data.length <= pageSize) setMoreButton(false);
             const newArivalRes = await fetchNewArialProducts(1);
-
-            console.log(newArivalRes)
-
             setProducts(allProductsRes.data.data)
             setNewArival(newArivalRes.data.data)
         }
