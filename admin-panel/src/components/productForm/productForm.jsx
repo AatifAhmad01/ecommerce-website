@@ -22,7 +22,7 @@ export default function ProductForm({ isEditing, product, onClose })
         brand: "",
         colors: "",
         instock: true,
-        price: 0
+        price: ""
     })
 
     const [responseError, setResponseError] = useState("")

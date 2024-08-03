@@ -167,7 +167,7 @@ export default function ProductDetail() {
                         alt: 'Wristwatch by Ted Baker London',
                         src: `https://seenbeauty.pk/${productDetails.image_url[selectedImageIndex]}`,
                         height: 400,
-                        width: 300,
+                        width: 240,
                     },
                     largeImage: {
                         src: `https://seenbeauty.pk/${productDetails.image_url[selectedImageIndex]}`,

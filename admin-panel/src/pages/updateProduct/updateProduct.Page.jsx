@@ -28,7 +28,6 @@ export default function UpdateProductPage()
         try
         {
             const res = await getProductById(productId, userContext.user?.accessToken)
-            console.log(res)
             setProduct(res.data.data);
         }
         catch(error)
