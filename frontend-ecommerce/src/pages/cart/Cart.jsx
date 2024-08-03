@@ -70,12 +70,12 @@ export default function Cart() {
                         <div className="space-between">
                             <div className="cont-1">
                                 <div className="textGroupContainer">
-                                    <h5>SUBTOTAL</h5>
-                                    <h5>Rs. {subtotal}</h5>
+                                    <h5 className="f-exo-600">SUBTOTAL</h5>
+                                    <h5 className="f-times-bold">Rs. {subtotal}</h5>
                                 </div>
                                 <div className="textGroupContainer">
-                                    <p>Delivery Charges</p>
-                                    <p>Free</p>
+                                    <p className="f-exo-600">Delivery Charges</p>
+                                    <p className="f-exo-600">Free</p>
                                 </div>
                                 {/* <div className="textGroupContainer">
                                     <input type="text" className="coupon-input" placeholder="Enter coupon code." value={coupon} onChange={onEnterCoupon}/>
@@ -86,8 +86,8 @@ export default function Cart() {
                                 </div>
                             </div>
                             <div className="textGroupContainer">
-                                <h5>TOTAL TO PAY</h5>
-                                <h5>Rs. {subtotal}</h5>
+                                <h5 className="f-exo-600">TOTAL TO PAY</h5>
+                                <h5 className="f-times-bold">Rs. {subtotal}</h5>
                             </div>
                         </div>
                     </div>

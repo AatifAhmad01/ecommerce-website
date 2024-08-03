@@ -7,7 +7,7 @@ import ButtonText from "../buttonText/buttonText";
 ring2.register()
 
 
-export default function ButtonFill({children, onClick, loading = false, isDisbled})
+export default function ButtonFill({children, onClick, loading = false, isDisbled = false})
 {
     return  <div className="buttons-container">
             <button className="add-cart-button" onClick={onClick}

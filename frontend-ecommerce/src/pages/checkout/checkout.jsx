@@ -114,7 +114,7 @@ export default function Checkout()
                     '& > :not(style)': { m: 1, width: '100%', maxWidth: 500},
                 }} >
                     
-                    <TextField fullWidth id="demo-helper-text-aligned" label="Phone (Optional)" name="extraphone"/>
+                    <TextField fullWidth id="demo-helper-text-aligned" label="Phone (Optional)" name="extraphone" type="number"/>
                     <pre style={{marginLeft: "20px"}}>For updates only.</pre>
                     <br/>
 
@@ -168,7 +168,7 @@ export default function Checkout()
 
                 <div className="shipping-method-container">
                     <p className="form-label">Shipping method</p>
-                    <FormStaticInput mainText={"Stardard"} secondaryText={"Free"}/>
+                    <FormStaticInput mainText={"Standard"} secondaryText={"Free"}/>
                 </div>
 
                 <div className="payment-method-container">

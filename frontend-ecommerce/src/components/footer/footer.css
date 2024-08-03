@@ -52,6 +52,12 @@
 {
     color: white;
     margin-left: 5px;
+    font-family: "Exo 2", sans-serif;
+}
+
+.f-heading
+{
+    font-family: "Exo 2", sans-serif;
 }
 
 .f-icon

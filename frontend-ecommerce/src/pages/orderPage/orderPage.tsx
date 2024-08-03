@@ -27,10 +27,10 @@ export default function OrderPage(){
 
     return <div className="orderContainer">
         <div className="orderFeedbackContainer">
-            <h2>Order Placed!</h2>
-            <p>Thank you our valued costumer.</p>
-            <p>your order No is {orderId}</p>
-            <ButtonFill onClick={onShopMoreHandler} >{"Shop More"}</ButtonFill>
+            <h2 className="f-exo-600">Order Placed!</h2>
+            <p className="f-exo-600">Thank You Our Valued Costumer.</p>
+            <p className="f-exo-600">Your order No is {orderId}</p>
+            <ButtonFill onClick={onShopMoreHandler}>{"Shop More"}</ButtonFill>
         </div>
     </div>
 }

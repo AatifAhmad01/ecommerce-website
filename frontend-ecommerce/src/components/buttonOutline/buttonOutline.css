@@ -10,6 +10,10 @@
     cursor: pointer;
     color: #9A1663;
 }
+.btn-text
+{
+    font-size: larger;
+}
 
 /* .buttonOutline:hover
 {

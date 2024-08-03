@@ -4,6 +4,6 @@ import './announcementBar.css'
 export default function AnnouncementBar({children})
 {
     return <div className="announcementBarContainer">
-        <p>{children}</p>
+        <p className="f-exo-600">{children}</p>
     </div>
 }

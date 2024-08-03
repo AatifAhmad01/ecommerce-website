@@ -14,7 +14,7 @@ export function HeadingContent (){
 
     return <>
     <div className="heading-content-container">
-        <AnnouncementBar>{"Free delivery all over Pakistan."}</AnnouncementBar>
+        <AnnouncementBar>{"Free Delivery All Over Pakistan."}</AnnouncementBar>
         <Navbar/>
         <SocialMediaLinks/>
     </div>

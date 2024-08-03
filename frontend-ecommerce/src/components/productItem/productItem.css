@@ -27,14 +27,14 @@
 .item-title
 {
     margin: 10px;
-    color: #9A1663;
+    /* color: #9A1663; */
     font-weight:  bold;
 }
 
 .item-price
 {
     margin: 0px 10px;
-    color: #9A1663;
+    /* color: #9A1663; */
 
     font-family: "Merriweather", serif;
     font-weight: 700;

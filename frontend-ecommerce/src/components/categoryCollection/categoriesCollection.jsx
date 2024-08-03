@@ -31,6 +31,9 @@ export default function CategoriesCollection()
                 <CategoryItem  imageUrl={"/images/categories/Mascara.jpeg"} 
                     onClick={() => onCategoryClickHandler("/mascara&eyeliner")} text={"Mascara & Eye Liner"}/>
 
+                <CategoryItem  imageUrl={"/images/categories/Eyeshad.png"} 
+                    onClick={() => onCategoryClickHandler("/eyeshad")} text={"Eyeshad"}/>  
+
                 <CategoryItem  imageUrl={"/images/categories/Blushan.webp"} 
                     onClick={() => onCategoryClickHandler("/blushan&highlighters")} text={"Blushan & Highlighter"}/>
 
@@ -44,10 +47,7 @@ export default function CategoriesCollection()
                     onClick={() => onCategoryClickHandler("/hairproducts")} text={"Hair Products"}/>  
 
                 <CategoryItem  imageUrl={"/images/categories/MakupTools.png"} 
-                    onClick={() => onCategoryClickHandler("/makupalltools")} text={"Makup All Tools"}/>    
-
-                <CategoryItem  imageUrl={"/images/categories/Eyeshad.png"} 
-                    onClick={() => onCategoryClickHandler("/eyeshad")} text={"Eyeshad"}/>                  
+                    onClick={() => onCategoryClickHandler("/makupalltools")} text={"Makup All Tools"}/>                
 
             </div>
         </div>

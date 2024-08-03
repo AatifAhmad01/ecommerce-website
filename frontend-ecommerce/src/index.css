@@ -17,11 +17,27 @@ p{
 {
   cursor: pointer;
 }
+
+/* Fonts */
+
 .f-times
 {
   font-family: 'Times New Roman', Times, serif;
 }
 
+.f-times-bold
+{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+}
+
+.f-exo-600
+{
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
 
 
 

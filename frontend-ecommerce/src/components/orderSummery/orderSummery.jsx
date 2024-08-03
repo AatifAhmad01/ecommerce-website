@@ -14,18 +14,17 @@ export default function OrderSummery({subtotal, orderItems, onClickAction, actio
             <div className="space-between">
                 <div className="cont-1">
                     <div className="textGroupContainer">
-                        <h5>SUBTOTAL</h5>
-                        <h5>Rs. {subtotal}</h5>
+                        <h5 className="f-exo-600">SUBTOTAL</h5>
+                        <h5 className="f-times-bold">Rs. {subtotal}</h5>
                     </div>
                     <div className="textGroupContainer">
-                        <p>Delivery Charges</p>
-                        <p>Free</p>
-                        {/* <p>{subtotal < 1500 ? deliveryCharges : "Free"}</p> */}
+                        <p className="f-exo-600">Delivery Charges</p>
+                        <p className="f-exo-600">Free</p>
                     </div>
                 </div>
                 <div className="textGroupContainer">
-                    <h5>TOTAL TO PAY</h5>
-                    <h5>Rs. {subtotal}</h5>
+                    <h5 className="f-exo-600">TOTAL TO PAY</h5>
+                    <h5 className="f-times-bold">Rs. {subtotal}</h5>
                 </div>
             </div>
         </div>

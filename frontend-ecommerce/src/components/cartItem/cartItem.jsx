@@ -46,9 +46,9 @@ export default function CartItem({onRemove, onUpdateQuantity, cartItem})
                 </div>
                 <img src={`https://seenbeauty.pk/${cartItem.image_url}`} alt="" className="cartItemImage"/>
                 <div className="cartItemDetailsContainer">
-                    <p className="cartItemTitle">{cartItem.name}</p>
+                    <p className="cartItemTitle ">{cartItem.name}</p>
                     <p>Item Price: {cartItem.price}</p>
-                    <strong>Total: {cartItem.price * cartItem.quantity}</strong>
+                    <strong className="f-exo-600">Total: {cartItem.price * cartItem.quantity}</strong>
                 </div>
             </div>
             {/* <div className="cartItemTotalPriceContainer">
