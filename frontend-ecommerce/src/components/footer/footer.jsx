@@ -38,60 +38,58 @@ export default function Footer()
 
 
     return (
-        <footer className="footer-container">
-            {/* <p className="footer-details">&copy; Seen Beauty</p> */}
+        <>
+            <footer className="footer-container">
 
-            <div className="f-inner-container">
-                <div className="f-logo-container">
-                    <img src="images/Seen_Beauty.png" alt="" className="f-logo-img"/>
-                    <ul className="f-logo-list">
-                        <li><a href="https://wa.me/+923401249000" target="_blank"><img src="images/WhatsappIcon.png" alt="Whatsapp" className="f-icon"/></a></li>
-                        <li><a href="https://www.facebook.com/profile.php?id=61558708552554&mibextid=LQQJ4d" target="_blank"><img src="images/FacebookIcon.png" alt="Facebbok" className="f-icon"/></a></li>
-                        <li><a href="https://www.instagram.com/seenbeauty.pk/" target="_blank"><img src="images/InstaIcon.png" alt="Instagram" className="f-icon"/></a></li>
-                        <li><a href="https://www.tiktok.com/@seenbeauty.pk" target="_blank"><img src="images/TiktokIcon.png" alt="Tiktok" className="f-icon"/></a></li>
-                    </ul>
-                </div>
+                <div className="f-inner-container">
+                    <div className="f-logo-container">
+                        <img src="images/Seen_Beauty.png" alt="" className="f-logo-img"/>
+                        <ul className="f-logo-list">
+                            <li><a href="https://wa.me/+923401249000" target="_blank"><img src="images/WhatsappIcon.png" alt="Whatsapp" className="f-icon"/></a></li>
+                            <li><a href="https://www.facebook.com/profile.php?id=61558708552554&mibextid=LQQJ4d" target="_blank"><img src="images/FacebookIcon.png" alt="Facebbok" className="f-icon"/></a></li>
+                            <li><a href="https://www.instagram.com/seenbeauty.pk/" target="_blank"><img src="images/InstaIcon.png" alt="Instagram" className="f-icon"/></a></li>
+                            <li><a href="https://www.tiktok.com/@seenbeauty.pk" target="_blank"><img src="images/TiktokIcon.png" alt="Tiktok" className="f-icon"/></a></li>
+                        </ul>
+                    </div>
 
-                <ul className="f-list">
-                    <li><h5 className="f-heading">Contact Us</h5></li>
-                    <li><a href="tel:+923401249000" className="f-text">03401249000</a></li>
-                    <li><a href="mailto:seenbeautypk@gmail.com" className="f-text">seenbeautypk@gmail.com</a></li>
-                    <br />
-
-                    {/* <li><h5 className="f-heading">Policies</h5></li>
-                    <li>
-                        <span className="f-text cursor " onClick={() => openPolicyHandler(0)}>Shipping Policy</span><br />
-                        <span className="f-text cursor " onClick={() => openPolicyHandler(1)}>Privacy Policy  </span> <br />
-                        <span className="f-text cursor " onClick={() => openPolicyHandler(2)}>Terms and condisions</span> <br />
-                        <span className="f-text cursor " onClick={() => openPolicyHandler(3)}>Delivery Terms</span> <br />
-                    </li> */}
-                </ul>
-
-                <ul className="f-list">
-                    <li><h5 className="f-heading">Policies</h5></li>
-                    <li>
-                        <span className="f-text cursor " onClick={() => openPolicyHandler(0)}>Shipping Policy</span><br />
-                        <span className="f-text cursor " onClick={() => openPolicyHandler(1)}>Privacy Policy  </span> <br />
-                        <span className="f-text cursor " onClick={() => openPolicyHandler(2)}>Terms and condisions</span> <br />
-                        <span className="f-text cursor " onClick={() => openPolicyHandler(3)}>Delivery Terms</span> <br />
-                    </li>
-                    <br />
-
-                </ul>
-
-                <div className="f-about-container">
                     <ul className="f-list">
-                        <li><h5 className="f-heading">About Seenbeauty</h5></li>
-                        <p className="f-text">Seenbeauty is the e-commerce company which provides the beauty of all makeup in Pakistan. #WeCareUrBeauty</p>
+                        <li><h5 className="f-heading">Contact Us</h5></li>
+                        <li><a href="tel:+923401249000" className="f-text">03401249000</a></li>
+                        <li><a href="mailto:seenbeautypk@gmail.com" className="f-text">seenbeautypk@gmail.com</a></li>
+                        <br />
                     </ul>
-                </div>
-            </div>
 
-            {openPolicyPage && <PopupWindow 
-                heading={policies[selectedPolicyId].title} 
-                text={policies[selectedPolicyId].content}
-                onClose={closePolicyHanlder}
-                />}
-        </footer>
+                    <ul className="f-list">
+                        <li><h5 className="f-heading">Policies</h5></li>
+                        <li>
+                            <span className="f-text cursor " onClick={() => openPolicyHandler(0)}>Shipping Policy</span><br />
+                            <span className="f-text cursor " onClick={() => openPolicyHandler(1)}>Privacy Policy  </span> <br />
+                            <span className="f-text cursor " onClick={() => openPolicyHandler(2)}>Terms and condisions</span> <br />
+                            <span className="f-text cursor " onClick={() => openPolicyHandler(3)}>Delivery Terms</span> <br />
+                        </li>
+                        <br />
+
+                    </ul>
+
+                    <div className="f-about-container">
+                        <ul className="f-list">
+                            <li><h5 className="f-heading">About Seenbeauty</h5></li>
+                            <p className="f-text">Seenbeauty is the e-commerce company which provides the beauty of all makeup in Pakistan. #WeCareUrBeauty</p>
+                        </ul>
+                    </div>
+                </div>
+
+                {openPolicyPage && <PopupWindow 
+                    heading={policies[selectedPolicyId].title} 
+                    text={policies[selectedPolicyId].content}
+                    onClose={closePolicyHanlder}
+                    />}
+
+
+            </footer>
+            <div className="f-developer-text">
+                <p className="f-developer-text f-text">Developed By <a href="http://www.linkedin.com/in/atifahmad01" target="_blank" className="f-text">Atif Ahmad</a></p>
+            </div>
+        </>
     )
 }

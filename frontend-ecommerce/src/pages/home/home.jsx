@@ -17,13 +17,13 @@ export default function Home()
     const [showMoreButton, setMoreButton] = useState(true)
     const [page, setPage] = useState(1)
 
-    const pageSize = 10;
+    const pageSize = 20;
 
     const fetchProducts = async () => {
         try
         {
             const allProductsRes = await fetchAllProducts(page, pageSize);
-            if (allProductsRes.data.data.length <= pageSize) setMoreButton(false);
+            if (allProductsRes.data.data.length < pageSize) setMoreButton(false);
             const newArivalRes = await fetchNewArialProducts(1);
             setProducts(allProductsRes.data.data)
             setNewArival(newArivalRes.data.data)
