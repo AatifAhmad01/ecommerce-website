@@ -5,7 +5,7 @@ import Cart from './pages/cart/Cart'
 import Checkout from './pages/checkout/checkout';
 import ShopCategory from './pages/shopCategory/ShopCategory'
 import ShopBrand from './pages/shopBrand/shopBrand';
-import { createHashRouter , Route, createBrowserRouter, RouterProvider, createRoutesFromElements}  from 'react-router-dom'
+import { createHashRouter , Route, useLocation, RouterProvider, createRoutesFromElements}  from 'react-router-dom'
 import ProductDetail from './pages/productDetails/ProductDetail'
 import OrderPage from './pages/orderPage/orderPage';
 import { useDispatch } from 'react-redux';
@@ -13,6 +13,9 @@ import { addAllItems } from './redux/slices/cartSlice';
 import Layout from './layout';
 
 function App() {
+
+
+
 
   const dispath = useDispatch()
 
@@ -52,15 +55,7 @@ function App() {
 
   return (
     <>
-    <RouterProvider router={router}/>
-        {/* <BrowserRouter basename='/'>
-            <HeadingContent/>
-            <Routes>
-
-
-            </Routes>
-            <Footer/>
-        </BrowserRouter> */}
+      <RouterProvider router={router}/>
     </>
   )
 }

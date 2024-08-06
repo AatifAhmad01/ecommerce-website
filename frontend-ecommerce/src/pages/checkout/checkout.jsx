@@ -8,8 +8,6 @@ import { placeOrder } from "../../http/orders.http";
 import TransparentLoading from "../../components/transparentLoading/transparentLoading";
 import FormStaticInput from "../../components/formStaticInput/formStaticInput";
 
-import { useLocation } from "react-router-dom";
-
 
 export default function Checkout()
 {
@@ -24,8 +22,8 @@ export default function Checkout()
         appartment: { isValid: true, value: ""},
         city: { isValid: true, value: null},
         postalcode: { isValid: true, value: null},
-        phone: { isValid: true, value: null},
-        extraPhone: { isValid: true, value: 0}
+        phone: { isValid: true, value: ""},
+        extraPhone: { isValid: true, value: ""}
     })
 
     let cartItems = { items: []};
@@ -46,6 +44,12 @@ export default function Checkout()
 
         const name = e.target.name;
         const value = e.target.value
+
+        if(name == 'phone' || name == "extraPhone")
+        {
+            if(e.target.value.length > 11) return;
+        }
+
         setCustomerDetails({...customerDetails, [name]: { isValid: true, value }})
     }
 
@@ -107,20 +111,20 @@ export default function Checkout()
     return <div className="cartDetailsContainer">
     <div className="cartItemsContainer">
     {
-        <div>
-            <form className="orderDetailsForm">
-            <Box component="form"
+        <form className="orderDetailsForm">
+            <Box component="form" key={'extraphone'}
                 sx={{
                     '& > :not(style)': { m: 1, width: '100%', maxWidth: 500},
                 }} >
                     
-                    <TextField fullWidth id="demo-helper-text-aligned" label="Phone (Optional)" name="extraphone" type="number"/>
+                    <TextField fullWidth id="demo-helper-text-aligned" label="Phone (Optional)" name="extraPhone" type="number" onChange={onTextChangeHanlder}
+                    value={customerDetails.extraPhone.value}/>
                     <pre style={{marginLeft: "20px"}}>For updates only.</pre>
                     <br/>
 
                 </Box>
 
-            <Box component="form"
+            <Box component="form" key={'country'}
                 sx={{
                     '& > :not(style)': { m: 1, width: '100%', maxWidth: 500},
                 }} noValidate >
@@ -128,7 +132,7 @@ export default function Checkout()
                     <TextField fullWidth id="demo-helper-text-aligned" label="Country/Region" disabled defaultValue={"Pakistan"}/>
             </Box>
 
-            <Box component="form"
+            <Box component="form" key={'contactDetails'}
                 sx={{
                     '& > :not(style)': { m: 1, width: '100%', maxWidth: 500},
                 }} autoComplete="on">
@@ -142,7 +146,7 @@ export default function Checkout()
                     <TextField error={!customerDetails.address.isValid} fullWidth id="demo-helper-text-aligned" label="Address" name="address"
                         onChange={onTextChangeHanlder}/>
 
-                    <TextField fullWidth id="demo-helper-text-aligned" label="Apartment, suite, etc. (optional)" name="appartment"
+                    <TextField fullWidth id="demo-helper-text-aligned" label="Apartment, suite, etc. (optional)" name="appartment" 
                         onChange={onTextChangeHanlder}/>  
 
                     <TextField error={!customerDetails.city.isValid} fullWidth id="demo-helper-text-aligned" label="City" name="city"
@@ -152,11 +156,12 @@ export default function Checkout()
                         onChange={onTextChangeHanlder}/>
 
                     <TextField error={!customerDetails.phone.isValid} fullWidth id="demo-helper-text-aligned" label="Phone" name="phone" type="number"
-                        onChange={onTextChangeHanlder}/>
+                        onChange={onTextChangeHanlder}
+                        value={customerDetails.phone.value}/>
             </Box>
 
 
-            <Box component="form"
+            <Box component="form" key={'shippingDetails'}
                 sx={{
                     '& > :not(style)': { m: 1, width: '100%', maxWidth: 500},
                 }} noValidate className="form-box">
@@ -177,8 +182,7 @@ export default function Checkout()
                 </div>
 
             </Box>
-            </form>
-        </div>
+        </form>
     }
     </div>
 

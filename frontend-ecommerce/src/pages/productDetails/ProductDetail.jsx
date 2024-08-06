@@ -211,7 +211,7 @@ export default function ProductDetail() {
                         }}/>
 
                         {/* <pre className="productDescription mt-3" >{productDetails.description}</pre> */}
-                        <p className="productTitle mt-2">{"Shades"}</p>
+                        {colors.length > 0 && <p className="productTitle mt-2">{"Shades"}</p>}
                         <div className="variants-container">
                         {
                             colors.map((item, index) => <ProductVarietyText text={item} onClick={onClicVariant} selectedVariant={selectedVariant}/>)
@@ -238,7 +238,7 @@ export default function ProductDetail() {
                 <ButtonFill onClick={buyNowHandler} isDisbled={!productDetails.instock}>{"Buy Now"}</ButtonFill>
             </div>
         </div>
-        <ProductSection category={productDetails.category} products={allProducts}/>
+        <ProductSection category={"You May Like"} products={allProducts}/>
     </ProductWraper>
 }
 
