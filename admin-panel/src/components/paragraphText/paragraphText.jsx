@@ -7,8 +7,6 @@ export default function ParagraphText({label, children})
     {
         label ? <label htmlFor="" className="paragraph-text-label">{label}</label> : null
     }
-    {
-        children ? <p className="paragraph-text">{children}</p> : null
-    }
+    <p className="paragraph-text">{children}</p>
     </>
 }
