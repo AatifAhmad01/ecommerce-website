@@ -5,13 +5,10 @@ const dotenv = require('dotenv')
 const productRouter = require('./routes/products.router.js')
 const userRouter = require('./routes/user.router.js')
 const orderRouter = require('./routes/orders.router.js')
-// const db = require('./db/db.js')
 
 dotenv.config();
 
 const app = express()
-
-const PORT = process.env.PORT
 
 app.use(cors())
 app.use(express.json({ limit: '16kb' }))
@@ -29,6 +26,4 @@ app.get("/", (req, res) => {
     res.status(200).send("The Application Is Running Perfectly");
 })
 
-app.listen(PORT, () => {
-    console.log(`Server is Running on port ${PORT}`)
-})
+module.exports = app

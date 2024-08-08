@@ -3,8 +3,11 @@ const db = require("../db/db.js");
 const ApiError = require("../utils/ApiError.js");
 const ApiResponse = require("../utils/ApiResponse.js");
 const { ConvertOrdersToArray, ConvertProductsToArray } = require("../utils/ManageProjects.js");
+const connectedClients = require("../server.js")
 
 const getActiveOrders = asyncHandler(async (req, res) => {
+
+    console.log(connectedClients[0])
 
     try {
         const ordersQuery = `
@@ -84,6 +87,8 @@ const postOrder = asyncHandler(async (req, res) => {
 
         await connection.commit()
         connection.release()
+
+        //Send order notification
 
         res.status(200).json(new ApiResponse(200, {
             orderId
