@@ -36,18 +36,17 @@ function Navbar ()
                     Categories
                 </a>
 
-
                 <ul class="dropdown-menu ">
                         <li><Link class="dropdown-item" to="/skinprimer">Skin Primer</Link></li>
-                        <li><Link class="dropdown-item" to="/foundations">Foundation</Link></li>
-                        <li><Link class="dropdown-item" to="/facepowder">Face Powder</Link></li>
+                        <li><Link class="dropdown-item" to="/foundations">Foundations</Link></li>
+                        <li><Link class="dropdown-item" to="/facepowder">Face Powders</Link></li>
+                        <li><Link class="dropdown-item" to="/eyeshadow">Eyeshadow</Link></li>
                         <li><Link class="dropdown-item" to="/mascara&eyeliner">Mascara & Eye Liner</Link></li>
                         <li><Link class="dropdown-item" to="/blushan&highlighters">Blushan & Highlighter</Link></li>
-                        <li><Link class="dropdown-item" to="/lipsticks&lipgloss">Lipsticks & Lipgloss</Link></li>
+                        <li><Link class="dropdown-item" to="/lipsticks&lipgloss">Lipstick & Lipgloss</Link></li>
                         <li><Link class="dropdown-item" to="/makupfixer">Makup Fixer</Link></li>
                         <li><Link class="dropdown-item" to="/hairproducts">Hair Products</Link></li>
                         <li><Link class="dropdown-item" to="/makupalltools">Makup All Tools</Link></li>
-                        <li><Link class="dropdown-item" to="/eyeshad">Eyeshad</Link></li>
                         <li><Link class="dropdown-item" to="/nailpolish">Nail Polish</Link></li>
                     </ul>
                 </li>

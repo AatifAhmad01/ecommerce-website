@@ -15,8 +15,6 @@ import Layout from './layout';
 function App() {
 
 
-
-
   const dispath = useDispatch()
 
   const router = createHashRouter(
@@ -27,20 +25,20 @@ function App() {
         <Route path='checkout' element={<Checkout/>}/>
         <Route path='productdetail' element={<ProductDetail />}/>
         <Route path='orderPage' element={<OrderPage />}/>
-        <Route path='skinprimer' element={<ShopCategory category="Skin Primer"/>}/>
-        <Route path='foundations' element={<ShopCategory category="Foundation"/>}/>
-        <Route path='facepowder' element={<ShopCategory category="Face Powder"/>}/>
-        <Route path='mascara&eyeliner' element={<ShopCategory category="Mascara & Eye Liner"/>}/>
-        <Route path='blushan&highlighters' element={<ShopCategory category="Blushan & Highlighter"/>}/>
-        <Route path='lipsticks&lipgloss' element={<ShopCategory category="Lipsticks & Lipgloss"/>}/>
-        <Route path='makupfixer' element={<ShopCategory category="Makup Fixer"/>}/>
-        <Route path='makupalltools' element={<ShopCategory category="Makup All Tools"/>}/>
-        <Route path='hairproducts' element={<ShopCategory category="Hair Products"/>}/>
-        <Route path='nailpolish' element={<ShopCategory category="Nail Polish"/>}/>
-        <Route path='eyeshad' element={<ShopCategory category="Eyeshad"/>}/>
+        <Route path='skinprimer' element={<ShopCategory category="Skin Primer" heading={"Skin Primer"}/>}/>
+        <Route path='foundations' element={<ShopCategory category="Foundation" heading={"Foundations"}/>}/>
+        <Route path='facepowder' element={<ShopCategory category="Face Powder" heading={"Face Powder"}/>}/>
+        <Route path='mascara&eyeliner' element={<ShopCategory category="Mascara & Eye Liner" heading={"Mascara & Eye Liner"}/>}/>
+        <Route path='blushan&highlighters' element={<ShopCategory category="Blushan & Highlighter" heading={"Blushan & Highlighter"}/>}/>
+        <Route path='lipsticks&lipgloss' element={<ShopCategory category="Lipsticks & Lipgloss" heading={"Lipsticks & Lipgloss"}/>}/>
+        <Route path='makupfixer' element={<ShopCategory category="Makup Fixer" heading={"Makup Fixer"}/>}/>
+        <Route path='makupalltools' element={<ShopCategory category="Makup All Tools" heading={"Makup All Tools"}/>}/>
+        <Route path='hairproducts' element={<ShopCategory category="Hair Products" heading={"Hair Products"}/>}/>
+        <Route path='nailpolish' element={<ShopCategory category="Nail Polish" heading={"Nail Polish"}/>}/>
+        <Route path='eyeshadow' element={<ShopCategory category="Eyeshadow" heading={"Eyeshadow"}/>}/>
 
         <Route path='hudabeauty' element={<ShopBrand brand="Huda Beauty"/>}/>
-        <Route path='lakemefacepowder' element={<ShopBrand brand="Lakeme Facepowders"/>}/>
+        <Route path='lakemefacepowder' element={<ShopBrand brand="Lakme Facepowders"/>}/>
         <Route path='lakemefoundation' element={<ShopBrand brand="Lakme Foundation"/>}/>
         <Route path='anjilian' element={<ShopBrand brand="Anjilian"/>}/>
       </Route>

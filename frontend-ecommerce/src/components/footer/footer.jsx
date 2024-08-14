@@ -85,10 +85,13 @@ export default function Footer()
                     onClose={closePolicyHanlder}
                     />}
 
-
             </footer>
             <div className="f-developer-text">
-                <p className="f-developer-text f-text">Developed By <a href="http://www.linkedin.com/in/atifahmad01" target="_blank" className="f-text">Atif Ahmad</a></p>
+                <p className="f-developer-text f-text">All rights reserved SeenBeauty 2024 &#169;</p>
+            </div>
+
+            <div className="f-developer-text">
+                <p className="f-developer-text f-text">Powered By <a href="http://www.linkedin.com/in/atifahmad01" target="_blank" className="f-text">techWiz</a></p>
             </div>
         </>
     )

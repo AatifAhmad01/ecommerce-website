@@ -73,7 +73,7 @@
 
 .f-about-container
 {
-    width: 400px;
+    max-width: 400px;
 }
 
 .f-developer-text

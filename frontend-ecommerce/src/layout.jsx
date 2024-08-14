@@ -6,6 +6,8 @@ import { Outlet, useLocation } from "react-router-dom";
 export default function Layout()
 {
     const location = useLocation();
+
+    /*
     const [isConnectedToSocket, setSockectConnection] = useState(false)
 
 
@@ -54,7 +56,7 @@ export default function Layout()
       }
     }
 
-
+    */
 
     useEffect(() => {
       window.scrollTo(0,0);

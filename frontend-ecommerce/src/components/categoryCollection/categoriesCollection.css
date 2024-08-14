@@ -1,11 +1,7 @@
 .categoryCollection
 {
-    /* height: 18vw;
-    max-height: 200px; */
-    /* background-color: gray; */
-
-    display: flex;
     overflow-x: auto;
+    scroll-behavior: smooth;
 } 
 
 .categoryCollection::-webkit-scrollbar {
@@ -15,4 +11,47 @@
 .categoryCollectionInner
 {
     display: flex;
+}
+
+.categoryOuterContainer
+{
+    position: relative;
+}
+
+.categorySliderButton
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-70%);
+
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    border: none;
+    background-color: rgba(17, 17, 17, 0.368);
+    color: white;
+}
+
+.catergoryScrollIcon
+{
+    font-size: 35px;
+}
+
+.categorySliderButton-left
+{
+    position: absolute;
+    left: 0;
+}
+
+.categorySliderButton-right
+{
+    right: 0;
+}
+
+@media (width <= 1080px)
+{
+    .categorySliderButton
+    {
+        display: none;
+    }
 }

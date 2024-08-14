@@ -5,7 +5,7 @@ import { fetchProductsByCategory } from "../../http/products.http";
 import LoadingPage from "../../components/LoadingPage/loadingPage";
 import Banner from "../../components/banner/banner";
 
-export default function ShopCategory({category}) {
+export default function ShopCategory({category, heading}) {
 
     const loaction = useLocation();
 
@@ -26,7 +26,7 @@ export default function ShopCategory({category}) {
     return<>
         <div className="wrapper">
             <Banner imageUrl={`images/banners/${category}.webp`}/>
-            <ProductSection category={category} products={allProducts}/>
+            <ProductSection category={heading} products={allProducts}/>
         </div>
         { fetchingData ? <LoadingPage>Loading</LoadingPage> : null }
     </>

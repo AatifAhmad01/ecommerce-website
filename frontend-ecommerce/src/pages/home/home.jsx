@@ -23,6 +23,7 @@ export default function Home()
         try
         {
             const allProductsRes = await fetchAllProducts(page, pageSize);
+            setPage(state => state + 1)
             if (allProductsRes.data.data.length < pageSize) setMoreButton(false);
             const newArivalRes = await fetchNewArialProducts(1);
             setProducts(allProductsRes.data.data)
@@ -36,9 +37,8 @@ export default function Home()
         setFitchingData(false)
     }
 
-    const fetchMoreProducts = async () => {
 
-        setPage(state => state + 1)
+    const fetchMoreProducts = async () => {
 
         setFitchingMoreProducts(true)
 
@@ -46,7 +46,9 @@ export default function Home()
         {
             const res = await fetchAllProducts(page, pageSize);
             setProducts(state => ([...state, ...res.data.data]))
-            if (res.data.data.length <= pageSize) setMoreButton(false);
+            setPage(state => state + 1)
+            console.log("fetching more products")
+            if (res.data.data.length < pageSize) setMoreButton(false);
         }
         catch(err)
         {
