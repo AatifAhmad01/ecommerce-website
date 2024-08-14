@@ -74,6 +74,8 @@ export default function ProductForm({ isEditing, product, onClose })
                 price: 0
             })
             setResponseError("Product Posted!")
+
+            clearResponseText();
         }
         catch(error)
         {
@@ -151,6 +153,7 @@ export default function ProductForm({ isEditing, product, onClose })
 
             setResponseError("Product Updated!")
 
+            clearResponseText();
         }
         catch(error)
         {
@@ -169,6 +172,12 @@ export default function ProductForm({ isEditing, product, onClose })
         }
 
         onEndLoading("update")
+    }
+
+    const clearResponseText = () => {
+        setTimeout(() => {
+            setResponseError("")
+        }, 1000)
     }
 
     useEffect(() => {

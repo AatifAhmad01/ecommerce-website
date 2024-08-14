@@ -20,6 +20,7 @@ export default function CategorySelect({ name, value, onUpdate, children })
             <option value="Makup Fixer">Makup Fixer</option>
             <option value="Makup All Tools">Makup All Tools</option>
             <option value="Hair Products">Hair Products</option>
+            <option value="Eyeshadow">Eye Shadow</option>
             <option value="Perfums">Perfums</option>
             <option value="Nail Polish">Nail Polish</option>
         </select>

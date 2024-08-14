@@ -58,6 +58,7 @@ export default function OrderDetails({orderDetails, onDeliver, onDelete})
         }
 
         <ParagraphText label={"Date"}>{orderDate.getDate()} - {orderDate.getMonth()} - {orderDate.getFullYear()}</ParagraphText>
+        <ParagraphText label={"Updates Number"}>{extraphone}</ParagraphText>
         <ParagraphText label={"Total Order Price"}>{orderPrice}</ParagraphText>
         <ParagraphText label={"First Name"}>{firstname}</ParagraphText>
         <ParagraphText label={"Last Name"}>{lastname}</ParagraphText>
@@ -66,7 +67,7 @@ export default function OrderDetails({orderDetails, onDeliver, onDelete})
         <ParagraphText label={"City"}>{city}</ParagraphText>
         <ParagraphText label={"Postal Code"}>{postalcode}</ParagraphText>
         <ParagraphText label={"Phone"}>{phone}</ParagraphText>
-        <ParagraphText label={"Updates Number"}>{extraphone}</ParagraphText>
+
 
         {
             orderDetails.delivered == 0 ? <PrimaryButton onClick={() => onDeliver(orderDetails.id)}>Deliver</PrimaryButton> : 

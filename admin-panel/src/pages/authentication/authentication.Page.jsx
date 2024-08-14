@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import './authentication.Page.css'
-import PrimaryButton from "../../components/primaryButton/primaryButton";
 import { userLogin } from "../../https/user.https";
 import { UserContext } from "../../contexts/UserContext";
+import { CircularProgress } from "@mui/material";
 
 export default function AuthenticationPage()
 {
@@ -15,7 +15,9 @@ export default function AuthenticationPage()
         setUserValues({...userValues, [e.target.name]: e.target.value })
     }
 
-    const onLoginHandler = async () => {
+    const onLoginHandler = async (event) => {
+        event.preventDefault();
+
         try
         {
             setRequest(true)
@@ -32,27 +34,30 @@ export default function AuthenticationPage()
     }
 
     return <div className="authentication-page">
+            <h1 className="welcome-text">Welcome to SeenBeauty</h1>
             <h1 className="login-text">Login</h1>
-            <form action="">
+            <form method="POST" className="auth-form">
 
                 <input type="text" 
                     name="username" id="usernameField" 
                     placeholder="Username" 
                     className="authentication-input" 
                     autoComplete="username"
-                    onBlur={onChangeText}/>
+                    onChange={onChangeText}/>
                 
-                <br/>
-
                 <input type="password" 
                     name="password" 
-                    id="passwordField" 
                     placeholder="Password" 
                     className="authentication-input" 
                     autoComplete="current-password"
-                    onBlur={onChangeText}/>
+                    onChange={onChangeText}/>
+
+                <p className="response-text">{response}</p>
+
+                <button className='primary-button' type="action" onClick={onLoginHandler}>
+                    {request ? <CircularProgress color='inherit' size={20}/> : "Login"}
+                </button>
+
             </form>
-            <p className="response-text">{response}</p>
-            <PrimaryButton onClick={onLoginHandler} isLoading={request}>Login</PrimaryButton>
     </div>
 }
