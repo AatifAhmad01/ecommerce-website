@@ -45,10 +45,10 @@ export default function Footer()
                     <div className="f-logo-container">
                         <img src="images/Seen_Beauty.png" alt="" className="f-logo-img"/>
                         <ul className="f-logo-list">
-                            <li><a href="https://wa.me/+923401249000" target="_blank"><img src="images/WhatsappIcon.png" alt="Whatsapp" className="f-icon"/></a></li>
-                            <li><a href="https://www.facebook.com/profile.php?id=61558708552554&mibextid=LQQJ4d" target="_blank"><img src="images/FacebookIcon.png" alt="Facebbok" className="f-icon"/></a></li>
-                            <li><a href="https://www.instagram.com/seenbeauty.pk/" target="_blank"><img src="images/InstaIcon.png" alt="Instagram" className="f-icon"/></a></li>
-                            <li><a href="https://www.tiktok.com/@seenbeauty.pk" target="_blank"><img src="images/TiktokIcon.png" alt="Tiktok" className="f-icon"/></a></li>
+                            <li><a href="https://wa.me/+923401249000" target="_blank"><img src="images/WhatsappIcon.png" alt="Whatsapp" className="f-icon" loading="lazy"/></a></li>
+                            <li><a href="https://www.facebook.com/profile.php?id=61558708552554&mibextid=LQQJ4d" target="_blank"><img src="images/FacebookIcon.png" alt="Facebbok" className="f-icon" loading="lazy"/></a></li>
+                            <li><a href="https://www.instagram.com/seenbeauty.pk/" target="_blank"><img src="images/InstaIcon.png" alt="Instagram" className="f-icon" loading="lazy"/></a></li>
+                            <li><a href="https://www.tiktok.com/@seenbeauty.pk" target="_blank"><img src="images/TiktokIcon.png" alt="Tiktok" className="f-icon" loading="lazy"/></a></li>
                         </ul>
                     </div>
 

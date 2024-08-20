@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import { HeadingContent } from "./components/headingContent/headingContent";
 import Footer from "./components/footer/footer";
 import { Outlet, useLocation } from "react-router-dom";

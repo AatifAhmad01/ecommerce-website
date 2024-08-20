@@ -28,11 +28,7 @@ export default function ProductDetail() {
     const location = useLocation();
     const navigation = useNavigate();
 
-
     const productDetails = location.state.product;
-
-
-
 
     const addQuantityHandler = ()=> {
 
@@ -79,7 +75,6 @@ export default function ProductDetail() {
             color: selectedVariant
         }))
 
-        // navigation("/cart");
         setOpen(true);
     }
 
@@ -138,6 +133,7 @@ export default function ProductDetail() {
 
     useEffect(() => {
         window.scrollTo(0,0)
+        setImageIndex(0);
         if(productDetails.colors)
         {
             const colors = productDetails.colors.split(",");

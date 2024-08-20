@@ -71,7 +71,7 @@ export default function Home()
                 <Link to="/lakemefoundation">
                     <Banner imageUrl={"images/brandBanners/Lakme Foundation.webp"}/></Link>
                 <Link to="/lakemefacepowder">
-                    <Banner imageUrl={"images/brandBanners/Lakeme Facepowders.webp"}/></Link>
+                    <Banner imageUrl={"images/brandBanners/Lakme Facepowders.webp"}/></Link>
                 <Link to="/hudabeauty">
                     <Banner imageUrl={"images/brandBanners/Huda Beauty.webp"}/></Link>
                 <Link to="/anjilian">
