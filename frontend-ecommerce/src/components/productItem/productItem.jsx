@@ -20,8 +20,8 @@ export default function ProductItem({product, onClickAddCart})
             }
             
             <div className="product-item-image-container">
-                <img src={`https://seenbeauty.pk/${product.image_url[0]}`} className="item-image" onClick={onProductDetailsHandler} loading="lazy"/>
-                {/* <img src={`https://res.cloudinary.com/djyxhzq2o/image/upload/v1724135224/images-1723102640430-141924090_wxvff3.webp`} className="item-image" onClick={onProductDetailsHandler} loading="lazy"/> */}
+                {/* <img src={`https://seenbeauty.pk/${product.image_url[0]}`} className="item-image" onClick={onProductDetailsHandler} loading="lazy"/> */}
+                <img src={`https://res.cloudinary.com/djyxhzq2o/image/upload/v1724135224/images-1723102640430-141924090_wxvff3.webp`} className="item-image" onClick={onProductDetailsHandler} loading="lazy"/>
             </div>
             <h6 className="item-title">{product.name}</h6>
             <h6 className="item-price">Rs. {product.price}</h6>
