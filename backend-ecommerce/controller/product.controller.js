@@ -46,7 +46,7 @@ const getProductsFromAllCategores = asyncHandler(async (req, res,) => {
         WITH RankedProducts AS (
             SELECT 
                 *,
-                ROW_NUMBER() OVER (PARTITION BY category) as rn
+                ROW_NUMBER() OVER (PARTITION BY category ORDER BY RAND()) as rn
             FROM 
                 products
             WHERE 
@@ -61,6 +61,13 @@ const getProductsFromAllCategores = asyncHandler(async (req, res,) => {
         WHERE 
             rn <= ?;
     `;
+
+    try {
+        const [productResult] = await db.execute(query, [size])
+    }
+    catch (error) {
+        console.log(error)
+    }
 
     try {
 

@@ -8,6 +8,8 @@ const orderRouter = require('./routes/orders.router.js')
 
 dotenv.config();
 
+const PORT = process.env.PORT
+
 const app = express()
 
 app.use(cors())
@@ -27,3 +29,7 @@ app.get("/", (req, res) => {
 })
 
 module.exports = app
+
+app.listen(PORT, () => {
+    console.log(`Server is Running on port ${PORT}`)
+})
